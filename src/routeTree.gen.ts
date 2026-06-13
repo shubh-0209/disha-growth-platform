@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
+import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as CareerNavigatorRouteImport } from './routes/career-navigator'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
@@ -21,9 +23,19 @@ const VisionMissionRoute = VisionMissionRouteImport.update({
   path: '/vision-mission',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScholarshipsRoute = ScholarshipsRouteImport.update({
+  id: '/scholarships',
+  path: '/scholarships',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareerNavigatorRoute = CareerNavigatorRouteImport.update({
+  id: '/career-navigator',
+  path: '/career-navigator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -50,7 +62,9 @@ const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career-navigator': typeof CareerNavigatorRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/': typeof ProgramsIndexRoute
@@ -58,6 +72,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career-navigator': typeof CareerNavigatorRoute
+  '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs': typeof ProgramsIndexRoute
@@ -66,7 +82,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career-navigator': typeof CareerNavigatorRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/': typeof ProgramsIndexRoute
@@ -76,17 +94,28 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/career-navigator'
     | '/programs'
+    | '/scholarships'
     | '/vision-mission'
     | '/programs/$slug'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/vision-mission' | '/programs/$slug' | '/programs'
+  to:
+    | '/'
+    | '/about'
+    | '/career-navigator'
+    | '/scholarships'
+    | '/vision-mission'
+    | '/programs/$slug'
+    | '/programs'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/career-navigator'
     | '/programs'
+    | '/scholarships'
     | '/vision-mission'
     | '/programs/$slug'
     | '/programs/'
@@ -95,7 +124,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CareerNavigatorRoute: typeof CareerNavigatorRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
+  ScholarshipsRoute: typeof ScholarshipsRoute
   VisionMissionRoute: typeof VisionMissionRoute
 }
 
@@ -108,11 +139,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisionMissionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/scholarships': {
+      id: '/scholarships'
+      path: '/scholarships'
+      fullPath: '/scholarships'
+      preLoaderRoute: typeof ScholarshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programs': {
       id: '/programs'
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/career-navigator': {
+      id: '/career-navigator'
+      path: '/career-navigator'
+      fullPath: '/career-navigator'
+      preLoaderRoute: typeof CareerNavigatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -163,9 +208,21 @@ const ProgramsRouteWithChildren = ProgramsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CareerNavigatorRoute: CareerNavigatorRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
+  ScholarshipsRoute: ScholarshipsRoute,
   VisionMissionRoute: VisionMissionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
