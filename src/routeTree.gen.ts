@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
+import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -31,6 +32,11 @@ const VolunteerRoute = VolunteerRouteImport.update({
 const VisionMissionRoute = VisionMissionRouteImport.update({
   id: '/vision-mission',
   path: '/vision-mission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
+  id: '/success-stories',
+  path: '/success-stories',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/mentors': typeof MentorsRoute
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/resources'
     | '/scholarships'
+    | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
     | '/programs/$slug'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/mentors'
     | '/resources'
     | '/scholarships'
+    | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
     | '/programs/$slug'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/resources'
     | '/scholarships'
+    | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
     | '/programs/$slug'
@@ -191,6 +203,7 @@ export interface RootRouteChildren {
   ProgramsRoute: typeof ProgramsRouteWithChildren
   ResourcesRoute: typeof ResourcesRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
+  SuccessStoriesRoute: typeof SuccessStoriesRoute
   VisionMissionRoute: typeof VisionMissionRoute
   VolunteerRoute: typeof VolunteerRoute
 }
@@ -209,6 +222,13 @@ declare module '@tanstack/react-router' {
       path: '/vision-mission'
       fullPath: '/vision-mission'
       preLoaderRoute: typeof VisionMissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/success-stories': {
+      id: '/success-stories'
+      path: '/success-stories'
+      fullPath: '/success-stories'
+      preLoaderRoute: typeof SuccessStoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scholarships': {
@@ -315,6 +335,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramsRoute: ProgramsRouteWithChildren,
   ResourcesRoute: ResourcesRoute,
   ScholarshipsRoute: ScholarshipsRoute,
+  SuccessStoriesRoute: SuccessStoriesRoute,
   VisionMissionRoute: VisionMissionRoute,
   VolunteerRoute: VolunteerRoute,
 }
