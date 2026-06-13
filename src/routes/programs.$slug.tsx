@@ -57,7 +57,7 @@ function ProgramDetail() {
             </span>
             <h2 className="mt-5 text-2xl font-bold text-foreground">What we do</h2>
             <ul className="mt-5 space-y-3">
-              {program.highlights.map((h) => (
+              {program.highlights.map((h: string) => (
                 <li key={h} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft">
                   <span className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${isGreen ? "bg-green text-green-foreground" : "bg-primary text-primary-foreground"}`}>
                     <Check className="h-3 w-3" />
@@ -72,7 +72,7 @@ function ProgramDetail() {
             <div className="rounded-3xl border border-border bg-secondary/40 p-6">
               <h3 className="font-semibold text-foreground">Impact so far</h3>
               <div className="mt-4 space-y-4">
-                {program.outcomes.map((o) => (
+                {program.outcomes.map((o: { label: string; value: string }) => (
                   <div key={o.label} className="rounded-2xl border border-border bg-card p-4">
                     <p className="text-2xl font-bold text-primary">{o.value}</p>
                     <p className="text-sm text-muted-foreground">{o.label}</p>
