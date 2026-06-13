@@ -3,7 +3,7 @@ import { Clock, Calendar, ArrowLeft } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { BlogCard } from "@/components/cards";
-import { BLOGS } from "@/lib/site-data";
+import { BLOGS, type Blog } from "@/lib/site-data";
 
 export const Route = createFileRoute("/blogs/$slug")({
   loader: ({ params }) => {
@@ -84,7 +84,7 @@ function BlogPost() {
           </div>
 
           <div className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-foreground/85">
-            {blog.content.map((p, i) => (
+            {blog.content.map((p: string, i: number) => (
               <p key={i}>{p}</p>
             ))}
           </div>
@@ -95,7 +95,7 @@ function BlogPost() {
         <div className="mx-auto max-w-7xl px-5">
           <h2 className="mb-8 text-2xl font-bold text-foreground">Related reading</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((b, i) => (
+            {related.map((b: Blog, i: number) => (
               <Reveal key={b.slug} delay={i * 0.05}>
                 <BlogCard blog={b} />
               </Reveal>
