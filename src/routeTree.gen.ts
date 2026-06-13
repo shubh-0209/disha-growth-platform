@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -42,6 +43,11 @@ const VisionMissionRoute = VisionMissionRouteImport.update({
 const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
   id: '/success-stories',
   path: '/success-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
@@ -138,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/mentors': typeof MentorsRoute
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/resources'
     | '/scholarships'
+    | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
@@ -221,6 +231,7 @@ export interface FileRouteTypes {
     | '/mentors'
     | '/resources'
     | '/scholarships'
+    | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
@@ -242,6 +253,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/resources'
     | '/scholarships'
+    | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
@@ -264,6 +276,7 @@ export interface RootRouteChildren {
   ProgramsRoute: typeof ProgramsRouteWithChildren
   ResourcesRoute: typeof ResourcesRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SuccessStoriesRoute: typeof SuccessStoriesRoute
   VisionMissionRoute: typeof VisionMissionRoute
   VolunteerRoute: typeof VolunteerRoute
@@ -290,6 +303,13 @@ declare module '@tanstack/react-router' {
       path: '/success-stories'
       fullPath: '/success-stories'
       preLoaderRoute: typeof SuccessStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scholarships': {
@@ -446,6 +466,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramsRoute: ProgramsRouteWithChildren,
   ResourcesRoute: ResourcesRoute,
   ScholarshipsRoute: ScholarshipsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SuccessStoriesRoute: SuccessStoriesRoute,
   VisionMissionRoute: VisionMissionRoute,
   VolunteerRoute: VolunteerRoute,
