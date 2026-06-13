@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
+import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VisionMissionRoute = VisionMissionRouteImport.update({
   id: '/vision-mission',
   path: '/vision-mission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/programs': typeof ProgramsRoute
   '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/programs': typeof ProgramsRoute
   '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/programs': typeof ProgramsRoute
   '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/vision-mission'
+  fullPaths: '/' | '/about' | '/programs' | '/vision-mission'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/vision-mission'
-  id: '__root__' | '/' | '/about' | '/vision-mission'
+  to: '/' | '/about' | '/programs' | '/vision-mission'
+  id: '__root__' | '/' | '/about' | '/programs' | '/vision-mission'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ProgramsRoute: typeof ProgramsRoute
   VisionMissionRoute: typeof VisionMissionRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/vision-mission'
       fullPath: '/vision-mission'
       preLoaderRoute: typeof VisionMissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ProgramsRoute: ProgramsRoute,
   VisionMissionRoute: VisionMissionRoute,
 }
 export const routeTree = rootRouteImport
