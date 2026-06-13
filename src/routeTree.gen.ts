@@ -19,6 +19,7 @@ import { Route as MentorsRouteImport } from './routes/mentors'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as CareerNavigatorRouteImport } from './routes/career-navigator'
+import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
@@ -74,6 +75,11 @@ const CareerNavigatorRoute = CareerNavigatorRouteImport.update({
   path: '/career-navigator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogsRoute = BlogsRouteImport.update({
+  id: '/blogs',
+  path: '/blogs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -98,6 +104,7 @@ const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blogs': typeof BlogsRoute
   '/career-navigator': typeof CareerNavigatorRoute
   '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blogs': typeof BlogsRoute
   '/career-navigator': typeof CareerNavigatorRoute
   '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blogs': typeof BlogsRoute
   '/career-navigator': typeof CareerNavigatorRoute
   '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/blogs'
     | '/career-navigator'
     | '/events'
     | '/impact'
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/blogs'
     | '/career-navigator'
     | '/events'
     | '/impact'
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/blogs'
     | '/career-navigator'
     | '/events'
     | '/impact'
@@ -196,6 +208,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BlogsRoute: typeof BlogsRoute
   CareerNavigatorRoute: typeof CareerNavigatorRoute
   EventsRoute: typeof EventsRoute
   ImpactRoute: typeof ImpactRoute
@@ -280,6 +293,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareerNavigatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blogs': {
+      id: '/blogs'
+      path: '/blogs'
+      fullPath: '/blogs'
+      preLoaderRoute: typeof BlogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -328,6 +348,7 @@ const ProgramsRouteWithChildren = ProgramsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BlogsRoute: BlogsRoute,
   CareerNavigatorRoute: CareerNavigatorRoute,
   EventsRoute: EventsRoute,
   ImpactRoute: ImpactRoute,
