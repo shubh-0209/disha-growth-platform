@@ -141,6 +141,7 @@ function RootComponent() {
         </main>
         <Footer />
         <CareerChatbot />
+        <Toaster position="top-center" richColors />
       </div>
     </QueryClientProvider>
   );
