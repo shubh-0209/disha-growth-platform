@@ -16,6 +16,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as OpportunityHubRouteImport } from './routes/opportunity-hub'
 import { Route as MentorsRouteImport } from './routes/mentors'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -63,6 +64,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunityHubRoute = OpportunityHubRouteImport.update({
+  id: '/opportunity-hub',
+  path: '/opportunity-hub',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MentorsRoute = MentorsRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
   '/mentors': typeof MentorsRoute
+  '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
@@ -162,6 +169,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
   '/mentors': typeof MentorsRoute
+  '/opportunity-hub': typeof OpportunityHubRoute
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -184,6 +192,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
   '/mentors': typeof MentorsRoute
+  '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
@@ -208,6 +217,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/impact'
     | '/mentors'
+    | '/opportunity-hub'
     | '/programs'
     | '/resources'
     | '/scholarships'
@@ -229,6 +239,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/impact'
     | '/mentors'
+    | '/opportunity-hub'
     | '/resources'
     | '/scholarships'
     | '/sitemap.xml'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/impact'
     | '/mentors'
+    | '/opportunity-hub'
     | '/programs'
     | '/resources'
     | '/scholarships'
@@ -273,6 +285,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   ImpactRoute: typeof ImpactRoute
   MentorsRoute: typeof MentorsRoute
+  OpportunityHubRoute: typeof OpportunityHubRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
   ResourcesRoute: typeof ResourcesRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunity-hub': {
+      id: '/opportunity-hub'
+      path: '/opportunity-hub'
+      fullPath: '/opportunity-hub'
+      preLoaderRoute: typeof OpportunityHubRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mentors': {
@@ -463,6 +483,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   ImpactRoute: ImpactRoute,
   MentorsRoute: MentorsRoute,
+  OpportunityHubRoute: OpportunityHubRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
   ResourcesRoute: ResourcesRoute,
   ScholarshipsRoute: ScholarshipsRoute,
@@ -474,3 +495,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
