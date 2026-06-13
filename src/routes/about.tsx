@@ -1,0 +1,98 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Target, Eye, Flame, Quote, ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/shared/PageHero";
+import { SectionHeading } from "@/components/shared/SectionHeading";
+import { Reveal } from "@/components/shared/Reveal";
+import { Button } from "@/components/ui/button";
+import { ORG, FOUNDER, STATS } from "@/lib/site-data";
+import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
+
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "About Disha For India — Our Story & Founder" },
+      { name: "description", content: "Learn about Disha For India Foundation & Educational Trust, founded by Indu Aggarwal to skill India's youth for employability and entrepreneurship." },
+      { property: "og:title", content: "About Disha For India" },
+      { property: "og:description", content: "We empower. We make the difference. Skilling India's youth for a brighter future." },
+      { property: "og:url", content: "/about" },
+    ],
+    links: [{ rel: "canonical", href: "/about" }],
+  }),
+  component: About,
+});
+
+function About() {
+  return (
+    <>
+      <PageHero
+        eyebrow="About Us"
+        title="We empower. We make the difference."
+        description="Disha For India Foundation & Educational Trust is a youth-first movement skilling India's next generation for employability, entrepreneurship and a life of purpose."
+      />
+
+      <section className="py-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
+          <Reveal>
+            <img src={FOUNDER.photo} alt={FOUNDER.name} loading="lazy" className="w-full rounded-3xl border border-border object-cover shadow-card" />
+          </Reveal>
+          <div>
+            <SectionHeading
+              eyebrow="Our Founder"
+              title={FOUNDER.name}
+              description={FOUNDER.role}
+            />
+            <Reveal delay={0.1}>
+              <p className="mt-5 leading-relaxed text-muted-foreground">{FOUNDER.bio}</p>
+              <div className="mt-6 rounded-2xl border border-border bg-secondary/40 p-5">
+                <Quote className="h-6 w-6 text-primary" />
+                <p className="mt-2 font-display text-lg font-semibold text-foreground">
+                  "Our fingerprints on the lives we touch never fade."
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-secondary/40 py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { icon: Eye, title: "Vision", text: ORG.vision, accent: "text-primary bg-orange-soft" },
+              { icon: Target, title: "Mission", text: ORG.mission, accent: "text-green bg-green-soft" },
+              { icon: Flame, title: "Passion", text: ORG.passion, accent: "text-primary bg-orange-soft" },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 0.08}>
+                <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-soft">
+                  <span className={`grid h-12 w-12 place-items-center rounded-2xl ${c.accent}`}>
+                    <c.icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-4 text-xl font-bold text-foreground">{c.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
+            {STATS.map((s, i) => (
+              <Reveal key={s.label} delay={i * 0.06} className="rounded-2xl border border-border bg-card p-5 text-center shadow-soft">
+                <p className="text-3xl font-extrabold text-primary"><AnimatedCounter value={s.value} suffix={s.suffix} /></p>
+                <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Button asChild size="lg">
+              <Link to="/vision-mission">Our Vision & Mission <ArrowRight className="ml-1 h-4 w-4" /></Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

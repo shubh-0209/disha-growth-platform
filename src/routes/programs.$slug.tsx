@@ -1,0 +1,99 @@
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import * as Icons from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/shared/PageHero";
+import { Reveal } from "@/components/shared/Reveal";
+import { Button } from "@/components/ui/button";
+import { PROGRAMS } from "@/lib/site-data";
+
+export const Route = createFileRoute("/programs/$slug")({
+  loader: ({ params }) => {
+    const program = PROGRAMS.find((p) => p.slug === params.slug);
+    if (!program) throw notFound();
+    return { program };
+  },
+  head: ({ loaderData }) => {
+    const p = loaderData?.program;
+    return {
+      meta: [
+        { title: `${p?.title ?? "Program"} — Disha For India` },
+        { name: "description", content: p?.description ?? "" },
+        { property: "og:title", content: `${p?.title} — Disha For India` },
+        { property: "og:description", content: p?.description ?? "" },
+        { property: "og:type", content: "article" },
+        { property: "og:url", content: `/programs/${p?.slug}` },
+      ],
+      links: [{ rel: "canonical", href: `/programs/${p?.slug}` }],
+    };
+  },
+  notFoundComponent: () => (
+    <div className="mx-auto max-w-md px-5 py-32 text-center">
+      <h1 className="text-2xl font-bold">Program not found</h1>
+      <Button asChild className="mt-6"><Link to="/programs">Back to programs</Link></Button>
+    </div>
+  ),
+  errorComponent: () => (
+    <div className="mx-auto max-w-md px-5 py-32 text-center">
+      <h1 className="text-2xl font-bold">Something went wrong</h1>
+      <Button asChild className="mt-6"><Link to="/programs">Back to programs</Link></Button>
+    </div>
+  ),
+  component: ProgramDetail,
+});
+
+function ProgramDetail() {
+  const { program } = Route.useLoaderData();
+  const Icon = (Icons[program.icon as keyof typeof Icons] || Icons.Sparkles) as React.ComponentType<{ className?: string }>;
+  const isGreen = program.accent === "green";
+
+  return (
+    <>
+      <PageHero eyebrow={program.tagline} title={program.title} description={program.description} />
+      <section className="py-16">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1.4fr_1fr]">
+          <Reveal>
+            <span className={`grid h-14 w-14 place-items-center rounded-2xl ${isGreen ? "bg-green-soft text-green" : "bg-orange-soft text-primary"}`}>
+              <Icon className="h-7 w-7" />
+            </span>
+            <h2 className="mt-5 text-2xl font-bold text-foreground">What we do</h2>
+            <ul className="mt-5 space-y-3">
+              {program.highlights.map((h: string) => (
+                <li key={h} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft">
+                  <span className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${isGreen ? "bg-green text-green-foreground" : "bg-primary text-primary-foreground"}`}>
+                    <Check className="h-3 w-3" />
+                  </span>
+                  <span className="text-sm text-foreground/80">{h}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="rounded-3xl border border-border bg-secondary/40 p-6">
+              <h3 className="font-semibold text-foreground">Impact so far</h3>
+              <div className="mt-4 space-y-4">
+                {program.outcomes.map((o: { label: string; value: string }) => (
+                  <div key={o.label} className="rounded-2xl border border-border bg-card p-4">
+                    <p className="text-2xl font-bold text-primary">{o.value}</p>
+                    <p className="text-sm text-muted-foreground">{o.label}</p>
+                  </div>
+                ))}
+              </div>
+              <Button asChild className="mt-6 w-full"><Link to="/volunteer">Support this program <ArrowRight className="ml-1 h-4 w-4" /></Link></Button>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mx-auto mt-12 max-w-6xl px-5">
+          <div className="flex flex-wrap gap-3">
+            {PROGRAMS.filter((p) => p.slug !== program.slug).map((p) => (
+              <Link key={p.slug} to="/programs/$slug" params={{ slug: p.slug }} className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:border-primary hover:text-primary">
+                {p.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
