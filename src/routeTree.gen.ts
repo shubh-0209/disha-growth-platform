@@ -25,6 +25,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
+import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
 
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
@@ -106,6 +107,11 @@ const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ProgramsRoute,
 } as any)
+const BlogsSlugRoute = BlogsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/blogs/': typeof BlogsIndexRoute
   '/programs/': typeof ProgramsIndexRoute
@@ -137,6 +144,7 @@ export interface FileRoutesByTo {
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/blogs': typeof BlogsIndexRoute
   '/programs': typeof ProgramsIndexRoute
@@ -156,6 +164,7 @@ export interface FileRoutesById {
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/blogs/': typeof BlogsIndexRoute
   '/programs/': typeof ProgramsIndexRoute
@@ -176,6 +185,7 @@ export interface FileRouteTypes {
     | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
+    | '/blogs/$slug'
     | '/programs/$slug'
     | '/blogs/'
     | '/programs/'
@@ -192,6 +202,7 @@ export interface FileRouteTypes {
     | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
+    | '/blogs/$slug'
     | '/programs/$slug'
     | '/blogs'
     | '/programs'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/success-stories'
     | '/vision-mission'
     | '/volunteer'
+    | '/blogs/$slug'
     | '/programs/$slug'
     | '/blogs/'
     | '/programs/'
@@ -345,14 +357,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsSlugRouteImport
       parentRoute: typeof ProgramsRoute
     }
+    '/blogs/$slug': {
+      id: '/blogs/$slug'
+      path: '/$slug'
+      fullPath: '/blogs/$slug'
+      preLoaderRoute: typeof BlogsSlugRouteImport
+      parentRoute: typeof BlogsRoute
+    }
   }
 }
 
 interface BlogsRouteChildren {
+  BlogsSlugRoute: typeof BlogsSlugRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
 }
 
 const BlogsRouteChildren: BlogsRouteChildren = {
+  BlogsSlugRoute: BlogsSlugRoute,
   BlogsIndexRoute: BlogsIndexRoute,
 }
 
