@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as MentorsRouteImport } from './routes/mentors'
 import { Route as CareerNavigatorRouteImport } from './routes/career-navigator'
@@ -33,6 +34,11 @@ const VisionMissionRoute = VisionMissionRouteImport.update({
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
   id: '/scholarships',
   path: '/scholarships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/career-navigator': typeof CareerNavigatorRoute
   '/mentors': typeof MentorsRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/career-navigator': typeof CareerNavigatorRoute
   '/mentors': typeof MentorsRoute
+  '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/career-navigator': typeof CareerNavigatorRoute
   '/mentors': typeof MentorsRoute
   '/programs': typeof ProgramsRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/career-navigator'
     | '/mentors'
     | '/programs'
+    | '/resources'
     | '/scholarships'
     | '/vision-mission'
     | '/volunteer'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/career-navigator'
     | '/mentors'
+    | '/resources'
     | '/scholarships'
     | '/vision-mission'
     | '/volunteer'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/career-navigator'
     | '/mentors'
     | '/programs'
+    | '/resources'
     | '/scholarships'
     | '/vision-mission'
     | '/volunteer'
@@ -151,6 +163,7 @@ export interface RootRouteChildren {
   CareerNavigatorRoute: typeof CareerNavigatorRoute
   MentorsRoute: typeof MentorsRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
+  ResourcesRoute: typeof ResourcesRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
   VisionMissionRoute: typeof VisionMissionRoute
   VolunteerRoute: typeof VolunteerRoute
@@ -177,6 +190,13 @@ declare module '@tanstack/react-router' {
       path: '/scholarships'
       fullPath: '/scholarships'
       preLoaderRoute: typeof ScholarshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -251,6 +271,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareerNavigatorRoute: CareerNavigatorRoute,
   MentorsRoute: MentorsRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
+  ResourcesRoute: ResourcesRoute,
   ScholarshipsRoute: ScholarshipsRoute,
   VisionMissionRoute: VisionMissionRoute,
   VolunteerRoute: VolunteerRoute,
@@ -258,3 +279,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
