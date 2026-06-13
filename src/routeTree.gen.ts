@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -19,6 +20,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 
+const VolunteerRoute = VolunteerRouteImport.update({
+  id: '/volunteer',
+  path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VisionMissionRoute = VisionMissionRouteImport.update({
   id: '/vision-mission',
   path: '/vision-mission',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/programs': typeof ProgramsRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/mentors': typeof MentorsRoute
   '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs': typeof ProgramsIndexRoute
 }
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/programs': typeof ProgramsRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/scholarships'
     | '/vision-mission'
+    | '/volunteer'
     | '/programs/$slug'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/mentors'
     | '/scholarships'
     | '/vision-mission'
+    | '/volunteer'
     | '/programs/$slug'
     | '/programs'
   id:
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/scholarships'
     | '/vision-mission'
+    | '/volunteer'
     | '/programs/$slug'
     | '/programs/'
   fileRoutesById: FileRoutesById
@@ -141,10 +153,18 @@ export interface RootRouteChildren {
   ProgramsRoute: typeof ProgramsRouteWithChildren
   ScholarshipsRoute: typeof ScholarshipsRoute
   VisionMissionRoute: typeof VisionMissionRoute
+  VolunteerRoute: typeof VolunteerRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/volunteer': {
+      id: '/volunteer'
+      path: '/volunteer'
+      fullPath: '/volunteer'
+      preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vision-mission': {
       id: '/vision-mission'
       path: '/vision-mission'
@@ -233,6 +253,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramsRoute: ProgramsRouteWithChildren,
   ScholarshipsRoute: ScholarshipsRoute,
   VisionMissionRoute: VisionMissionRoute,
+  VolunteerRoute: VolunteerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
