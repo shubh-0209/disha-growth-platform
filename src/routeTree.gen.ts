@@ -23,6 +23,7 @@ import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
+import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 
 const VolunteerRoute = VolunteerRouteImport.update({
@@ -95,6 +96,11 @@ const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProgramsRoute,
 } as any)
+const BlogsIndexRoute = BlogsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogsRoute,
+} as any)
 const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -104,7 +110,7 @@ const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blogs': typeof BlogsRoute
+  '/blogs': typeof BlogsRouteWithChildren
   '/career-navigator': typeof CareerNavigatorRoute
   '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
@@ -116,12 +122,12 @@ export interface FileRoutesByFullPath {
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blogs': typeof BlogsRoute
   '/career-navigator': typeof CareerNavigatorRoute
   '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
@@ -132,13 +138,14 @@ export interface FileRoutesByTo {
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
+  '/blogs': typeof BlogsIndexRoute
   '/programs': typeof ProgramsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blogs': typeof BlogsRoute
+  '/blogs': typeof BlogsRouteWithChildren
   '/career-navigator': typeof CareerNavigatorRoute
   '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
@@ -150,6 +157,7 @@ export interface FileRoutesById {
   '/vision-mission': typeof VisionMissionRoute
   '/volunteer': typeof VolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRouteTypes {
@@ -169,12 +177,12 @@ export interface FileRouteTypes {
     | '/vision-mission'
     | '/volunteer'
     | '/programs/$slug'
+    | '/blogs/'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/blogs'
     | '/career-navigator'
     | '/events'
     | '/impact'
@@ -185,6 +193,7 @@ export interface FileRouteTypes {
     | '/vision-mission'
     | '/volunteer'
     | '/programs/$slug'
+    | '/blogs'
     | '/programs'
   id:
     | '__root__'
@@ -202,13 +211,14 @@ export interface FileRouteTypes {
     | '/vision-mission'
     | '/volunteer'
     | '/programs/$slug'
+    | '/blogs/'
     | '/programs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  BlogsRoute: typeof BlogsRoute
+  BlogsRoute: typeof BlogsRouteWithChildren
   CareerNavigatorRoute: typeof CareerNavigatorRoute
   EventsRoute: typeof EventsRoute
   ImpactRoute: typeof ImpactRoute
@@ -321,6 +331,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsIndexRouteImport
       parentRoute: typeof ProgramsRoute
     }
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof BlogsRoute
+    }
     '/programs/$slug': {
       id: '/programs/$slug'
       path: '/$slug'
@@ -330,6 +347,16 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface BlogsRouteChildren {
+  BlogsIndexRoute: typeof BlogsIndexRoute
+}
+
+const BlogsRouteChildren: BlogsRouteChildren = {
+  BlogsIndexRoute: BlogsIndexRoute,
+}
+
+const BlogsRouteWithChildren = BlogsRoute._addFileChildren(BlogsRouteChildren)
 
 interface ProgramsRouteChildren {
   ProgramsSlugRoute: typeof ProgramsSlugRoute
@@ -348,7 +375,7 @@ const ProgramsRouteWithChildren = ProgramsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  BlogsRoute: BlogsRoute,
+  BlogsRoute: BlogsRouteWithChildren,
   CareerNavigatorRoute: CareerNavigatorRoute,
   EventsRoute: EventsRoute,
   ImpactRoute: ImpactRoute,
