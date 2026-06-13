@@ -16,6 +16,7 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as MentorsRouteImport } from './routes/mentors'
 import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as CareerNavigatorRouteImport } from './routes/career-navigator'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -57,6 +58,11 @@ const ImpactRoute = ImpactRouteImport.update({
   path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareerNavigatorRoute = CareerNavigatorRouteImport.update({
   id: '/career-navigator',
   path: '/career-navigator',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/career-navigator': typeof CareerNavigatorRoute
+  '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
   '/mentors': typeof MentorsRoute
   '/programs': typeof ProgramsRouteWithChildren
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/career-navigator': typeof CareerNavigatorRoute
+  '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
   '/mentors': typeof MentorsRoute
   '/resources': typeof ResourcesRoute
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/career-navigator': typeof CareerNavigatorRoute
+  '/events': typeof EventsRoute
   '/impact': typeof ImpactRoute
   '/mentors': typeof MentorsRoute
   '/programs': typeof ProgramsRouteWithChildren
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/career-navigator'
+    | '/events'
     | '/impact'
     | '/mentors'
     | '/programs'
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/career-navigator'
+    | '/events'
     | '/impact'
     | '/mentors'
     | '/resources'
@@ -158,6 +169,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/career-navigator'
+    | '/events'
     | '/impact'
     | '/mentors'
     | '/programs'
@@ -173,6 +185,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CareerNavigatorRoute: typeof CareerNavigatorRoute
+  EventsRoute: typeof EventsRoute
   ImpactRoute: typeof ImpactRoute
   MentorsRoute: typeof MentorsRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
@@ -233,6 +246,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/career-navigator': {
       id: '/career-navigator'
       path: '/career-navigator'
@@ -289,6 +309,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CareerNavigatorRoute: CareerNavigatorRoute,
+  EventsRoute: EventsRoute,
   ImpactRoute: ImpactRoute,
   MentorsRoute: MentorsRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
