@@ -1,7 +1,143 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Compass, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
-import heroImg from "@/assets/hero-students.jpg";
+import { useState, useEffect } from "react";
+import hero1 from "@/assets/hero/hero-1.jpg";
+import hero2 from "@/assets/hero/hero-2.jpg";
+import hero3 from "@/assets/hero/hero-3.jpg";
+import hero4 from "@/assets/hero/hero-4.jpg";
+import hero5 from "@/assets/hero/hero-5.jpg";
+
+const heroImages = [
+  { src: hero1, alt: "Indian children smiling in a rural classroom" },
+  { src: hero2, alt: "Students learning and writing in notebooks" },
+  { src: hero3, alt: "Group of diverse students working on laptops" },
+  { src: hero4, alt: "Young students actively participating in education" },
+  { src: hero5, alt: "Skill development and focused classroom learning" },
+];
+
+function HeroCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setIsReducedMotion(mediaQuery.matches);
+    const motionHandler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
+    
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', motionHandler);
+    } else {
+      mediaQuery.addListener(motionHandler);
+    }
+    
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', motionHandler);
+      } else {
+        mediaQuery.removeListener(motionHandler);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isHovered || isReducedMotion) return;
+    
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    
+    return () => clearInterval(timer);
+  }, [isHovered, isReducedMotion]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
+
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    
+    if (diff > 50) nextSlide();
+    else if (diff < -50) prevSlide();
+    setTouchStart(null);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  };
+
+  return (
+    <div 
+      className="group relative h-full min-h-[400px] w-full overflow-hidden rounded-[2rem] border border-border shadow-card bg-muted/20"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="region"
+      aria-label="Image Carousel"
+      aria-roledescription="carousel"
+    >
+      {heroImages.map((img, index) => (
+        <img
+          key={index}
+          src={img.src}
+          alt={img.alt}
+          width={1600}
+          height={1200}
+          loading={index === 0 ? "eager" : "lazy"}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${
+            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+          aria-hidden={index !== currentSlide}
+        />
+      ))}
+      
+      {/* Desktop Arrows */}
+      <button 
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
+        aria-label="Previous image"
+      >
+        <span className="sr-only">Previous</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button 
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
+        aria-label="Next image"
+      >
+        <span className="sr-only">Next</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+      
+      {/* Pagination Dots */}
+      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/20 px-3 py-2 backdrop-blur-sm">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`h-2 w-2 rounded-full transition-all ${
+              index === currentSlide ? "w-6 bg-white" : "bg-white/50 hover:bg-white/80"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+            aria-current={index === currentSlide}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -89,20 +225,12 @@ function Home() {
 
           <Reveal delay={0.1}>
             <div className="relative">
-              <div className="overflow-hidden rounded-[2rem] border border-border shadow-card">
-                <img
-                  src={heroImg}
-                  alt="Confident young Indian students with books and laptops"
-                  width={1600}
-                  height={1200}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+              <HeroCarousel />
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-border bg-card p-4 shadow-card sm:block"
+                className="absolute bottom-4 left-4 z-30 rounded-2xl border border-border bg-card p-4 shadow-card sm:-bottom-4 sm:-left-4 lg:-bottom-5 lg:-left-5"
               >
                 <p className="text-2xl font-bold text-primary">5 Lakh+</p>
                 <p className="text-xs text-muted-foreground">Youth to be skilled</p>
