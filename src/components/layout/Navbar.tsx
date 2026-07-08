@@ -11,13 +11,11 @@ import {
 import { cn } from "@/lib/utils";
 
 const TOOLS = [
-  { to: "/career-navigator", label: "Career Navigator" },
-  { to: "/scholarships", label: "Scholarship Explorer" },
   { to: "/opportunity-hub", label: "Opportunity Hub" },
-  { to: "/mentors", label: "Mentor Network" },
   { to: "/volunteer", label: "Volunteer Hub" },
   { to: "/resources", label: "Resource Library" },
   { to: "/impact", label: "Impact Dashboard" },
+  { to: "/leaderboard", label: "Contribution Leaderboard" },
 ] as const;
 
 const ABOUT = [
@@ -37,12 +35,7 @@ const MAIN = [
 export function Logo() {
   return (
     <Link to="/" className="flex items-center gap-2.5">
-      <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground shadow-soft">
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
-          <path d="m7 7 2.5 6L16 9l-2.5 6" className="text-green" stroke="currentColor" />
-        </svg>
-      </span>
+      <img src="/logo.jpg" alt="Disha For India Logo" className="h-9 w-9 rounded-xl object-cover shadow-soft" />
       <span className="flex flex-col leading-none">
         <span className="font-display text-base font-bold tracking-tight text-foreground">
           Disha <span className="text-primary">For India</span>

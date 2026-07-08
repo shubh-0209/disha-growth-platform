@@ -142,8 +142,6 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
-import { CareerNavigator } from "@/components/CareerNavigator";
-import { ScholarshipExplorer } from "@/components/ScholarshipExplorer";
 import { ProgramCard, EventCard, BlogCard, StoryCard } from "@/components/cards";
 import {
   STATS,
@@ -161,7 +159,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Empowering India's youth through skills, education and opportunities. Explore programs, a career navigator, scholarships, mentorship and volunteering.",
+          "Empowering India's youth through skills, education and opportunities. Explore programs, mentorship, volunteering and curated resources.",
       },
       { property: "og:title", content: "Disha For India — Student Growth & Opportunity Platform" },
       {
@@ -200,9 +198,9 @@ function Home() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                From career roadmaps and scholarships to mentorship and real
-                impact — Disha For India gives every student the tools, guidance
-                and community to build a brighter future.
+                From skills and growth programs to mentorship and real impact —
+                Disha For India gives every student the tools, guidance and
+                community to build a brighter future.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
@@ -260,43 +258,6 @@ function Home() {
         </div>
       </section>
 
-      {/* SECTION 3 — Career Navigator */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionHeading
-            eyebrow="Career Navigator"
-            title="Turn confusion into a clear roadmap"
-            description="Select your class, interest and goal to generate a personalised, visual career path — built to guide India's students step by step."
-          />
-          <div className="mt-10">
-            <CareerNavigator compact />
-          </div>
-          <div className="mt-6">
-            <Button asChild variant="outline">
-              <Link to="/career-navigator">Open full Career Navigator <ArrowRight className="ml-1 h-4 w-4" /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4 — Scholarship Explorer */}
-      <section className="border-y border-border bg-secondary/40 py-20">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionHeading
-            eyebrow="Scholarship Explorer"
-            title="Find scholarships you're eligible for"
-            description="Search and filter scholarships by class, stream, state and category — so no deserving student misses an opportunity."
-          />
-          <div className="mt-10">
-            <ScholarshipExplorer limit={4} />
-          </div>
-          <div className="mt-6">
-            <Button asChild variant="outline">
-              <Link to="/scholarships">Explore all scholarships <ArrowRight className="ml-1 h-4 w-4" /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 5 — Programs */}
       <section className="py-20">
@@ -433,12 +394,9 @@ function Home() {
                   Join 1,200+ volunteers making a powerful contribution to India's
                   youth. Teach, mentor, design or build — there's a role for you.
                 </p>
-                <div className="mt-8 flex flex-wrap justify-center gap-3">
+                <div className="mt-8 flex justify-center">
                   <Button asChild size="lg">
                     <Link to="/volunteer">Become a Volunteer</Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="border-background/30 bg-transparent text-background hover:bg-background hover:text-ink">
-                    <Link to="/mentors">Become a Mentor</Link>
                   </Button>
                 </div>
               </div>

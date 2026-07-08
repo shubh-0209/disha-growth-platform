@@ -14,7 +14,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact Us — Disha For India" },
-      { name: "description", content: "Get in touch with Disha For India Foundation & Educational Trust. Volunteer, partner, mentor or simply say hello." },
+      { name: "description", content: "Get in touch with Disha For India Foundation & Educational Trust. Volunteer, partner, or simply say hello." },
       { property: "og:title", content: "Contact Us — Disha For India" },
       { property: "og:description", content: "Reach out to create an impact with Disha For India." },
       { property: "og:url", content: "/contact" },
@@ -42,7 +42,7 @@ function Contact() {
       <PageHero
         eyebrow="Contact Us"
         title="Let's create an impact together"
-        description="Whether you'd like to volunteer, partner, mentor or learn more — we'd love to hear from you."
+        description="Whether you'd like to volunteer, partner, or learn more — we'd love to hear from you."
       />
       <section className="py-16">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1fr_1.2fr]">

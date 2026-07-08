@@ -85,14 +85,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Disha For India empowers youth through skills, education and opportunities — career tools, scholarships, mentorship, programs and volunteering.",
+          "Disha For India empowers youth through skills, education and opportunities — mentoring, volunteering, student programs and resources.",
       },
       { name: "author", content: "Disha For India Foundation & Educational Trust" },
       { property: "og:title", content: "Disha For India — Student Growth & Opportunity Platform" },
       {
         property: "og:description",
         content:
-          "Empowering India's youth through skills, education and opportunities. Explore programs, career tools, scholarships and mentorship.",
+          "Empowering India's youth through skills, education and opportunities. Explore programs, mentorship and resources.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Disha For India" },

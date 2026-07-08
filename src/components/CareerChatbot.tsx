@@ -8,7 +8,6 @@ type Msg = { role: "user" | "bot"; text: string };
 
 const SUGGESTIONS = [
   "Which career suits me?",
-  "How do I find scholarships?",
   "Tips to start a business",
   "How to manage exam stress?",
 ];
@@ -16,9 +15,9 @@ const SUGGESTIONS = [
 function reply(input: string): string {
   const q = input.toLowerCase();
   if (q.includes("career") || q.includes("suits") || q.includes("path"))
-    return "Great question! Try our Career Navigator — pick your class, interests and goal to get a visual roadmap. If you like Technology, paths include Web Development, Data Science and Cyber Security.";
+    return "Great question! Explore our Programs or resource library for detailed guides on tech, finance, entrepreneurship, design and more.";
   if (q.includes("scholar"))
-    return "Head to the Scholarship Explorer. You can filter by class, stream, state and category to find scholarships you're eligible for — including merit, need-based and girls' scholarships.";
+    return "While we don't have scholarship explorer tools on our platform, you can explore our resource library and student programs for guidance on educational opportunities.";
   if (q.includes("business") || q.includes("startup") || q.includes("entrepre"))
     return "Start by finding a real problem and talking to 10 potential customers. Use the Business Model Canvas in our Resource Library, then build a tiny MVP. Our Entrepreneurship bootcamps can guide you further!";
   if (q.includes("stress") || q.includes("anxiety") || q.includes("exam"))
@@ -26,10 +25,10 @@ function reply(input: string): string {
   if (q.includes("volunteer"))
     return "Wonderful! Visit the Volunteer Hub to browse roles in Teaching, Design, Technology, Marketing and Community Outreach — remote and on-site options available.";
   if (q.includes("mentor"))
-    return "Our Mentor Network connects you with experienced professionals in finance, technology, design and more. You can view their expertise and book a session.";
+    return "We don't have a formal Mentor Network on our platform, but you can participate in our student programs and bootcamps to get guidance from our team and volunteers.";
   if (q.includes("hello") || q.includes("hi") || q.includes("hey"))
-    return "Hi there! 👋 I'm Disha Assistant. I can help you explore careers, scholarships, resources and programs. What would you like to know?";
-  return "I'm here to guide your growth journey! Ask me about careers, scholarships, entrepreneurship, wellness, volunteering or mentorship — or explore our Student Tools from the menu.";
+    return "Hi there! 👋 I'm Disha Assistant. I can help you explore careers, resources and programs. What would you like to know?";
+  return "I'm here to guide your growth journey! Ask me about careers, entrepreneurship, wellness, or volunteering — or explore our Student Tools from the menu.";
 }
 
 export function CareerChatbot() {
@@ -37,7 +36,7 @@ export function CareerChatbot() {
   const [messages, setMessages] = useState<Msg[]>([
     {
       role: "bot",
-      text: "Hi! I'm Disha Assistant 🤖 — your guide to careers, scholarships and growth. How can I help today?",
+      text: "Hi! I'm Disha Assistant 🤖 — your guide to careers and growth. How can I help today?",
     },
   ]);
   const [input, setInput] = useState("");
