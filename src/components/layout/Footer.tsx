@@ -17,12 +17,10 @@ const COLS: { title: string; links: { to: string; label: string }[] }[] = [
   {
     title: "Student Tools",
     links: [
-      { to: "/career-navigator", label: "Career Navigator" },
-      { to: "/scholarships", label: "Scholarship Explorer" },
       { to: "/opportunity-hub", label: "Opportunity Hub" },
-      { to: "/mentors", label: "Mentor Network" },
       { to: "/resources", label: "Resource Library" },
       { to: "/volunteer", label: "Volunteer Hub" },
+      { to: "/leaderboard", label: "Contribution Leaderboard" },
     ],
   },
   {

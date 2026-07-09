@@ -1,6 +1,6 @@
 import { o as __toESM } from "../_runtime.mjs";
-import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
-import { r as require_jsx_runtime } from "../_libs/radix-ui__react-context+react.mjs";
+import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
+import { c as require_jsx_runtime } from "../_libs/@radix-ui/react-arrow+[...].mjs";
 import { t as useInView } from "../_libs/framer-motion.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/AnimatedCounter-IfLpjwCb.js
 var import_react = /* @__PURE__ */ __toESM(require_react());

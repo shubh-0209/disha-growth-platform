@@ -24,7 +24,7 @@ const VALUES = [
   { icon: Heart, title: "Empathy", text: "We meet every learner with compassion and belief in their potential." },
   { icon: ShieldCheck, title: "Integrity", text: "We live by our thoughts and values every single day." },
   { icon: Lightbulb, title: "Innovation", text: "We reimagine education and skilling for a fast-changing world." },
-  { icon: Users, title: "Community", text: "We grow together — students, mentors, volunteers and families." },
+  { icon: Users, title: "Community", text: "We grow together — students, volunteers, and families." },
 ];
 
 function VisionMission() {

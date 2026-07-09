@@ -13,16 +13,15 @@ import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as OpportunityHubRouteImport } from './routes/opportunity-hub'
 import { Route as MentorsRouteImport } from './routes/mentors'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CareerNavigatorRouteImport } from './routes/career-navigator'
 import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -51,11 +50,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ScholarshipsRoute = ScholarshipsRouteImport.update({
-  id: '/scholarships',
-  path: '/scholarships',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -76,6 +70,11 @@ const MentorsRoute = MentorsRouteImport.update({
   path: '/mentors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImpactRoute = ImpactRouteImport.update({
   id: '/impact',
   path: '/impact',
@@ -94,11 +93,6 @@ const EventsRoute = EventsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareerNavigatorRoute = CareerNavigatorRouteImport.update({
-  id: '/career-navigator',
-  path: '/career-navigator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsRoute = BlogsRouteImport.update({
@@ -141,16 +135,15 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blogs': typeof BlogsRouteWithChildren
-  '/career-navigator': typeof CareerNavigatorRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/mentors': typeof MentorsRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/scholarships': typeof ScholarshipsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -163,15 +156,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/career-navigator': typeof CareerNavigatorRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/mentors': typeof MentorsRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/resources': typeof ResourcesRoute
-  '/scholarships': typeof ScholarshipsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -186,16 +178,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blogs': typeof BlogsRouteWithChildren
-  '/career-navigator': typeof CareerNavigatorRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/mentors': typeof MentorsRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/scholarships': typeof ScholarshipsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -211,16 +202,15 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blogs'
-    | '/career-navigator'
     | '/contact'
     | '/events'
     | '/gallery'
     | '/impact'
+    | '/leaderboard'
     | '/mentors'
     | '/opportunity-hub'
     | '/programs'
     | '/resources'
-    | '/scholarships'
     | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
@@ -233,15 +223,14 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/career-navigator'
     | '/contact'
     | '/events'
     | '/gallery'
     | '/impact'
+    | '/leaderboard'
     | '/mentors'
     | '/opportunity-hub'
     | '/resources'
-    | '/scholarships'
     | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
@@ -255,16 +244,15 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blogs'
-    | '/career-navigator'
     | '/contact'
     | '/events'
     | '/gallery'
     | '/impact'
+    | '/leaderboard'
     | '/mentors'
     | '/opportunity-hub'
     | '/programs'
     | '/resources'
-    | '/scholarships'
     | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
@@ -279,16 +267,15 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BlogsRoute: typeof BlogsRouteWithChildren
-  CareerNavigatorRoute: typeof CareerNavigatorRoute
   ContactRoute: typeof ContactRoute
   EventsRoute: typeof EventsRoute
   GalleryRoute: typeof GalleryRoute
   ImpactRoute: typeof ImpactRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   MentorsRoute: typeof MentorsRoute
   OpportunityHubRoute: typeof OpportunityHubRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
   ResourcesRoute: typeof ResourcesRoute
-  ScholarshipsRoute: typeof ScholarshipsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SuccessStoriesRoute: typeof SuccessStoriesRoute
   VisionMissionRoute: typeof VisionMissionRoute
@@ -325,13 +312,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/scholarships': {
-      id: '/scholarships'
-      path: '/scholarships'
-      fullPath: '/scholarships'
-      preLoaderRoute: typeof ScholarshipsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/resources': {
       id: '/resources'
       path: '/resources'
@@ -360,6 +340,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MentorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/impact': {
       id: '/impact'
       path: '/impact'
@@ -386,13 +373,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/career-navigator': {
-      id: '/career-navigator'
-      path: '/career-navigator'
-      fullPath: '/career-navigator'
-      preLoaderRoute: typeof CareerNavigatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blogs': {
@@ -477,16 +457,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BlogsRoute: BlogsRouteWithChildren,
-  CareerNavigatorRoute: CareerNavigatorRoute,
   ContactRoute: ContactRoute,
   EventsRoute: EventsRoute,
   GalleryRoute: GalleryRoute,
   ImpactRoute: ImpactRoute,
+  LeaderboardRoute: LeaderboardRoute,
   MentorsRoute: MentorsRoute,
   OpportunityHubRoute: OpportunityHubRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
   ResourcesRoute: ResourcesRoute,
-  ScholarshipsRoute: ScholarshipsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SuccessStoriesRoute: SuccessStoriesRoute,
   VisionMissionRoute: VisionMissionRoute,

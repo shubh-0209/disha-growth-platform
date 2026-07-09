@@ -17,12 +17,7 @@ export const ORG = {
     "Live by our thoughts and values every day, and ignite a spark in people to lead a beautiful, purposeful life.",
 };
 
-export const FOUNDER = {
-  name: "Indu Aggarwal",
-  role: "Founder · Entrepreneur & Emotional Wellness Coach",
-  photo: "https://dishaforindia.org/wp-content/uploads/2021/08/profile.jpg",
-  bio: "Indu Aggarwal enriches lives as a leading light, touching people through her training and health-awareness programs. Pursuing her passion to make a difference, she left a lucrative corporate career to found 'Disha For Success' and the 'Disha For India Foundation & Educational Trust', dedicated to skilling youth and igniting purpose.",
-};
+
 
 export type Program = {
   slug: string;
@@ -148,7 +143,7 @@ export const PROGRAMS: Program[] = [
       "Skill development for livelihoods",
       "Women empowerment programs",
       "Digital literacy for all ages",
-      "Access to scholarships and resources",
+      "Access to mentoring and resources",
     ],
     outcomes: [
       { label: "Communities", value: "40+" },
@@ -216,7 +211,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Neeru Garg",
     role: "Educator",
     quote:
-      "I have known Indu for over 10 years. She is a powerful personality whose energy genuinely transforms the people she works with.",
+      "I have worked with the team at Disha For India for over 5 years. They are a passionate group whose energy genuinely transforms the youth they work with.",
     photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-2.jpg",
   },
   {
@@ -228,7 +223,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export type StoryType = "Student" | "Volunteer" | "Mentor" | "Community";
+export type StoryType = "Student" | "Volunteer" | "Community";
 export type Story = {
   id: string;
   name: string;
@@ -269,10 +264,10 @@ export const STORIES: Story[] = [
   {
     id: "rahul",
     name: "Rahul Verma",
-    type: "Mentor",
-    headline: "Mentored 12 first-generation founders",
+    type: "Volunteer",
+    headline: "Guided 12 first-generation founders",
     summary:
-      "A seasoned product leader, Rahul mentors aspiring founders through the Mentor Network, guiding 12 of them from idea to launch.",
+      "A seasoned product leader, Rahul volunteers with our entrepreneurship programs, guiding 12 aspiring student founders from idea to launch.",
     photo: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-3.jpg",
   },
   {
@@ -288,9 +283,9 @@ export const STORIES: Story[] = [
     id: "sana",
     name: "Sana Khan",
     type: "Student",
-    headline: "Won a state-level scholarship",
+    headline: "Secured a tech internship",
     summary:
-      "Using the Scholarship Explorer, Sana found and secured a state merit scholarship that funded her engineering admission.",
+      "Through our skill development bootcamps, Sana built her coding preparation and successfully landed her first software engineering internship.",
     photo: "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-4.jpg",
   },
 ];
@@ -459,7 +454,7 @@ export const BLOGS: Blog[] = [
       "Stress is normal, but it shouldn't run your life. Simple, science-backed techniques to stay calm and focused.",
     readingTime: 4,
     date: "2025-03-22",
-    author: "Indu Aggarwal",
+    author: "Disha Editorial",
     cover: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-2.jpg",
     content: [
       "A little stress sharpens focus, but chronic stress drains your energy and clouds your thinking. The goal is balance, not zero pressure.",
@@ -504,58 +499,7 @@ export const BLOGS: Blog[] = [
   },
 ];
 
-export type Mentor = {
-  name: string;
-  expertise: string;
-  experience: string;
-  photo: string;
-  tags: string[];
-};
 
-export const MENTORS: Mentor[] = [
-  {
-    name: "Rahul Verma",
-    expertise: "Product & Entrepreneurship",
-    experience: "12 years · ex-Product Lead",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-3.jpg",
-    tags: ["Entrepreneurship", "Technology"],
-  },
-  {
-    name: "Kavita Rao",
-    expertise: "Finance & Investing",
-    experience: "10 years · Chartered Accountant",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-2.jpg",
-    tags: ["Financial Literacy"],
-  },
-  {
-    name: "Dr. Anil Kapoor",
-    expertise: "Career Counselling",
-    experience: "15 years · Academic Advisor",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-1.jpg",
-    tags: ["Career Growth", "Education"],
-  },
-  {
-    name: "Meera Nair",
-    expertise: "Design & Communication",
-    experience: "8 years · Brand Designer",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/05/2-1.jpg",
-    tags: ["Design", "Marketing"],
-  },
-  {
-    name: "Suresh Iyer",
-    expertise: "Data Science & AI",
-    experience: "9 years · Data Lead",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/05/1-2.jpg",
-    tags: ["Technology"],
-  },
-  {
-    name: "Indu Aggarwal",
-    expertise: "Wellness & Leadership",
-    experience: "20 years · Founder & Coach",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/profile.jpg",
-    tags: ["Wellness", "Education"],
-  },
-];
 
 export type Volunteer = {
   id: string;
@@ -633,30 +577,7 @@ export const VOLUNTEER_ROLES: Volunteer[] = [
   },
 ];
 
-export type Scholarship = {
-  id: string;
-  name: string;
-  provider: string;
-  amount: string;
-  classLevel: "Class 10" | "Class 12" | "Undergraduate" | "Postgraduate";
-  stream: "Science" | "Commerce" | "Arts" | "Any";
-  state: "All India" | "Punjab" | "Delhi" | "Maharashtra" | "Karnataka";
-  category: "Merit" | "Need-based" | "Girls" | "SC/ST/OBC" | "Minority";
-  deadline: string;
-};
 
-export const SCHOLARSHIPS: Scholarship[] = [
-  { id: "s1", name: "National Merit Scholarship", provider: "Govt. of India", amount: "₹50,000 / yr", classLevel: "Undergraduate", stream: "Any", state: "All India", category: "Merit", deadline: "2025-09-30" },
-  { id: "s2", name: "Pragati Scholarship for Girls", provider: "AICTE", amount: "₹50,000 / yr", classLevel: "Undergraduate", stream: "Science", state: "All India", category: "Girls", deadline: "2025-10-15" },
-  { id: "s3", name: "Punjab Post-Matric Scholarship", provider: "Punjab Govt.", amount: "Full tuition", classLevel: "Class 12", stream: "Any", state: "Punjab", category: "SC/ST/OBC", deadline: "2025-08-31" },
-  { id: "s4", name: "Means-cum-Merit Scholarship", provider: "NMMS", amount: "₹12,000 / yr", classLevel: "Class 10", stream: "Any", state: "All India", category: "Need-based", deadline: "2025-11-01" },
-  { id: "s5", name: "Commerce Excellence Award", provider: "Disha For India", amount: "₹25,000", classLevel: "Class 12", stream: "Commerce", state: "All India", category: "Merit", deadline: "2025-09-20" },
-  { id: "s6", name: "Maharashtra EBC Scholarship", provider: "Maharashtra Govt.", amount: "₹20,000 / yr", classLevel: "Undergraduate", stream: "Any", state: "Maharashtra", category: "Need-based", deadline: "2025-10-10" },
-  { id: "s7", name: "Minority Talent Scholarship", provider: "Min. of Minority Affairs", amount: "₹30,000 / yr", classLevel: "Postgraduate", stream: "Any", state: "All India", category: "Minority", deadline: "2025-12-01" },
-  { id: "s8", name: "Karnataka Vidyasiri", provider: "Karnataka Govt.", amount: "₹1,500 / mo", classLevel: "Undergraduate", stream: "Arts", state: "Karnataka", category: "SC/ST/OBC", deadline: "2025-09-25" },
-  { id: "s9", name: "Girls in STEM Grant", provider: "Disha For India", amount: "₹40,000", classLevel: "Undergraduate", stream: "Science", state: "All India", category: "Girls", deadline: "2025-10-30" },
-  { id: "s10", name: "Delhi Higher Education Aid", provider: "Delhi Govt.", amount: "Tuition support", classLevel: "Undergraduate", stream: "Any", state: "Delhi", category: "Need-based", deadline: "2025-11-15" },
-];
 
 export type Resource = {
   id: string;
@@ -704,7 +625,6 @@ export const OPPORTUNITIES: Opportunity[] = [
 
 export type OpportunityHubType =
   | "Internship"
-  | "Scholarship"
   | "Workshop"
   | "Competition"
   | "Hackathon";
@@ -766,61 +686,7 @@ export const OPPORTUNITY_HUB: HubOpportunity[] = [
     deadline: "2025-09-10",
     perk: "Portfolio project + LOR",
   },
-  {
-    id: "h5",
-    title: "National Merit Scholarship",
-    type: "Scholarship",
-    org: "Govt. of India",
-    description: "Merit-based financial aid for undergraduate students with strong academic records.",
-    mode: "Online",
-    location: "All India",
-    deadline: "2025-09-30",
-    perk: "₹50,000 / year",
-  },
-  {
-    id: "h6",
-    title: "Pragati Scholarship for Girls",
-    type: "Scholarship",
-    org: "AICTE",
-    description: "Supports girl students pursuing technical diploma and degree programs across India.",
-    mode: "Online",
-    location: "All India",
-    deadline: "2025-10-15",
-    perk: "₹50,000 / year",
-  },
-  {
-    id: "h7",
-    title: "Commerce Excellence Award",
-    type: "Scholarship",
-    org: "Disha For India",
-    description: "One-time grant for Class 12 commerce students demonstrating academic excellence.",
-    mode: "Online",
-    location: "All India",
-    deadline: "2025-09-20",
-    perk: "₹25,000 grant",
-  },
-  {
-    id: "h8",
-    title: "Girls in STEM Grant",
-    type: "Scholarship",
-    org: "Disha For India",
-    description: "Financial support for undergraduate women in science, engineering and technology.",
-    mode: "Online",
-    location: "All India",
-    deadline: "2025-10-30",
-    perk: "₹40,000 grant",
-  },
-  {
-    id: "h9",
-    title: "Means-cum-Merit Scholarship",
-    type: "Scholarship",
-    org: "NMMS",
-    description: "Need-based scholarship for Class 10 students from economically weaker sections.",
-    mode: "Online",
-    location: "All India",
-    deadline: "2025-11-01",
-    perk: "₹12,000 / year",
-  },
+
   {
     id: "h10",
     title: "Financial Literacy Workshop",
@@ -885,7 +751,7 @@ export const OPPORTUNITY_HUB: HubOpportunity[] = [
     mode: "Online",
     location: "All India",
     deadline: "2025-11-05",
-    perk: "Medals + scholarships",
+    perk: "Medals + mentoring",
   },
   {
     id: "h16",
@@ -1004,3 +870,34 @@ export const CAREER_PATHS: Record<CareerInterest, { goal: string; steps: { title
     ],
   },
 };
+export type Mentor = {
+  name: string;
+  photo: string;
+  expertise: string;
+  experience: string;
+  tags: string[];
+};
+
+export const MENTORS: Mentor[] = [
+  {
+    name: "Aman Gupta",
+    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-1.jpg",
+    expertise: "Product Management & Startups",
+    experience: "10+ years",
+    tags: ["Entrepreneurship", "Technology"],
+  },
+  {
+    name: "Neha Sharma",
+    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-2.jpg",
+    expertise: "Financial Planning & Wealth",
+    experience: "8 years",
+    tags: ["Financial Literacy"],
+  },
+  {
+    name: "Vikram Singh",
+    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-3.jpg",
+    expertise: "UI/UX & Brand Identity",
+    experience: "12 years",
+    tags: ["Design", "Career Growth"],
+  },
+];

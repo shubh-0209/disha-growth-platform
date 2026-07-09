@@ -11,13 +11,11 @@ import {
 import { cn } from "@/lib/utils";
 
 const TOOLS = [
-  { to: "/career-navigator", label: "Career Navigator" },
-  { to: "/scholarships", label: "Scholarship Explorer" },
   { to: "/opportunity-hub", label: "Opportunity Hub" },
-  { to: "/mentors", label: "Mentor Network" },
   { to: "/volunteer", label: "Volunteer Hub" },
   { to: "/resources", label: "Resource Library" },
   { to: "/impact", label: "Impact Dashboard" },
+  { to: "/leaderboard", label: "Contribution Leaderboard" },
 ] as const;
 
 const ABOUT = [

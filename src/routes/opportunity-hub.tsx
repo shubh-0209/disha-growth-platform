@@ -25,12 +25,12 @@ export const Route = createFileRoute("/opportunity-hub")({
       {
         name: "description",
         content:
-          "Discover internships, scholarships, workshops, competitions and hackathons for Indian students. Search and filter opportunities in one place.",
+          "Discover internships, workshops, competitions and hackathons for Indian students. Search and filter opportunities in one place.",
       },
       { property: "og:title", content: "Opportunity Hub — Disha For India" },
       {
         property: "og:description",
-        content: "Find your next internship, scholarship, workshop, competition or hackathon.",
+        content: "Find your next internship, workshop, competition or hackathon.",
       },
       { property: "og:url", content: "/opportunity-hub" },
     ],
@@ -42,7 +42,6 @@ export const Route = createFileRoute("/opportunity-hub")({
 const TYPES: ("All" | OpportunityHubType)[] = [
   "All",
   "Internship",
-  "Scholarship",
   "Workshop",
   "Competition",
   "Hackathon",
@@ -52,7 +51,6 @@ const MODES = ["All", "Remote", "Online", "Hybrid", "In-person"] as const;
 
 const TYPE_ICON: Record<OpportunityHubType, React.ComponentType<{ className?: string }>> = {
   Internship: Briefcase,
-  Scholarship: GraduationCap,
   Workshop: Presentation,
   Competition: Trophy,
   Hackathon: Code,
@@ -60,7 +58,6 @@ const TYPE_ICON: Record<OpportunityHubType, React.ComponentType<{ className?: st
 
 const TYPE_ACCENT: Record<OpportunityHubType, string> = {
   Internship: "bg-primary-soft text-primary",
-  Scholarship: "bg-green-soft text-green",
   Workshop: "bg-primary-soft text-primary",
   Competition: "bg-green-soft text-green",
   Hackathon: "bg-primary-soft text-primary",
@@ -93,7 +90,6 @@ function OpportunityHub() {
   const counts = useMemo(() => {
     const map: Record<OpportunityHubType, number> = {
       Internship: 0,
-      Scholarship: 0,
       Workshop: 0,
       Competition: 0,
       Hackathon: 0,
@@ -107,7 +103,7 @@ function OpportunityHub() {
       <PageHero
         eyebrow="Opportunity Hub"
         title="Your next big break starts here"
-        description="Internships, scholarships, workshops, competitions and hackathons — curated for India's students. Search, filter and apply."
+        description="Internships, workshops, competitions and hackathons — curated for India's students. Search, filter and apply."
       />
 
       <section className="py-16">

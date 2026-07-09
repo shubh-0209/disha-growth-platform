@@ -1,5 +1,5 @@
 import { o as __toESM, r as __exportAll } from "../_runtime.mjs";
-import { n as require_react } from "./@radix-ui/react-compose-refs+[...].mjs";
+import { u as require_react } from "./@floating-ui/react-dom+[...].mjs";
 //#region node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 /**
@@ -50124,4 +50124,4 @@ var lucide_react_exports = /* @__PURE__ */ __exportAll({
 	icons: () => icons_exports
 });
 //#endregion
-export { Facebook as A, Briefcase as B, Instagram as C, GraduationCap as D, HandHeart as E, ChevronDown as F, ArrowRight as G, BookOpen as H, Check as I, ArrowLeft as K, Calendar as L, Compass as M, Code as N, Flame as O, Clock as P, CalendarCheck as R, Lightbulb as S, HeartHandshake as T, Award as U, Bot as V, ArrowUpRight as W, MessageCircle as _, Users as a, Mail as b, Target as c, ShieldCheck as d, Send as f, Phone as g, Presentation as h, Video as i, Eye as j, FileText as k, Star as l, Quote as m, X as n, Twitter as o, Search as p, Wrench as r, Trophy as s, lucide_react_exports as t, Sparkles as u, Menu as v, Heart as w, Linkedin as x, MapPin as y, Building2 as z };
+export { BookOpen as $, Info as A, Code as B, Menu as C, Linkedin as D, Lock as E, Flame as F, ChevronLeft as G, CircleCheck as H, FileText as I, Calendar as J, ChevronDown as K, Facebook as L, HeartHandshake as M, HandHeart as N, Lightbulb as O, GraduationCap as P, Bot as Q, Eye as R, MessageCircle as S, Mail as T, ChevronUp as U, Clock as V, ChevronRight as W, Building2 as X, CalendarCheck as Y, Briefcase as Z, Search as _, Users as a, Phone as b, TriangleAlert as c, Target as d, Award as et, Star as f, Send as g, ShieldCheck as h, Video as i, Heart as j, Instagram as k, TrendingUp as l, SlidersHorizontal as m, X as n, ArrowRight as nt, Twitter as o, Sparkles as p, Check as q, Wrench as r, ArrowLeft as rt, Trophy as s, lucide_react_exports as t, ArrowUpRight as tt, TrendingDown as u, Quote as v, MapPin as w, Minus as x, Presentation as y, Compass as z };

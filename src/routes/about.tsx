@@ -4,14 +4,15 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
-import { ORG, FOUNDER, STATS } from "@/lib/site-data";
+import { ORG, STATS } from "@/lib/site-data";
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
+import hero3 from "@/assets/hero/hero-3.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Disha For India — Our Story & Founder" },
-      { name: "description", content: "Learn about Disha For India Foundation & Educational Trust, founded by Indu Aggarwal to skill India's youth for employability and entrepreneurship." },
+      { title: "About Disha For India — Our Mission & Purpose" },
+      { name: "description", content: "Learn about Disha For India Foundation & Educational Trust, dedicated to skilling and guiding India's youth toward their true path." },
       { property: "og:title", content: "About Disha For India" },
       { property: "og:description", content: "We empower. We make the difference. Skilling India's youth for a brighter future." },
       { property: "og:url", content: "/about" },
@@ -33,20 +34,25 @@ function About() {
       <section className="py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
           <Reveal>
-            <img src={FOUNDER.photo} alt={FOUNDER.name} loading="lazy" className="w-full rounded-3xl border border-border object-cover shadow-card" />
+            <img src={hero3} alt="Indian youth learning together" loading="lazy" className="w-full rounded-3xl border border-border object-cover shadow-card" />
           </Reveal>
           <div>
             <SectionHeading
-              eyebrow="Our Founder"
-              title={FOUNDER.name}
-              description={FOUNDER.role}
+              eyebrow="Our Focus"
+              title="Guiding India's youth towards their true path"
+              description="Empowering and steering the next generation."
             />
             <Reveal delay={0.1}>
-              <p className="mt-5 leading-relaxed text-muted-foreground">{FOUNDER.bio}</p>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                In a fast-changing world, many young minds find themselves at a crossroads, feeling diverted or uncertain about their future path. At Disha For India, our purpose is to reach out to these young individuals, guide them with clarity, and help them align their skills with their life goals.
+              </p>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                Through our structured student programs and emotional wellness coaching, we provide the direction and tools they need to live purposeful, successful, and impactful lives.
+              </p>
               <div className="mt-6 rounded-2xl border border-border bg-secondary/40 p-5">
                 <Quote className="h-6 w-6 text-primary" />
                 <p className="mt-2 font-display text-lg font-semibold text-foreground">
-                  "Our fingerprints on the lives we touch never fade."
+                  "Guiding youth to discover their direction and unlock their true potential is our greatest commitment."
                 </p>
               </div>
             </Reveal>
