@@ -29,7 +29,7 @@ export type Program = {
   title: string;
   tagline: string;
   description: string;
-  accent: "orange" | "green";
+  accent: "blue" | "green";
   icon: string;
   highlights: string[];
   outcomes: { label: string; value: string }[];
@@ -60,7 +60,7 @@ export const PROGRAMS: Program[] = [
     slug: "entrepreneurship",
     title: "Entrepreneurship",
     tagline: "From idea to enterprise",
-    accent: "orange",
+    accent: "blue",
     icon: "Rocket",
     description:
       "We coach young Indians to think like founders — validating ideas, building MVPs, understanding customers and turning ambition into sustainable ventures.",
@@ -120,7 +120,7 @@ export const PROGRAMS: Program[] = [
     slug: "ignite",
     title: "Ignite — Education",
     tagline: "Transforming learning",
-    accent: "orange",
+    accent: "blue",
     icon: "Flame",
     description:
       "Igniting fire among academicians and students to transform education — empowering teachers, modernising classrooms and inspiring a love for learning.",
@@ -140,7 +140,7 @@ export const PROGRAMS: Program[] = [
     slug: "community-development",
     title: "Community Development",
     tagline: "Lifting communities together",
-    accent: "orange",
+    accent: "blue",
     icon: "Users",
     description:
       "Grassroots initiatives that uplift under-served communities through skilling, awareness drives and access to opportunities and resources.",

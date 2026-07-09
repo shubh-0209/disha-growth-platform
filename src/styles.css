@@ -13,31 +13,40 @@
   --radius-3xl: calc(var(--radius) + 14px);
 
   --color-background: var(--background);
+  --color-background-soft: var(--background-soft);
   --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+  
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
   --color-primary-foreground: var(--primary-foreground);
+  
   --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-green: var(--green);
-  --color-green-foreground: var(--green-foreground);
-  --color-green-soft: var(--green-soft);
-  --color-orange: var(--orange);
-  --color-orange-foreground: var(--orange-foreground);
-  --color-orange-soft: var(--orange-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-foreground: var(--success-foreground);
+
   --color-ink: var(--ink);
 
   --color-chart-1: var(--chart-1);
@@ -49,60 +58,59 @@
   --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --shadow-soft: 0 1px 2px oklch(0.21 0.034 264 / 0.04), 0 8px 24px oklch(0.21 0.034 264 / 0.06);
-  --shadow-card: 0 2px 6px oklch(0.21 0.034 264 / 0.05), 0 18px 40px -16px oklch(0.21 0.034 264 / 0.18);
-  --shadow-glow-orange: 0 16px 40px -12px oklch(0.70 0.181 49.5 / 0.45);
-  --shadow-glow-green: 0 16px 40px -12px oklch(0.63 0.17 149 / 0.4);
+  --shadow-soft: 0 1px 3px rgba(0,0,0,0.05), 0 10px 20px -5px rgba(0,0,0,0.03);
+  --shadow-card: 0 2px 6px rgba(0,0,0,0.04), 0 10px 30px -10px rgba(0,0,0,0.06);
 }
 
 :root {
   --radius: 0.875rem;
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.21 0.034 264.665);
+  --background: #FFFFFF;
+  --background-soft: #F8FAFC;
+  --foreground: #475569;
+  --heading: #0B1F3A;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.034 264.665);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.034 264.665);
+  --card: #FFFFFF;
+  --card-foreground: #475569;
+  --popover: #FFFFFF;
+  --popover-foreground: #475569;
 
-  /* Primary = Orange #F97316 */
-  --primary: oklch(0.7 0.181 49.5);
-  --primary-foreground: oklch(1 0 0);
+  --primary: #063B8C;
+  --primary-hover: #1E5BB8;
+  --primary-soft: #EAF3FF;
+  --primary-foreground: #FFFFFF;
 
-  --secondary: oklch(0.984 0.003 247.858);
-  --secondary-foreground: oklch(0.21 0.034 264.665);
+  --secondary: #1E5BB8;
+  --secondary-hover: #063B8C;
+  --secondary-foreground: #FFFFFF;
 
-  --muted: oklch(0.973 0.005 247.9);
-  --muted-foreground: oklch(0.5 0.03 257);
+  --accent: #FFB703;
+  --accent-foreground: #0B1F3A;
 
-  --accent: oklch(0.973 0.005 247.9);
-  --accent-foreground: oklch(0.21 0.034 264.665);
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
 
-  --border: oklch(0.925 0.01 255);
-  --input: oklch(0.925 0.01 255);
-  --ring: oklch(0.7 0.181 49.5);
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #063B8C;
 
-  /* Brand tokens */
-  --orange: oklch(0.7 0.181 49.5);
-  --orange-foreground: oklch(1 0 0);
-  --orange-soft: oklch(0.96 0.04 60);
-  --green: oklch(0.63 0.17 149);
-  --green-foreground: oklch(1 0 0);
-  --green-soft: oklch(0.95 0.05 150);
-  --ink: oklch(0.21 0.034 264.665);
+  --success: #00A878;
+  --success-soft: #E6F7F1;
+  --success-foreground: #FFFFFF;
 
-  --chart-1: oklch(0.7 0.181 49.5);
-  --chart-2: oklch(0.63 0.17 149);
-  --chart-3: oklch(0.21 0.034 264.665);
-  --chart-4: oklch(0.78 0.14 70);
-  --chart-5: oklch(0.55 0.12 200);
+  --ink: #0B1F3A;
 
-  --gradient-warm: linear-gradient(135deg, oklch(0.7 0.181 49.5), oklch(0.78 0.14 70));
-  --gradient-fresh: linear-gradient(135deg, oklch(0.63 0.17 149), oklch(0.72 0.15 160));
+  --chart-1: #063B8C;
+  --chart-2: #00A878;
+  --chart-3: #FFB703;
+  --chart-4: #1E5BB8;
+  --chart-5: #EAF3FF;
+
+  --gradient-hero: linear-gradient(135deg, #FFFFFF 0%, #EAF3FF 55%, #D7E8FF 100%);
+  --gradient-section: linear-gradient(180deg, #EAF3FF 0%, #FFFFFF 100%);
 }
 
 @layer base {
@@ -112,6 +120,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -119,25 +128,52 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5 {
+    color: var(--color-heading);
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  /* --- Dynamic Contrast Scopes --- */
+  .bg-primary,
+  .bg-secondary,
+  .bg-ink,
+  .bg-success {
+    --foreground: #FFFFFF;
+    --heading: #FFFFFF;
+    --muted-foreground: rgba(255, 255, 255, 0.8);
+    color: var(--foreground);
+  }
+
+  .bg-card,
+  .bg-background,
+  .bg-background-soft,
+  .bg-muted,
+  .bg-primary-soft,
+  .bg-success-soft {
+    --foreground: #475569;
+    --heading: #0B1F3A;
+    --muted-foreground: #64748B;
+    color: var(--foreground);
   }
 }
 
-@utility text-gradient-warm {
-  background-image: var(--gradient-warm);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+@utility bg-gradient-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility bg-gradient-section {
+  background-image: var(--gradient-section);
 }
 
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, oklch(0.21 0.034 264 / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.21 0.034 264 / 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(11, 31, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 31, 58, 0.04) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 

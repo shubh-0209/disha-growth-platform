@@ -73,7 +73,7 @@ function BlogPost() {
           <Button asChild variant="ghost" size="sm" className="mb-4 -ml-2">
             <Link to="/blogs"><ArrowLeft className="mr-1 h-4 w-4" /> All articles</Link>
           </Button>
-          <span className="rounded-full bg-orange-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{blog.category}</span>
+          <span className="rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{blog.category}</span>
           <h1 className="mt-4 text-3xl font-bold leading-tight text-foreground sm:text-4xl">{blog.title}</h1>
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
             <span className="font-medium text-foreground">{blog.author}</span>

@@ -52,7 +52,7 @@ function ProgramDetail() {
       <section className="py-16">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
-            <span className={`grid h-14 w-14 place-items-center rounded-2xl ${isGreen ? "bg-green-soft text-green" : "bg-orange-soft text-primary"}`}>
+            <span className={`grid h-14 w-14 place-items-center rounded-2xl ${isGreen ? "bg-success-soft text-success" : "bg-primary-soft text-primary"}`}>
               <Icon className="h-7 w-7" />
             </span>
             <h2 className="mt-5 text-2xl font-bold text-foreground">What we do</h2>

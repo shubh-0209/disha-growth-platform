@@ -181,9 +181,8 @@ function Home() {
   return (
     <>
       {/* SECTION 1 — Hero */}
-      <section className="relative overflow-hidden bg-secondary/40 bg-grid">
-        <div className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-orange-soft blur-3xl" />
-        <div className="absolute bottom-0 -left-24 h-80 w-80 rounded-full bg-green-soft blur-3xl" />
+      <section className="relative overflow-hidden bg-gradient-hero">
+        <div className="absolute inset-0 bg-grid" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-2 lg:py-24">
           <div>
             <Reveal>
@@ -241,11 +240,11 @@ function Home() {
       </section>
 
       {/* SECTION 2 — Impact Statistics */}
-      <section className="border-y border-border bg-ink py-16 text-background">
+      <section className="border-y border-border bg-gradient-section py-16 text-foreground">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mb-10 text-center">
-            <h2 className="text-2xl font-bold text-background sm:text-3xl">Our impact, in numbers</h2>
-            <p className="mt-2 text-background/60">Fingerprints on the lives we touch never fade.</p>
+            <h2 className="text-2xl font-bold text-ink sm:text-3xl">Our impact, in numbers</h2>
+            <p className="mt-2 text-muted-foreground">Fingerprints on the lives we touch never fade.</p>
           </Reveal>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
             {STATS.map((s, i) => (
@@ -253,7 +252,7 @@ function Home() {
                 <p className="text-3xl font-extrabold text-primary sm:text-4xl">
                   <AnimatedCounter value={s.value} suffix={s.suffix} />
                 </p>
-                <p className="mt-1.5 text-sm text-background/70">{s.label}</p>
+                <p className="mt-1.5 text-sm text-muted-foreground">{s.label}</p>
               </Reveal>
             ))}
           </div>
@@ -280,7 +279,7 @@ function Home() {
       </section>
 
       {/* SECTION 4 — Scholarship Explorer */}
-      <section className="border-y border-border bg-secondary/40 py-20">
+      <section className="border-y border-border bg-gradient-section py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Scholarship Explorer"
@@ -317,7 +316,7 @@ function Home() {
       </section>
 
       {/* SECTION 6 — Success Stories */}
-      <section className="border-y border-border bg-secondary/40 py-20">
+      <section className="border-y border-border bg-gradient-section py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Success Stories"
@@ -363,7 +362,7 @@ function Home() {
       </section>
 
       {/* SECTION 8 — Latest Blogs */}
-      <section className="border-y border-border bg-secondary/40 py-20">
+      <section className="border-y border-border bg-gradient-section py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="From the Blog"
@@ -421,15 +420,13 @@ function Home() {
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-ink px-6 py-16 text-center text-background sm:px-12">
-              <div className="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-              <div className="absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-green/20 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-hero px-6 py-16 text-center text-foreground sm:px-12">
               <div className="relative mx-auto max-w-2xl">
                 <Compass className="mx-auto h-10 w-10 text-primary" />
-                <h2 className="mt-5 text-3xl font-bold text-background sm:text-4xl">
+                <h2 className="mt-5 text-3xl font-bold text-ink sm:text-4xl">
                   Invest your time. Uplift a life.
                 </h2>
-                <p className="mt-4 text-background/70">
+                <p className="mt-4 text-muted-foreground">
                   Join 1,200+ volunteers making a powerful contribution to India's
                   youth. Teach, mentor, design or build — there's a role for you.
                 </p>
@@ -437,7 +434,7 @@ function Home() {
                   <Button asChild size="lg">
                     <Link to="/volunteer">Become a Volunteer</Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="border-background/30 bg-transparent text-background hover:bg-background hover:text-ink">
+                  <Button asChild size="lg" variant="outline" className="border-primary/20 bg-card hover:bg-primary-soft">
                     <Link to="/mentors">Become a Mentor</Link>
                   </Button>
                 </div>

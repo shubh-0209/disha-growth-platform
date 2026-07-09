@@ -93,7 +93,7 @@ export function ScholarshipExplorer({ limit }: { limit?: number }) {
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-green-soft text-green">
                   <Award className="h-5 w-5" />
                 </span>
-                <span className="rounded-full bg-orange-soft px-2.5 py-1 text-xs font-semibold text-primary">{s.amount}</span>
+                <span className="rounded-full bg-primary-soft px-2.5 py-1 text-xs font-semibold text-primary">{s.amount}</span>
               </div>
               <h4 className="mt-3 font-display font-semibold leading-snug text-foreground">{s.name}</h4>
               <p className="text-sm text-muted-foreground">{s.provider}</p>

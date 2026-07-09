@@ -54,13 +54,13 @@ function About() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-secondary/40 py-20">
+      <section className="border-y border-border bg-gradient-section py-20">
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { icon: Eye, title: "Vision", text: ORG.vision, accent: "text-primary bg-orange-soft" },
+              { icon: Eye, title: "Vision", text: ORG.vision, accent: "text-primary bg-primary-soft" },
               { icon: Target, title: "Mission", text: ORG.mission, accent: "text-green bg-green-soft" },
-              { icon: Flame, title: "Passion", text: ORG.passion, accent: "text-primary bg-orange-soft" },
+              { icon: Flame, title: "Passion", text: ORG.passion, accent: "text-primary bg-primary-soft" },
             ].map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08}>
                 <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-soft">

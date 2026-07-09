@@ -54,7 +54,7 @@ function Contact() {
                 { icon: MapPin, label: "Location", value: "View on Google Maps", href: ORG.mapUrl },
               ].map((c) => (
                 <a key={c.label} href={c.href} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-card">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-orange-soft text-primary">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary">
                     <c.icon className="h-6 w-6" />
                   </span>
                   <div>

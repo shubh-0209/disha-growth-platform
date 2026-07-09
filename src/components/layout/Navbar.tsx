@@ -36,13 +36,8 @@ const MAIN = [
 
 export function Logo() {
   return (
-    <Link to="/" className="flex items-center gap-2.5">
-      <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground shadow-soft">
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
-          <path d="m7 7 2.5 6L16 9l-2.5 6" className="text-green" stroke="currentColor" />
-        </svg>
-      </span>
+    <Link to="/" className="flex items-center gap-2.5 group">
+      <img src="/logo.png" alt="Disha For India Icon" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
       <span className="flex flex-col leading-none">
         <span className="font-display text-base font-bold tracking-tight text-foreground">
           Disha <span className="text-primary">For India</span>

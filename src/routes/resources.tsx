@@ -85,7 +85,7 @@ function Resources() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-secondary/40 py-16">
+      <section className="border-t border-border bg-gradient-section py-16">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Opportunity Center"
@@ -98,7 +98,7 @@ function Resources() {
               return (
                 <Reveal key={o.id} delay={i * 0.04}>
                   <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:shadow-card">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-orange-soft text-primary">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary-soft text-primary">
                       <Icon className="h-6 w-6" />
                     </span>
                     <div className="min-w-0 flex-1">

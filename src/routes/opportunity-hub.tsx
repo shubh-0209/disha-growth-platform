@@ -59,11 +59,11 @@ const TYPE_ICON: Record<OpportunityHubType, React.ComponentType<{ className?: st
 };
 
 const TYPE_ACCENT: Record<OpportunityHubType, string> = {
-  Internship: "bg-orange-soft text-primary",
+  Internship: "bg-primary-soft text-primary",
   Scholarship: "bg-green-soft text-green",
-  Workshop: "bg-orange-soft text-primary",
+  Workshop: "bg-primary-soft text-primary",
   Competition: "bg-green-soft text-green",
-  Hackathon: "bg-orange-soft text-primary",
+  Hackathon: "bg-primary-soft text-primary",
 };
 
 function formatDeadline(date: string) {

@@ -39,9 +39,9 @@ function VisionMission() {
       <section className="py-20">
         <div className="mx-auto max-w-5xl space-y-6 px-5">
           {[
-            { icon: Eye, label: "Vision", text: ORG.vision, accent: "bg-orange-soft text-primary" },
+            { icon: Eye, label: "Vision", text: ORG.vision, accent: "bg-primary-soft text-primary" },
             { icon: Target, label: "Mission", text: ORG.mission, accent: "bg-green-soft text-green" },
-            { icon: Flame, label: "Passion", text: ORG.passion, accent: "bg-orange-soft text-primary" },
+            { icon: Flame, label: "Passion", text: ORG.passion, accent: "bg-primary-soft text-primary" },
           ].map((c, i) => (
             <Reveal key={c.label} delay={i * 0.08}>
               <div className="flex flex-col gap-5 rounded-3xl border border-border bg-card p-7 shadow-soft sm:flex-row sm:items-center">
@@ -58,14 +58,14 @@ function VisionMission() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-secondary/40 py-20">
+      <section className="border-y border-border bg-gradient-section py-20">
         <div className="mx-auto max-w-6xl px-5">
           <SectionHeading eyebrow="Core Values" title="The principles we stand on" align="center" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {VALUES.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.06}>
                 <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-6 text-center shadow-soft">
-                  <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-orange-soft text-primary">
+                  <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary">
                     <v.icon className="h-6 w-6" />
                   </span>
                   <h3 className="mt-4 font-semibold text-foreground">{v.title}</h3>

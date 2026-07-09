@@ -59,7 +59,7 @@ function Volunteer() {
                   <span className="grid h-11 w-11 place-items-center rounded-2xl bg-green-soft text-green">
                     <HandHeart className="h-5 w-5" />
                   </span>
-                  <span className="mt-4 w-fit rounded-full bg-orange-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{v.category}</span>
+                  <span className="mt-4 w-fit rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{v.category}</span>
                   <h3 className="mt-2 text-lg font-semibold text-foreground">{v.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted-foreground">{v.description}</p>
                   <div className="mt-4 flex flex-wrap gap-3 text-xs text-muted-foreground">
@@ -74,10 +74,10 @@ function Volunteer() {
             ))}
           </div>
 
-          <Reveal className="mt-14 overflow-hidden rounded-3xl bg-ink p-8 text-center text-background">
-            <h3 className="text-2xl font-bold text-background">Make your powerful contribution</h3>
-            <p className="mx-auto mt-2 max-w-md text-sm text-background/70">Can't find the right role? Reach out and we'll match you to the cause that fits you best.</p>
-            <Button asChild className="mt-5"><a href="/contact">Contact our team <ArrowRight className="ml-1 h-4 w-4" /></a></Button>
+          <Reveal className="mt-14 overflow-hidden rounded-3xl bg-gradient-hero p-8 text-center text-foreground">
+            <h3 className="text-2xl font-bold text-ink">Make your powerful contribution</h3>
+            <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">Can't find the right role? Reach out and we'll match you to the cause that fits you best.</p>
+            <Button asChild className="mt-5"><a href="/contact">Contact our team</a></Button>
           </Reveal>
         </div>
       </section>

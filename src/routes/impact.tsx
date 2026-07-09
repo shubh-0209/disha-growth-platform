@@ -31,9 +31,9 @@ const KPIS = [
   { icon: Building2, label: "Communities Impacted", value: 40, suffix: "+" },
 ];
 
-const ORANGE = "#F97316";
-const GREEN = "#16A34A";
-const PIE_COLORS = ["#F97316", "#16A34A", "#111827", "#FB923C", "#4ADE80"];
+const PRIMARY = "#063B8C";
+const GREEN = "#00A878";
+const PIE_COLORS = ["#063B8C", "#00A878", "#111827", "#FFB703", "#EAF3FF"];
 
 function Impact() {
   return (
@@ -50,7 +50,7 @@ function Impact() {
             {KPIS.map((k, i) => (
               <Reveal key={k.label} delay={i * 0.06}>
                 <div className="rounded-3xl border border-border bg-card p-5 shadow-soft">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-orange-soft text-primary">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-primary">
                     <k.icon className="h-5 w-5" />
                   </span>
                   <p className="mt-3 text-2xl font-extrabold text-foreground">
@@ -72,15 +72,15 @@ function Impact() {
                     <AreaChart data={IMPACT_TRENDS}>
                       <defs>
                         <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor={ORANGE} stopOpacity={0.35} />
-                          <stop offset="100%" stopColor={ORANGE} stopOpacity={0} />
+                          <stop offset="0%" stopColor={PRIMARY} stopOpacity={0.35} />
+                          <stop offset="100%" stopColor={PRIMARY} stopOpacity={0} />
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
                       <XAxis dataKey="year" tickLine={false} axisLine={false} fontSize={12} />
                       <YAxis tickLine={false} axisLine={false} fontSize={12} />
                       <Tooltip />
-                      <Area type="monotone" dataKey="students" stroke={ORANGE} strokeWidth={3} fill="url(#g1)" />
+                      <Area type="monotone" dataKey="students" stroke={PRIMARY} strokeWidth={3} fill="url(#g1)" />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
@@ -99,7 +99,7 @@ function Impact() {
                       <YAxis tickLine={false} axisLine={false} fontSize={12} />
                       <Tooltip />
                       <Bar dataKey="hours" fill={GREEN} radius={[6, 6, 0, 0]} />
-                      <Bar dataKey="events" fill={ORANGE} radius={[6, 6, 0, 0]} />
+                      <Bar dataKey="events" fill={PRIMARY} radius={[6, 6, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>

@@ -16,7 +16,7 @@ export function ProgramCard({ program }: { program: Program }) {
       <span
         className={cn(
           "grid h-12 w-12 place-items-center rounded-2xl",
-          isGreen ? "bg-green-soft text-green" : "bg-orange-soft text-primary",
+          isGreen ? "bg-success-soft text-success" : "bg-primary-soft text-primary",
         )}
       >
         <Icon className="h-6 w-6" />
@@ -67,7 +67,7 @@ export function BlogCard({ blog }: { blog: Blog }) {
         <img src={blog.cover} alt={blog.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <span className="w-fit rounded-full bg-orange-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{blog.category}</span>
+        <span className="w-fit rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{blog.category}</span>
         <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">{blog.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted-foreground">{blog.excerpt}</p>
         <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground">

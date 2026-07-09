@@ -75,10 +75,10 @@ function Mentors() {
             ))}
           </div>
 
-          <Reveal className="mt-14 rounded-3xl border border-border bg-secondary/40 p-8 text-center">
+          <Reveal className="mt-14 rounded-3xl border border-border bg-gradient-section p-8 text-center">
             <h3 className="text-xl font-bold text-foreground">Want to give back as a mentor?</h3>
             <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">Share your experience and shape the next generation of changemakers.</p>
-            <Button asChild className="mt-5"><a href="/contact">Become a Mentor <ArrowRight className="ml-1 h-4 w-4" /></a></Button>
+            <Button asChild className="mt-5"><a href="/contact">Become a Mentor</a></Button>
           </Reveal>
         </div>
       </section>

@@ -13,10 +13,8 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-secondary/40 bg-grid">
-      <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-orange-soft blur-3xl" />
-      <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-green-soft blur-3xl" />
-      <div className="relative mx-auto max-w-6xl px-5 py-16 sm:py-20">
+    <div className="relative overflow-hidden border-b border-border bg-background py-16 text-center md:py-24">
+      <div className="relative z-10 mx-auto max-w-3xl px-5">
         <Reveal>
           {eyebrow && (
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
@@ -34,6 +32,6 @@ export function PageHero({
           {children && <div className="mt-8">{children}</div>}
         </Reveal>
       </div>
-    </section>
+    </div>
   );
 }
