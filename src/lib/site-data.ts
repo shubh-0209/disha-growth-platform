@@ -240,7 +240,7 @@ export const STORIES: Story[] = [
     type: "Student",
     headline: "From classroom to first internship",
     summary:
-      "After a Career Navigator session, Priya discovered data science, completed a Disha bootcamp and landed her first paid internship in 9 months.",
+      "After a mentoring session, Priya discovered data science, completed a Disha bootcamp and landed her first paid internship in 9 months.",
     photo: "https://dishaforindia.org/wp-content/uploads/2023/05/2-1.jpg",
   },
   {
@@ -442,7 +442,7 @@ export const BLOGS: Blog[] = [
     content: [
       "The pressure after Class 12 is real, but choosing a career isn't a life sentence — it's a direction you can refine.",
       "Start with your interests and natural strengths. Then get exposure: talk to people in fields you're curious about and try short projects.",
-      "Our Career Navigator turns your class, interests and goals into a visual roadmap, so the path forward feels concrete instead of overwhelming.",
+      "Building a visual roadmap for your goals makes the path forward feel concrete instead of overwhelming.",
       "Remember: clarity comes from action, not endless thinking. Take one small step toward a field that excites you.",
     ],
   },
@@ -821,55 +821,7 @@ export const OPPORTUNITY_HUB: HubOpportunity[] = [
   },
 ];
 
-export type CareerInterest = "Technology" | "Business" | "Healthcare" | "Creative" | "Science";
 
-export const CAREER_PATHS: Record<CareerInterest, { goal: string; steps: { title: string; detail: string }[] }> = {
-  Technology: {
-    goal: "Build digital products and solve problems with code.",
-    steps: [
-      { title: "Foundations", detail: "Learn problem-solving, basic programming (Python) and computer fundamentals." },
-      { title: "Specialise", detail: "Pick a track: Web Development, Data Science, AI/ML or Cyber Security." },
-      { title: "Build Projects", detail: "Create a portfolio of real projects and contribute to open source." },
-      { title: "Launch Career", detail: "Apply for internships, build a network and target your first role." },
-    ],
-  },
-  Business: {
-    goal: "Lead teams, build ventures or grow organisations.",
-    steps: [
-      { title: "Core Skills", detail: "Understand economics, finance, communication and customer thinking." },
-      { title: "Specialise", detail: "Explore Marketing, Finance, Operations or Entrepreneurship." },
-      { title: "Real Experience", detail: "Run a small venture, intern, or join a startup to learn fast." },
-      { title: "Grow", detail: "Build leadership skills and pursue management roles or your own company." },
-    ],
-  },
-  Healthcare: {
-    goal: "Care for people and advance human wellbeing.",
-    steps: [
-      { title: "Science Base", detail: "Strengthen Biology, Chemistry and prepare for entrance exams (NEET)." },
-      { title: "Choose Field", detail: "Medicine, Nursing, Pharmacy, Physiotherapy or Public Health." },
-      { title: "Train & Practise", detail: "Complete clinical training, internships and certifications." },
-      { title: "Specialise", detail: "Pursue a specialisation and build a meaningful practice." },
-    ],
-  },
-  Creative: {
-    goal: "Express ideas through design, media and storytelling.",
-    steps: [
-      { title: "Discover Craft", detail: "Explore design, writing, film, music or visual arts." },
-      { title: "Build Skills", detail: "Master tools and develop a strong personal style." },
-      { title: "Portfolio", detail: "Create a body of work that showcases your range." },
-      { title: "Go Pro", detail: "Freelance, join a studio, or launch your creative brand." },
-    ],
-  },
-  Science: {
-    goal: "Explore, research and push the frontiers of knowledge.",
-    steps: [
-      { title: "Strong Basics", detail: "Excel in Physics, Chemistry, Maths or Biology." },
-      { title: "Choose Discipline", detail: "Engineering, pure sciences, research or biotechnology." },
-      { title: "Research", detail: "Join labs, projects and competitions to apply your learning." },
-      { title: "Advance", detail: "Pursue higher studies or R&D careers in industry or academia." },
-    ],
-  },
-};
 export type Mentor = {
   name: string;
   photo: string;

@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Compass, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
 import { useState, useEffect } from "react";
-import { CareerNavigator } from "@/components/CareerNavigator";
 import hero1 from "@/assets/hero/hero-1.jpg";
 import hero2 from "@/assets/hero/hero-2.jpg";
 import hero3 from "@/assets/hero/hero-3.jpg";
@@ -254,25 +253,6 @@ function Home() {
                 <p className="mt-1.5 text-sm text-muted-foreground">{s.label}</p>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3 — Career Navigator */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionHeading
-            eyebrow="Career Navigator"
-            title="Turn confusion into a clear roadmap"
-            description="Select your class, interest and goal to generate a personalised, visual career path — built to guide India's students step by step."
-          />
-          <div className="mt-10">
-            <CareerNavigator compact />
-          </div>
-          <div className="mt-6">
-            <Button asChild variant="outline">
-              <Link to="/career-navigator">Open full Career Navigator <ArrowRight className="ml-1 h-4 w-4" /></Link>
-            </Button>
           </div>
         </div>
       </section>
