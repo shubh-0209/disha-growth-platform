@@ -1,19 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Compass, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Calendar, Compass, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
 import { useState, useEffect } from "react";
-import hero1 from "@/assets/hero/hero-1.jpg";
-import hero2 from "@/assets/hero/hero-2.jpg";
-import hero3 from "@/assets/hero/hero-3.jpg";
-import hero4 from "@/assets/hero/hero-4.jpg";
-import hero5 from "@/assets/hero/hero-5.jpg";
+import { images } from "@/lib/images";
+import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 
 const heroImages = [
-  { src: hero1, alt: "Indian children smiling in a rural classroom" },
-  { src: hero2, alt: "Students learning and writing in notebooks" },
-  { src: hero3, alt: "Group of diverse students working on laptops" },
-  { src: hero4, alt: "Young students actively participating in education" },
-  { src: hero5, alt: "Skill development and focused classroom learning" },
+  { src: images.hero.home[0], alt: "Indian children smiling in a rural classroom" },
+  { src: images.hero.home[1], alt: "Students learning and writing in notebooks" },
+  { src: images.hero.home[2], alt: "Group of diverse students working on laptops" },
+  { src: images.hero.home[3], alt: "Young students actively participating in education" },
+  { src: images.hero.home[4], alt: "Skill development and focused classroom learning" },
 ];
 
 function HeroCarousel() {
@@ -84,20 +81,13 @@ function HeroCarousel() {
       aria-label="Image Carousel"
       aria-roledescription="carousel"
     >
-      {heroImages.map((img, index) => (
-        <img
-          key={index}
-          src={img.src}
-          alt={img.alt}
-          width={1600}
-          height={1200}
-          loading={index === 0 ? "eager" : "lazy"}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
-          aria-hidden={index !== currentSlide}
-        />
-      ))}
+      <ImageWithFallback
+        key={currentSlide}
+        src={heroImages[currentSlide].src}
+        alt={heroImages[currentSlide].alt}
+        loading="eager"
+        className="h-full w-full object-cover"
+      />
       
       {/* Desktop Arrows */}
       <button 
@@ -173,7 +163,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const upcoming = EVENTS.filter((e) => e.status === "upcoming").slice(0, 3);
+  const upcoming = EVENTS.filter((e) => e.status === "upcoming" || (e.date !== "Coming Soon" && new Date(e.date) > new Date())).slice(0, 3);
   const featuredBlogs = BLOGS.filter((b) => b.featured).slice(0, 3);
 
   return (
@@ -312,6 +302,12 @@ function Home() {
                 <EventCard event={e} />
               </Reveal>
             ))}
+            {upcoming.length === 0 && (
+              <div className="col-span-full rounded-2xl border border-dashed border-border bg-card p-12 text-center text-muted-foreground">
+                <Calendar className="mx-auto mb-3 h-8 w-8 text-primary/40" />
+                New events and initiatives are coming soon. Stay connected with Disha For India.
+              </div>
+            )}
           </div>
           <div className="mt-6">
             <Button asChild variant="outline">
@@ -361,9 +357,11 @@ function Home() {
                       <Star key={k} className="h-4 w-4 fill-current" />
                     ))}
                   </div>
-                  <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/80">"{t.quote}"</blockquote>
-                  <figcaption className="mt-5 flex items-center gap-3">
-                    <img src={t.photo} alt={t.name} loading="lazy" className="h-11 w-11 rounded-full object-cover" />
+                  <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    "{t.quote}"
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center gap-4 border-t border-border pt-4">
+                    <ImageWithFallback src={t.photo} alt={t.name} loading="lazy" className="h-11 w-11 rounded-full object-cover" />
                     <div>
                       <p className="text-sm font-semibold text-foreground">{t.name}</p>
                       <p className="text-xs text-muted-foreground">{t.role}</p>

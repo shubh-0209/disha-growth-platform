@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Briefcase, Calendar, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
+import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 import { Button } from "@/components/ui/button";
 import { MENTORS } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -56,7 +57,7 @@ function Mentors() {
             {filtered.map((m, i) => (
               <Reveal key={m.name} delay={i * 0.05}>
                 <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-6 text-center shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
-                  <img src={m.photo} alt={m.name} loading="lazy" className="mx-auto h-24 w-24 rounded-full object-cover ring-4 ring-secondary" />
+                  <ImageWithFallback src={m.photo} alt={m.name} loading="lazy" className="mx-auto h-24 w-24 rounded-full object-cover ring-4 ring-secondary" />
                   <h3 className="mt-4 text-lg font-semibold text-foreground">{m.name}</h3>
                   <p className="text-sm font-medium text-primary">{m.expertise}</p>
                   <p className="mt-1 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">

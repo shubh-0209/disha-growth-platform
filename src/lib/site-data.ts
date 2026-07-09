@@ -1,3 +1,4 @@
+import { images } from "@/lib/images";
 // Centralized content for the Disha For India platform.
 // Reuses real organizational identity, founder, gallery & event imagery
 // from dishaforindia.org, with professionally rewritten copy.
@@ -177,20 +178,7 @@ export const IMPACT_BY_PROGRAM = [
   { name: "Education", value: 25000 },
 ];
 
-export const GALLERY = [
-  "https://dishaforindia.org/wp-content/uploads/2023/05/2-1.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2023/05/1-2.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2023/05/3-1.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2023/04/disha-1.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2023/04/disha-2.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2023/04/disha-3.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-5.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-4.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-3.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-2.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-1.jpg",
-  "https://dishaforindia.org/wp-content/uploads/2021/08/faq-box-1-1.jpg",
-];
+export const GALLERY = images.gallery;
 
 export type Testimonial = {
   name: string;
@@ -205,21 +193,21 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Community Volunteer",
     quote:
       "I've been associated with Disha for the last 5 years. They are doing great work uplifting the lives of youth across the region.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-1.jpg",
+    photo: images.placeholders.avatar("Jaswinder Singh"),
   },
   {
     name: "Neeru Garg",
     role: "Educator",
     quote:
       "I have worked with the team at Disha For India for over 5 years. They are a passionate group whose energy genuinely transforms the youth they work with.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-2.jpg",
+    photo: images.placeholders.avatar("Neha Sharma"),
   },
   {
     name: "Mandeep Singh",
     role: "Workshop Participant",
     quote:
       "I attended the 'Break the Limits' event and it completely changed my perception about life, work and what success really means.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-3.jpg",
+    photo: images.placeholders.avatar("Mandeep Singh"),
   },
 ];
 
@@ -241,7 +229,7 @@ export const STORIES: Story[] = [
     headline: "From classroom to first internship",
     summary:
       "After a mentoring session, Priya discovered data science, completed a Disha bootcamp and landed her first paid internship in 9 months.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/05/2-1.jpg",
+    photo: images.stories[0],
   },
   {
     id: "arjun",
@@ -250,7 +238,7 @@ export const STORIES: Story[] = [
     headline: "Built a food-delivery micro-venture",
     summary:
       "The entrepreneurship bootcamp helped Arjun validate his idea and launch a campus food-delivery service that now employs four peers.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-1.jpg",
+    photo: images.stories[1],
   },
   {
     id: "kavita",
@@ -259,7 +247,7 @@ export const STORIES: Story[] = [
     headline: "Taught financial literacy to 500 students",
     summary:
       "Kavita joined the Volunteer Hub as a finance professional and has since led money-skills workshops for over 500 rural students.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-2.jpg",
+    photo: images.stories[2],
   },
   {
     id: "rahul",
@@ -268,7 +256,7 @@ export const STORIES: Story[] = [
     headline: "Guided 12 first-generation founders",
     summary:
       "A seasoned product leader, Rahul volunteers with our entrepreneurship programs, guiding 12 aspiring student founders from idea to launch.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-3.jpg",
+    photo: images.placeholders.avatar("Rahul Verma"),
   },
   {
     id: "village",
@@ -277,7 +265,7 @@ export const STORIES: Story[] = [
     headline: "A village goes plastic-free",
     summary:
       "Through the Clean & Green India drive, Rampur achieved waste segregation across 300 households and planted 1,200 trees.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-3.jpg",
+    photo: images.gallery[0],
   },
   {
     id: "sana",
@@ -286,7 +274,7 @@ export const STORIES: Story[] = [
     headline: "Secured a tech internship",
     summary:
       "Through our skill development bootcamps, Sana built her coding preparation and successfully landed her first software engineering internship.",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-4.jpg",
+    photo: images.stories[0],
   },
 ];
 
@@ -294,7 +282,7 @@ export type DishaEvent = {
   id: string;
   title: string;
   date: string;
-  status: "upcoming" | "past";
+  status: "upcoming" | "completed";
   location: string;
   category: string;
   description: string;
@@ -303,70 +291,67 @@ export type DishaEvent = {
 
 export const EVENTS: DishaEvent[] = [
   {
-    id: "career-fair-2025",
-    title: "Education & Career Fair 2025",
-    date: "2025-08-22",
+    id: "career-guidance-workshop",
+    title: "Career Guidance Workshop",
+    date: "Coming Soon",
     status: "upcoming",
-    location: "Ludhiana, Punjab",
-    category: "Career",
-    description:
-      "A flagship fair connecting students with colleges, employers and mentors. Education is the most powerful weapon to change the world.",
-    image: "https://dishaforindia.org/wp-content/uploads/2021/08/faq-box-1-1.jpg",
+    location: "Online / In-person",
+    category: "Student Development",
+    description: "An interactive session helping students explore career opportunities, skills, and future pathways.",
+    image: images.events.workshop,
   },
   {
-    id: "founders-bootcamp",
-    title: "Young Founders Bootcamp",
-    date: "2025-09-14",
+    id: "volunteer-orientation",
+    title: "Volunteer Orientation Program",
+    date: "Coming Soon",
     status: "upcoming",
-    location: "Chandigarh",
-    category: "Entrepreneurship",
-    description:
-      "A two-day intensive where students validate ideas, build MVPs and pitch to a panel of practising founders and investors.",
-    image: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-1.jpg",
+    location: "Various Locations",
+    category: "Volunteer Community",
+    description: "A training session for new volunteers to understand Disha For India's mission and impact.",
+    image: images.events.volunteer,
   },
   {
-    id: "money-matters",
-    title: "Money Matters: Financial Literacy Drive",
-    date: "2025-10-05",
+    id: "scholarship-awareness",
+    title: "Scholarship Awareness Drive",
+    date: "Coming Soon",
     status: "upcoming",
-    location: "Amritsar",
-    category: "Financial Literacy",
-    description:
-      "Hands-on workshops on budgeting, saving, digital payments and avoiding debt traps for students and families.",
-    image: "https://dishaforindia.org/wp-content/uploads/2023/05/3-1.jpg",
+    location: "Schools / Online",
+    category: "Education Support",
+    description: "A session guiding students about available scholarships and application processes.",
+    image: images.events.scholarship,
   },
   {
     id: "break-the-limits",
     title: "Break The Limits",
     date: "2024-03-18",
-    status: "past",
+    status: "completed",
     location: "Ludhiana, Punjab",
     category: "Wellness",
     description:
       "A transformational event that helped participants shift their perception of success, life and personal potential.",
-    image: "https://dishaforindia.org/wp-content/uploads/2023/05/2-1.jpg",
+    image: images.events.completed[0],
   },
   {
     id: "green-drive-2024",
     title: "Clean & Green Community Drive",
     date: "2024-06-05",
-    status: "past",
+    status: "completed",
     location: "Rampur",
     category: "Environment",
     description:
       "A community plantation and waste-segregation drive that planted 1,200 trees on World Environment Day.",
-    image: "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-3.jpg",
+    image: images.events.completed[1],
   },
   {
     id: "wellness-camp-2024",
     title: "Emotional Wellness Camp",
     date: "2024-11-12",
-    status: "past",
+    status: "completed",
     location: "Jalandhar",
     category: "Wellness",
     description:
       "A preventive-healthcare and emotional-wellness camp serving students with stress-management and mindfulness sessions.",
-    image: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-2.jpg",
+    image: images.events.completed[2],
   },
 ];
 
@@ -401,7 +386,7 @@ export const BLOGS: Blog[] = [
     readingTime: 6,
     date: "2025-05-18",
     author: "Disha Editorial",
-    cover: "https://dishaforindia.org/wp-content/uploads/2023/05/3-1.jpg",
+    cover: images.blogs[0],
     featured: true,
     content: [
       "Money is a skill, not a mystery. The earlier you learn to manage it, the more freedom you build for your future. Yet most students leave school without ever learning how to budget, save or invest.",
@@ -419,7 +404,7 @@ export const BLOGS: Blog[] = [
     readingTime: 7,
     date: "2025-04-29",
     author: "Disha Editorial",
-    cover: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-1.jpg",
+    cover: images.blogs[1],
     featured: true,
     content: [
       "Every great venture begins with a problem worth solving. Before writing a single line of code or spending a rupee, talk to the people who actually face the problem.",
@@ -437,7 +422,7 @@ export const BLOGS: Blog[] = [
     readingTime: 5,
     date: "2025-04-10",
     author: "Disha Editorial",
-    cover: "https://dishaforindia.org/wp-content/uploads/2023/05/2-1.jpg",
+    cover: images.blogs[2],
     featured: true,
     content: [
       "The pressure after Class 12 is real, but choosing a career isn't a life sentence — it's a direction you can refine.",
@@ -455,7 +440,7 @@ export const BLOGS: Blog[] = [
     readingTime: 4,
     date: "2025-03-22",
     author: "Disha Editorial",
-    cover: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-2.jpg",
+    cover: images.blogs[3],
     content: [
       "A little stress sharpens focus, but chronic stress drains your energy and clouds your thinking. The goal is balance, not zero pressure.",
       "Breathe before you study. Two minutes of slow breathing calms the nervous system and improves concentration.",
@@ -472,7 +457,7 @@ export const BLOGS: Blog[] = [
     readingTime: 6,
     date: "2025-02-15",
     author: "Disha Editorial",
-    cover: "https://dishaforindia.org/wp-content/uploads/2023/04/disha-3.jpg",
+    cover: images.blogs[4],
     content: [
       "One inspired teacher touches hundreds of students every year. Invest in teachers, and you multiply impact across an entire generation.",
       "Our Ignite program equips academicians with modern, student-centred methods and the wellbeing tools to sustain their energy.",
@@ -489,7 +474,7 @@ export const BLOGS: Blog[] = [
     readingTime: 5,
     date: "2025-01-28",
     author: "Disha Editorial",
-    cover: "https://dishaforindia.org/wp-content/uploads/2021/08/gallery-2-3.jpg",
+    cover: images.blogs[5],
     content: [
       "Climate action doesn't always start with policy — often it starts with a group of students deciding to act in their own community.",
       "Through Clean & Green India, youth volunteers have planted over 15,000 trees and brought waste segregation to dozens of communities.",
@@ -833,21 +818,21 @@ export type Mentor = {
 export const MENTORS: Mentor[] = [
   {
     name: "Aman Gupta",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-1.jpg",
+    photo: images.placeholders.avatar("Jaswinder Singh"),
     expertise: "Product Management & Startups",
     experience: "10+ years",
     tags: ["Entrepreneurship", "Technology"],
   },
   {
     name: "Neha Sharma",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-2.jpg",
+    photo: images.placeholders.avatar("Neha Sharma"),
     expertise: "Financial Planning & Wealth",
     experience: "8 years",
     tags: ["Financial Literacy"],
   },
   {
     name: "Vikram Singh",
-    photo: "https://dishaforindia.org/wp-content/uploads/2021/08/testimonial-2-3.jpg",
+    photo: images.placeholders.avatar("Mandeep Singh"),
     expertise: "UI/UX & Brand Identity",
     experience: "12 years",
     tags: ["Design", "Career Growth"],

@@ -1,3 +1,4 @@
+import { images } from "@/lib/images";
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
@@ -25,7 +26,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_1",
     name: "Arjun Mehta",
-    photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 1,
     streak: 12,
     monthlyScore: 450,
@@ -44,7 +45,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_2",
     name: "Priya Sharma",
-    photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 2,
     streak: 8,
     monthlyScore: 410,
@@ -63,7 +64,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_3",
     name: "Karan Johar",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 3,
     streak: 15,
     monthlyScore: 390,
@@ -82,7 +83,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_4",
     name: "Ananya Iyer",
-    photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 4,
     streak: 6,
     monthlyScore: 360,
@@ -101,7 +102,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_5",
     name: "Rohan Das",
-    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 5,
     streak: 9,
     monthlyScore: 340,
@@ -120,7 +121,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_6",
     name: "Meera Nair",
-    photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 6,
     streak: 4,
     monthlyScore: 320,
@@ -139,7 +140,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_7",
     name: "Sandeep Gill",
-    photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 7,
     streak: 11,
     monthlyScore: 310,
@@ -158,7 +159,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_8",
     name: "Aditya Sen",
-    photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 8,
     streak: 7,
     monthlyScore: 290,
@@ -177,7 +178,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_9",
     name: "Sneha Patel",
-    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 9,
     streak: 5,
     monthlyScore: 270,
@@ -196,7 +197,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_10",
     name: "Rahul Verma",
-    photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 10,
     streak: 10,
     monthlyScore: 260,
@@ -215,7 +216,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_11",
     name: "Divya Nair",
-    photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 11,
     streak: 3,
     monthlyScore: 240,
@@ -234,7 +235,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_12",
     name: "Vikram Malhotra",
-    photo: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 12,
     streak: 6,
     monthlyScore: 220,
@@ -253,7 +254,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_13",
     name: "Nehal Shah",
-    photo: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 13,
     streak: 2,
     monthlyScore: 200,
@@ -272,7 +273,7 @@ const VOLUNTEERS: VolunteerImpact[] = [
   {
     id: "v_14",
     name: "Jaspreet Kaur",
-    photo: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&auto=format&fit=crop&q=60",
+    photo: images.placeholders.avatar("Volunteer"),
     rank: 14,
     streak: 8,
     monthlyScore: 180,

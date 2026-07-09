@@ -3,10 +3,11 @@ import { Target, Eye, Flame, Quote, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
+import { images } from "@/lib/images";
+import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 import { Button } from "@/components/ui/button";
 import { ORG, STATS } from "@/lib/site-data";
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
-import hero3 from "@/assets/hero/hero-3.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -33,8 +34,8 @@ function About() {
 
       <section className="py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
-          <Reveal>
-            <img src={hero3} alt="Indian youth learning together" loading="lazy" className="w-full rounded-3xl border border-border object-cover shadow-card" />
+          <Reveal delay={0.1}>
+            <ImageWithFallback src={images.hero.about} alt="Indian youth learning together" loading="lazy" className="w-full rounded-3xl border border-border object-cover shadow-card" />
           </Reveal>
           <div>
             <SectionHeading

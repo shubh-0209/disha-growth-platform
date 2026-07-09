@@ -3,6 +3,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
+import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { GALLERY } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -42,7 +43,7 @@ function Gallery() {
                     "block w-full overflow-hidden rounded-2xl border border-border shadow-soft transition-all hover:-translate-y-1 hover:shadow-card",
                   )}
                 >
-                  <img src={src} alt={`Disha For India gallery ${i + 1}`} loading="lazy" className="w-full object-cover transition-transform duration-500 hover:scale-105" />
+                  <ImageWithFallback src={src} alt={`Disha For India gallery ${i + 1}`} loading="lazy" className="w-full object-cover transition-transform duration-500 hover:scale-105" />
                 </button>
               </Reveal>
             ))}
@@ -54,7 +55,7 @@ function Gallery() {
         <DialogContent className="max-w-4xl border-none bg-transparent p-0 shadow-none">
           {active && (
             <div className="relative">
-              <img src={active} alt="Gallery preview" className="max-h-[80vh] w-full rounded-2xl object-contain" />
+              <ImageWithFallback src={active} alt="Gallery preview" className="max-h-[80vh] w-full rounded-2xl object-contain" />
               <button onClick={() => setActive(null)} className="absolute -top-3 -right-3 grid h-9 w-9 place-items-center rounded-full bg-background text-foreground shadow-card">
                 <X className="h-5 w-5" />
               </button>

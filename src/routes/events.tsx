@@ -22,8 +22,15 @@ export const Route = createFileRoute("/events")({
 });
 
 function Events() {
-  const [tab, setTab] = useState<"upcoming" | "past">("upcoming");
-  const list = EVENTS.filter((e) => e.status === tab).sort((a, b) => +new Date(a.date) - +new Date(b.date));
+  const [tab, setTab] = useState<"upcoming" | "completed">("upcoming");
+  const list = EVENTS.filter((e) => {
+    const isFuture = e.date !== "Coming Soon" && new Date(e.date) > new Date();
+    const isUpcoming = e.status === "upcoming" || isFuture;
+    return tab === "upcoming" ? isUpcoming : !isUpcoming;
+  }).sort((a, b) => {
+    const getTime = (d: string) => d === "Coming Soon" ? Infinity : +new Date(d);
+    return getTime(a.date) - getTime(b.date);
+  });
 
   return (
     <>
@@ -35,7 +42,7 @@ function Events() {
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-10 inline-flex rounded-full border border-border bg-card p-1">
-            {(["upcoming", "past"] as const).map((t) => (
+            {(["upcoming", "completed"] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
@@ -58,7 +65,7 @@ function Events() {
                   <div className={cn("pl-12 md:pl-0", i % 2 === 0 ? "md:text-right" : "md:[direction:ltr]")}>
                     <div className="inline-flex flex-col gap-1">
                       <span className="text-sm font-bold text-primary">
-                        {new Date(e.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+                        {e.date === "Coming Soon" ? "Coming Soon" : new Date(e.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
                       </span>
                       <span className="flex items-center gap-1 text-xs text-muted-foreground md:justify-end">
                         <MapPin className="h-3.5 w-3.5" /> {e.location}
@@ -76,7 +83,7 @@ function Events() {
           {list.length === 0 && (
             <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center text-muted-foreground">
               <Calendar className="mx-auto mb-3 h-8 w-8 text-primary/40" />
-              No {tab} events right now. Check back soon!
+              {tab === "upcoming" ? "New events and initiatives are coming soon. Stay connected with Disha For India." : "No completed events right now. Check back soon!"}
             </div>
           )}
         </div>

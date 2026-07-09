@@ -116,12 +116,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/volunteer">Volunteer</Link>
-          </Button>
-          <Button asChild size="sm">
-            <Link to="/contact">Create an Impact</Link>
-          </Button>
+          <a href="https://app-disha-for-indiaa.vercel.app" className="btn-dashboard-cta">Dashboard</a>
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -152,9 +147,9 @@ export function Navbar() {
                 </SheetClose>
               ))}
               <SheetClose asChild>
-                <Button asChild className="mt-4 w-full">
-                  <Link to="/contact">Create an Impact</Link>
-                </Button>
+                <a href="https://app-disha-for-indiaa.vercel.app" className="btn-dashboard-cta mt-4">
+                  Dashboard
+                </a>
               </SheetClose>
             </div>
           </SheetContent>

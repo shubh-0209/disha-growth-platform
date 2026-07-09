@@ -28,6 +28,7 @@ import {
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
+import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -302,7 +303,7 @@ function LeaderboardPage() {
                         Rank #{v.rank}
                       </div>
                       <div className="flex items-center gap-4">
-                        <img src={v.photo} alt={v.name} className="h-14 w-14 rounded-full object-cover border border-border" />
+                        <ImageWithFallback src={v.photo} alt={v.name} className="h-14 w-14 rounded-full object-cover border border-border" />
                         <div>
                           <h3 className="font-display font-bold text-foreground">{v.name}</h3>
                           <span className="rounded-full bg-green-soft px-2 py-0.5 text-[10px] font-semibold text-green">
@@ -349,7 +350,7 @@ function LeaderboardPage() {
                   <div key={v.id} className="min-w-[85vw] snap-center rounded-3xl border border-border bg-card p-6 shadow-soft flex flex-col">
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-3">
-                        <img src={v.photo} alt={v.name} className="h-12 w-12 rounded-full object-cover border border-border" />
+                        <ImageWithFallback src={v.photo} alt={v.name} className="h-12 w-12 rounded-full object-cover border border-border" />
                         <div>
                           <h3 className="font-display font-bold text-foreground">{v.name}</h3>
                           <span className="rounded-full bg-green-soft px-2 py-0.5 text-[9px] font-semibold text-green">
@@ -672,7 +673,7 @@ function LeaderboardPage() {
                             </TableCell>
                             <TableCell>
                               <div className="flex items-center gap-3">
-                                <img src={v.photo} alt={v.name} className="h-8 w-8 rounded-full object-cover border border-border" />
+                                <ImageWithFallback src={v.photo} alt={v.name} className="h-8 w-8 rounded-full object-cover border border-border" />
                                 <span className="font-medium text-foreground">{v.name}</span>
                               </div>
                             </TableCell>

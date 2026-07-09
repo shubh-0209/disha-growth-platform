@@ -3,6 +3,7 @@ import { ArrowUpRight, Calendar, Clock, MapPin } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Program, DishaEvent, Blog, Story } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 
 export function ProgramCard({ program }: { program: Program }) {
   const Icon = (Icons[program.icon as keyof typeof Icons] || Icons.Sparkles) as React.ComponentType<{ className?: string }>;
@@ -35,12 +36,12 @@ export function EventCard({ event }: { event: DishaEvent }) {
   return (
     <article className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
       <div className="relative aspect-[16/10] overflow-hidden">
-        <img src={event.image} alt={event.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <ImageWithFallback src={event.image} alt={event.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <span className={cn(
           "absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold",
           event.status === "upcoming" ? "bg-primary text-primary-foreground" : "bg-ink/80 text-background",
         )}>
-          {event.status === "upcoming" ? "Upcoming" : "Past"}
+          {event.status === "upcoming" ? "Upcoming" : "Completed"}
         </span>
       </div>
       <div className="p-5">
@@ -48,7 +49,7 @@ export function EventCard({ event }: { event: DishaEvent }) {
         <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground">{event.title}</h3>
         <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{event.description}</p>
         <div className="mt-4 flex flex-wrap gap-3 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {new Date(event.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
+          <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {event.date === "Coming Soon" ? "Coming Soon" : new Date(event.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
           <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {event.location}</span>
         </div>
       </div>
@@ -64,7 +65,7 @@ export function BlogCard({ blog }: { blog: Blog }) {
       className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-card"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
-        <img src={blog.cover} alt={blog.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <ImageWithFallback src={blog.cover} alt={blog.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
       </div>
       <div className="flex flex-1 flex-col p-5">
         <span className="w-fit rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{blog.category}</span>
@@ -84,7 +85,7 @@ export function StoryCard({ story }: { story: Story }) {
   return (
     <article className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
       <div className="relative aspect-[4/3] overflow-hidden">
-        <img src={story.photo} alt={story.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <ImageWithFallback src={story.photo} alt={story.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <span className="absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold text-primary">{story.type}</span>
       </div>
       <div className="p-5">
