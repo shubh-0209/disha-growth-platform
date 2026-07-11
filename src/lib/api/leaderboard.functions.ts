@@ -325,98 +325,53 @@ export const getLeaderboardData = async (data: z.infer<typeof LeaderboardInputSc
   try {
     // Attempt to fetch from backend
     const res = await publicApi.getTopLeaderboard({ limit: 50 });
-    let fetchedLeaderboard = res.data?.leaderboard || [];
+    let fetchedLeaderboard = res.data?.data?.leaderboard || res.data?.leaderboard || [];
 
-    if (fetchedLeaderboard.length > 0) {
-      // Map backend data to frontend format
-      let filtered = fetchedLeaderboard.map((v: any) => ({
-        id: v.id || `v_${v.rank}`,
-        name: v.name,
-        photo: v.avatar || images.placeholders.avatar("Volunteer"),
-        rank: v.rank,
-        streak: 0,
-        monthlyScore: v.points,
-        yearlyScore: v.points,
-        allTimeScore: v.points,
-        programsCompleted: 0,
-        hours: 0,
-        badge: v.level || "Beginner",
-        city: v.location?.split(',')[0]?.trim() || "Unknown",
-        state: v.location?.split(',')[1]?.trim() || "Unknown",
-        college: "Unknown",
-        category: "General",
-        tagline: "",
-        trend: "stable",
-      }));
+    // Map backend data to frontend format
+    let filtered = fetchedLeaderboard.map((v: any) => ({
+      id: v.id || `v_${v.rank}`,
+      name: v.name,
+      photo: v.avatar || "https://api.dicebear.com/7.x/avataaars/svg?seed=Volunteer",
+      rank: v.rank,
+      streak: 0,
+      monthlyScore: v.points,
+      yearlyScore: v.points,
+      allTimeScore: v.points,
+      programsCompleted: 0,
+      hours: 0,
+      badge: v.level || "Beginner",
+      city: v.location?.split(',')[0]?.trim() || "Unknown",
+      state: v.location?.split(',')[1]?.trim() || "Unknown",
+      college: "Unknown",
+      category: "General",
+      tagline: "",
+      trend: "stable",
+    }));
 
-      // Apply frontend filtering on fetched data
-      if (search) {
-        const q = search.toLowerCase();
-        filtered = filtered.filter((v: any) => v.name.toLowerCase().includes(q));
-      }
-
-      if (state && state !== "All") {
-        filtered = filtered.filter((v: any) => v.state === state);
-      }
-
-      const totalCount = filtered.length;
-      const offset = (page - 1) * limit;
-      const paginated = filtered.slice(offset, offset + limit);
-
-      return {
-        data: paginated,
-        totalCount,
-        totalPages: Math.ceil(totalCount / limit),
-        currentPage: page,
-      };
+    // Apply frontend filtering on fetched data
+    if (search) {
+      const q = search.toLowerCase();
+      filtered = filtered.filter((v: any) => v.name.toLowerCase().includes(q));
     }
+
+    if (state && state !== "All") {
+      filtered = filtered.filter((v: any) => v.state === state);
+    }
+
+    const totalCount = filtered.length;
+    const offset = (page - 1) * limit;
+    const paginated = filtered.slice(offset, offset + limit);
+
+    return {
+      data: paginated,
+      totalCount,
+      totalPages: Math.ceil(totalCount / limit),
+      currentPage: page,
+    };
   } catch (error) {
-    console.error("Failed to fetch leaderboard data, falling back to mock", error);
+    console.error("Failed to fetch leaderboard data, throwing error", error);
+    throw error;
   }
 
-  // Fallback to mock data logic
-  let filtered = [...VOLUNTEERS];
 
-  if (search) {
-    const q = search.toLowerCase();
-    filtered = filtered.filter((v) => v.name.toLowerCase().includes(q));
-  }
-
-  if (state && state !== "All") {
-    filtered = filtered.filter((v) => v.state === state);
-  }
-
-  if (city && city !== "All") {
-    filtered = filtered.filter((v) => v.city === city);
-  }
-
-  if (college && college !== "All") {
-    filtered = filtered.filter((v) => v.college === college);
-  }
-
-  if (category && category !== "All") {
-    filtered = filtered.filter((v) => v.category === category);
-  }
-
-  filtered.sort((a, b) => {
-    if (timeframe === "monthly") return b.monthlyScore - a.monthlyScore;
-    if (timeframe === "yearly") return b.yearlyScore - a.yearlyScore;
-    return b.allTimeScore - a.allTimeScore;
-  });
-
-  filtered = filtered.map((v, i) => ({
-    ...v,
-    rank: i + 1,
-  }));
-
-  const totalCount = filtered.length;
-  const offset = (page - 1) * limit;
-  const paginated = filtered.slice(offset, offset + limit);
-
-  return {
-    data: paginated,
-    totalCount,
-    totalPages: Math.ceil(totalCount / limit),
-    currentPage: page,
-  };
 };
