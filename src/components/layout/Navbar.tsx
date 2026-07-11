@@ -219,7 +219,7 @@ export function Navbar() {
               <Menu className={cn("h-5 w-5", isScrolled ? "text-foreground" : "text-foreground/80")} />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[88vw] max-w-sm overflow-y-auto p-0">
+          <SheetContent side="right" hideClose className="w-[88vw] max-w-sm overflow-y-auto p-0">
             <div className="flex items-center justify-between border-b border-border px-5 py-4 bg-background">
               <Logo isScrolled={true} />
               <SheetClose asChild>
