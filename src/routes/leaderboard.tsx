@@ -118,9 +118,9 @@ function LeaderboardPage() {
   // React Query Fetching List Data
   const { data: listResult, isLoading: listLoading, isError: listError } = useQuery({
     queryKey: ["leaderboardData", search, selectedState, selectedCity, selectedCollege, selectedCategory, timeframe, page],
-    queryFn: () =>
-      getLeaderboardData({
-        data: {
+    queryFn: async () => {
+      try {
+        return await getLeaderboardData({
           search: search || undefined,
           state: selectedState === "All" ? undefined : selectedState,
           city: selectedCity === "All" ? undefined : selectedCity,
@@ -129,8 +129,12 @@ function LeaderboardPage() {
           timeframe,
           page,
           limit,
-        },
-      }),
+        });
+      } catch (err) {
+        console.error("React Query - Leaderboard Data Error:", err);
+        throw err;
+      }
+    },
   });
 
   // Mock logged-in user profile (for badge/milestones display evaluation)
