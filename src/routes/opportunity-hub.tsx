@@ -56,11 +56,11 @@ const TYPE_ICON: Record<OpportunityHubType, React.ComponentType<{ className?: st
   Hackathon: Code,
 };
 
-const TYPE_ACCENT: Record<OpportunityHubType, string> = {
-  Internship: "bg-primary-soft text-primary",
-  Workshop: "bg-primary-soft text-primary",
-  Competition: "bg-green-soft text-green",
-  Hackathon: "bg-primary-soft text-primary",
+const TYPE_ACCENT: Record<OpportunityHubType, { bg: string; text: string }> = {
+  Internship: { bg: "linear-gradient(135deg, #DBEAFE, #BFDBFE)", text: "#063B8C" },
+  Workshop: { bg: "linear-gradient(135deg, #DBEAFE, #BFDBFE)", text: "#063B8C" },
+  Competition: { bg: "linear-gradient(135deg, #DBEAFE, #BFDBFE)", text: "#063B8C" },
+  Hackathon: { bg: "linear-gradient(135deg, #DBEAFE, #BFDBFE)", text: "#063B8C" },
 };
 
 function formatDeadline(date: string) {
@@ -114,8 +114,11 @@ function OpportunityHub() {
               return (
                 <Reveal key={t}>
                   <div className="rounded-2xl border border-border bg-card p-4 shadow-soft">
-                    <span className={cn("grid h-9 w-9 place-items-center rounded-xl", TYPE_ACCENT[t])}>
-                      <Icon className="h-4 w-4" />
+                    <span 
+                      className="grid h-10 w-10 place-items-center rounded-xl shadow-sm"
+                      style={{ background: TYPE_ACCENT[t].bg, color: TYPE_ACCENT[t].text }}
+                    >
+                      <Icon className="h-5 w-5" />
                     </span>
                     <p className="mt-2 text-xl font-bold text-foreground">{counts[t]}</p>
                     <p className="text-xs text-muted-foreground">{t}s</p>
@@ -211,12 +214,18 @@ function OpportunityCard({ opportunity: o }: { opportunity: HubOpportunity }) {
   const Icon = TYPE_ICON[o.type];
 
   return (
-    <div className="flex h-full flex-col rounded-3xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
+    <div className="group flex h-full flex-col rounded-3xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-[6px] hover:border-[#1E5BB8]/30 hover:shadow-[0_20px_40px_rgba(6,59,140,0.12)]">
       <div className="flex items-start justify-between gap-3">
-        <span className={cn("grid h-11 w-11 shrink-0 place-items-center rounded-2xl", TYPE_ACCENT[o.type])}>
-          <Icon className="h-5 w-5" />
+        <span 
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl shadow-sm"
+          style={{ background: TYPE_ACCENT[o.type].bg, color: TYPE_ACCENT[o.type].text }}
+        >
+          <Icon className="h-6 w-6" />
         </span>
-        <span className="rounded-full bg-secondary px-2.5 py-0.5 text-[11px] font-semibold text-foreground/70">
+        <span 
+          className="rounded-full px-3 py-1 text-[11px] font-semibold text-white shadow-sm"
+          style={{ background: "linear-gradient(135deg, #1E5BB8, #60A5FA)" }}
+        >
           {o.type}
         </span>
       </div>
@@ -226,7 +235,10 @@ function OpportunityCard({ opportunity: o }: { opportunity: HubOpportunity }) {
       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{o.description}</p>
 
       {o.perk && (
-        <p className="mt-3 rounded-xl bg-secondary/60 px-3 py-2 text-xs font-semibold text-foreground/80">
+        <p 
+          className="mt-4 rounded-xl px-4 py-2.5 text-xs font-semibold"
+          style={{ background: "linear-gradient(135deg, #DBEAFE, #BFDBFE)", color: "#063B8C" }}
+        >
           {o.perk}
         </p>
       )}
@@ -241,14 +253,16 @@ function OpportunityCard({ opportunity: o }: { opportunity: HubOpportunity }) {
       </div>
 
       <Button
-        className="mt-5 w-full"
+        className="mt-6 w-full gap-2 border-0 shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:opacity-95"
+        style={{ background: "linear-gradient(135deg, #063B8C, #2563EB)", color: "white" }}
         onClick={() =>
           toast.success("Interest registered!", {
             description: `We'll share details for "${o.title}" soon.`,
           })
         }
       >
-        Apply Now <ArrowRight className="ml-1 h-4 w-4" />
+        <span className="text-[15px] font-semibold tracking-wide">Apply Now</span> 
+        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Button>
     </div>
   );
