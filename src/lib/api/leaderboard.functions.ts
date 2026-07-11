@@ -2,6 +2,24 @@ import { images } from "@/lib/images";
 import { z } from "zod";
 import { publicApi } from "@/lib/api";
 
+export interface BackendLeaderboardItem {
+  id: string;
+  rank: number;
+  name: string;
+  avatar: string;
+  points: number;
+  level: string;
+  impactScore: number;
+  location: string;
+}
+
+export interface BackendStatsResponse {
+  volunteers: number;
+  programs: number;
+  totalHours: number;
+  totalPoints: number;
+}
+
 export interface VolunteerImpact {
   id: string;
   name: string;
@@ -289,8 +307,9 @@ export const getLeaderboardStats = async () => {
     const { data } = await publicApi.getImpactAnalytics();
     return {
       activeVolunteers: data?.volunteers || 842,
-      totalHours: data?.totalHours || 12450,
       programsCompleted: data?.programs || 315,
+      totalHours: data?.totalHours || 12450,
+      communityImpactScore: 98,
       livesImpacted: data?.totalPoints || 25000,
       statesCovered: 18,
     };
@@ -299,10 +318,11 @@ export const getLeaderboardStats = async () => {
     // Fallback to static data
     return {
       activeVolunteers: 842,
-      totalHours: 12450,
       programsCompleted: 315,
-      statesCovered: 18,
+      totalHours: 12450,
+      communityImpactScore: 98,
       livesImpacted: 25000,
+      statesCovered: 18,
     };
   }
 };
@@ -325,10 +345,11 @@ export const getLeaderboardData = async (data: z.infer<typeof LeaderboardInputSc
   try {
     // Attempt to fetch from backend
     const res = await publicApi.getTopLeaderboard({ limit: 50 });
+    console.log("Leaderboard normalized:", res.data);
     let fetchedLeaderboard = res.data?.data?.leaderboard || res.data?.leaderboard || [];
 
     // Map backend data to frontend format
-    let filtered = fetchedLeaderboard.map((v: any) => ({
+    let filtered = fetchedLeaderboard.map((v: BackendLeaderboardItem) => ({
       id: v.id || `v_${v.rank}`,
       name: v.name,
       photo: v.avatar || "https://api.dicebear.com/7.x/avataaars/svg?seed=Volunteer",
@@ -340,12 +361,13 @@ export const getLeaderboardData = async (data: z.infer<typeof LeaderboardInputSc
       programsCompleted: 0,
       hours: 0,
       badge: v.level || "Beginner",
-      city: v.location?.split(',')[0]?.trim() || "Unknown",
-      state: v.location?.split(',')[1]?.trim() || "Unknown",
+      city: v.location || "Unknown",
+      state: "Unknown",
       college: "Unknown",
       category: "General",
       tagline: "",
       trend: "stable",
+      impactScore: v.impactScore || 0,
     }));
 
     // Apply frontend filtering on fetched data
