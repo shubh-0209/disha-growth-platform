@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { supabase } from './supabase-client';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1';
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://app-disha-for-indiaa.vercel.app/api/v1';
 
 const api = axios.create({
   baseURL: BASE_URL,
