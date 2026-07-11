@@ -1,6 +1,6 @@
 import { images } from "@/lib/images";
-import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { publicApi } from "@/lib/api";
 
 export interface VolunteerImpact {
   id: string;
@@ -13,11 +13,11 @@ export interface VolunteerImpact {
   allTimeScore: number;
   programsCompleted: number;
   hours: number;
-  badge: "National Inspiration" | "State Leader" | "Mentor" | "Local Impact Maker" | "Community Contributor";
+  badge: "National Inspiration" | "State Leader" | "Mentor" | "Local Impact Maker" | "Community Contributor" | string;
   city: string;
   state: string;
   college: string;
-  category: "Financial Literacy" | "Entrepreneurship" | "Wellness" | "Clean & Green" | "Education" | "Community Development";
+  category: "Financial Literacy" | "Entrepreneurship" | "Wellness" | "Clean & Green" | "Education" | "Community Development" | string;
   tagline: string;
   trend: "rising" | "falling" | "stable";
 }
@@ -106,35 +106,27 @@ const VOLUNTEERS: VolunteerImpact[] = [
     rank: 5,
     streak: 9,
     monthlyScore: 340,
-    yearlyScore: 3600,
-    allTimeScore: 7400,
-    programsCompleted: 11,
-    hours: 150,
+    yearlyScore: 3500,
+    allTimeScore: 7100,
+    programsCompleted: 10,
+    hours: 145,
     badge: "State Leader",
     city: "Kolkata",
     state: "West Bengal",
     college: "Jadavpur University",
-    category: "Community Development",
-    tagline: "Lifting communities, hand in hand.",
-    trend: "stable",
+    category: "Wellness",
+    tagline: "Spreading health and happiness.",
+    trend: "falling",
   },
   {
     id: "v_6",
-    name: "Meera Nair",
+    name: "Sneha Reddy",
     photo: images.placeholders.avatar("Volunteer"),
     rank: 6,
-    streak: 4,
-    monthlyScore: 320,
-    yearlyScore: 3300,
+    streak: 14,
+    monthlyScore: 330,
+    yearlyScore: 3400,
     allTimeScore: 6800,
-    programsCompleted: 10,
-    hours: 140,
-    badge: "Mentor",
-    city: "Chennai",
-    state: "Tamil Nadu",
-    college: "Madras Christian College",
-    category: "Wellness",
-    tagline: "Resilience coaching for stress-free living.",
     trend: "falling",
   },
   {
@@ -291,17 +283,29 @@ const VOLUNTEERS: VolunteerImpact[] = [
   },
 ];
 
-// Server function to get leaderboard analytics/stats
-export const getLeaderboardStats = createServerFn({ method: "GET" })
-  .handler(async () => {
+// API function to get leaderboard analytics/stats
+export const getLeaderboardStats = async () => {
+  try {
+    const { data } = await publicApi.getImpactAnalytics();
     return {
-      activeVolunteers: 1200,
-      totalHours: 14800,
-      programsCompleted: 450,
-      communityImpactScore: 88,
+      activeVolunteers: data?.volunteers || 842,
+      totalHours: data?.totalHours || 12450,
+      programsCompleted: data?.programs || 315,
+      livesImpacted: data?.totalPoints || 25000,
+      statesCovered: 18,
+    };
+  } catch (error) {
+    console.error("Failed to fetch leaderboard stats", error);
+    // Fallback to static data
+    return {
+      activeVolunteers: 842,
+      totalHours: 12450,
+      programsCompleted: 315,
+      statesCovered: 18,
       livesImpacted: 25000,
     };
-  });
+  }
+};
 
 const LeaderboardInputSchema = z.object({
   search: z.string().optional(),
@@ -314,55 +318,105 @@ const LeaderboardInputSchema = z.object({
   limit: z.number().default(10),
 });
 
-export const getLeaderboardData = createServerFn({ method: "POST" })
-  .inputValidator(LeaderboardInputSchema)
-  .handler(async ({ data }) => {
-    const { search, state, city, college, category, timeframe, page, limit } = data;
+export const getLeaderboardData = async (data: z.infer<typeof LeaderboardInputSchema>) => {
+  const parsedData = LeaderboardInputSchema.parse(data);
+  const { search, state, city, college, category, timeframe, page, limit } = parsedData;
 
-    let filtered = [...VOLUNTEERS];
+  try {
+    // Attempt to fetch from backend
+    const res = await publicApi.getTopLeaderboard({ limit: 50 });
+    let fetchedLeaderboard = res.data?.leaderboard || [];
 
-    if (search) {
-      const q = search.toLowerCase();
-      filtered = filtered.filter((v) => v.name.toLowerCase().includes(q));
+    if (fetchedLeaderboard.length > 0) {
+      // Map backend data to frontend format
+      let filtered = fetchedLeaderboard.map((v: any) => ({
+        id: v.id || `v_${v.rank}`,
+        name: v.name,
+        photo: v.avatar || images.placeholders.avatar("Volunteer"),
+        rank: v.rank,
+        streak: 0,
+        monthlyScore: v.points,
+        yearlyScore: v.points,
+        allTimeScore: v.points,
+        programsCompleted: 0,
+        hours: 0,
+        badge: v.level || "Beginner",
+        city: v.location?.split(',')[0]?.trim() || "Unknown",
+        state: v.location?.split(',')[1]?.trim() || "Unknown",
+        college: "Unknown",
+        category: "General",
+        tagline: "",
+        trend: "stable",
+      }));
+
+      // Apply frontend filtering on fetched data
+      if (search) {
+        const q = search.toLowerCase();
+        filtered = filtered.filter((v: any) => v.name.toLowerCase().includes(q));
+      }
+
+      if (state && state !== "All") {
+        filtered = filtered.filter((v: any) => v.state === state);
+      }
+
+      const totalCount = filtered.length;
+      const offset = (page - 1) * limit;
+      const paginated = filtered.slice(offset, offset + limit);
+
+      return {
+        data: paginated,
+        totalCount,
+        totalPages: Math.ceil(totalCount / limit),
+        currentPage: page,
+      };
     }
+  } catch (error) {
+    console.error("Failed to fetch leaderboard data, falling back to mock", error);
+  }
 
-    if (state && state !== "All") {
-      filtered = filtered.filter((v) => v.state === state);
-    }
+  // Fallback to mock data logic
+  let filtered = [...VOLUNTEERS];
 
-    if (city && city !== "All") {
-      filtered = filtered.filter((v) => v.city === city);
-    }
+  if (search) {
+    const q = search.toLowerCase();
+    filtered = filtered.filter((v) => v.name.toLowerCase().includes(q));
+  }
 
-    if (college && college !== "All") {
-      filtered = filtered.filter((v) => v.college === college);
-    }
+  if (state && state !== "All") {
+    filtered = filtered.filter((v) => v.state === state);
+  }
 
-    if (category && category !== "All") {
-      filtered = filtered.filter((v) => v.category === category);
-    }
+  if (city && city !== "All") {
+    filtered = filtered.filter((v) => v.city === city);
+  }
 
-    // Sort by selected timeframe score
-    filtered.sort((a, b) => {
-      if (timeframe === "monthly") return b.monthlyScore - a.monthlyScore;
-      if (timeframe === "yearly") return b.yearlyScore - a.yearlyScore;
-      return b.allTimeScore - a.allTimeScore;
-    });
+  if (college && college !== "All") {
+    filtered = filtered.filter((v) => v.college === college);
+  }
 
-    // Update ranks based on sorted order
-    filtered = filtered.map((v, i) => ({
-      ...v,
-      rank: i + 1,
-    }));
+  if (category && category !== "All") {
+    filtered = filtered.filter((v) => v.category === category);
+  }
 
-    const totalCount = filtered.length;
-    const offset = (page - 1) * limit;
-    const paginated = filtered.slice(offset, offset + limit);
-
-    return {
-      data: paginated,
-      totalCount,
-      totalPages: Math.ceil(totalCount / limit),
-      currentPage: page,
-    };
+  filtered.sort((a, b) => {
+    if (timeframe === "monthly") return b.monthlyScore - a.monthlyScore;
+    if (timeframe === "yearly") return b.yearlyScore - a.yearlyScore;
+    return b.allTimeScore - a.allTimeScore;
   });
+
+  filtered = filtered.map((v, i) => ({
+    ...v,
+    rank: i + 1,
+  }));
+
+  const totalCount = filtered.length;
+  const offset = (page - 1) * limit;
+  const paginated = filtered.slice(offset, offset + limit);
+
+  return {
+    data: paginated,
+    totalCount,
+    totalPages: Math.ceil(totalCount / limit),
+    currentPage: page,
+  };
+};

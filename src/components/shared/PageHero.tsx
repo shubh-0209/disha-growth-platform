@@ -13,7 +13,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden border-b border-border bg-background py-16 text-center md:py-24">
+    <div className="relative overflow-hidden border-b border-border bg-background py-10 lg:py-16 text-center md:py-24">
       <div className="relative z-10 mx-auto max-w-3xl px-5">
         <Reveal>
           {eyebrow && (
@@ -21,7 +21,7 @@ export function PageHero({
               {eyebrow}
             </span>
           )}
-          <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.05] text-foreground sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-bold leading-[1.05] text-foreground">
             {title}
           </h1>
           {description && (

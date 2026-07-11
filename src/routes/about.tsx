@@ -32,7 +32,7 @@ function About() {
         description="Disha For India Foundation & Educational Trust is a youth-first movement skilling India's next generation for employability, entrepreneurship and a life of purpose."
       />
 
-      <section className="py-20">
+      <section className="py-12 lg:py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
           <Reveal delay={0.1}>
             <ImageWithFallback src={images.hero.about} alt="Indian youth learning together" loading="lazy" className="w-full rounded-3xl border border-border object-cover shadow-card" />
@@ -61,7 +61,7 @@ function About() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-gradient-section py-20">
+      <section className="border-y border-border bg-gradient-section py-12 lg:py-20">
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid gap-6 md:grid-cols-3">
             {[
@@ -83,7 +83,7 @@ function About() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
             {STATS.map((s, i) => (

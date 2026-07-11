@@ -92,7 +92,7 @@ function BlogPost() {
         </div>
       </div>
 
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <h2 className="mb-8 text-2xl font-bold text-foreground">Related reading</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -49,7 +49,7 @@ function ProgramDetail() {
   return (
     <>
       <PageHero eyebrow={program.tagline} title={program.title} description={program.description} />
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
             <span className={`grid h-14 w-14 place-items-center rounded-2xl ${isGreen ? "bg-success-soft text-success" : "bg-primary-soft text-primary"}`}>

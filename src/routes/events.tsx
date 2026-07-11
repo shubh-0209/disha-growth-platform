@@ -39,7 +39,7 @@ function Events() {
         title="Where learning meets community"
         description="Discover what's coming up and revisit the moments that shaped our journey."
       />
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-10 inline-flex rounded-full border border-border bg-card p-1">
             {(["upcoming", "completed"] as const).map((t) => (

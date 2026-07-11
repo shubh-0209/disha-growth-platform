@@ -106,7 +106,7 @@ function OpportunityHub() {
         description="Internships, workshops, competitions and hackathons — curated for India's students. Search, filter and apply."
       />
 
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {(Object.keys(counts) as OpportunityHubType[]).map((t) => {
@@ -177,7 +177,7 @@ function OpportunityHub() {
           </p>
 
           {filtered.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-border bg-secondary/40 px-6 py-16 text-center">
+            <div className="rounded-3xl border border-dashed border-border bg-secondary/40 px-6 py-10 lg:py-16 text-center">
               <p className="text-lg font-semibold text-foreground">No opportunities match your filters</p>
               <p className="mt-2 text-sm text-muted-foreground">Try a different search term or reset your filters.</p>
               <Button

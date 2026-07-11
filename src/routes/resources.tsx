@@ -42,7 +42,7 @@ function Resources() {
         description="Free, practical learning resources across the skills that matter — plus a live feed of opportunities to apply what you learn."
       />
 
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-8 flex flex-wrap gap-2">
             {CATS.map((c) => (
@@ -85,7 +85,7 @@ function Resources() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-gradient-section py-16">
+      <section className="border-t border-border bg-gradient-section py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Opportunity Center"

@@ -1,4 +1,8 @@
 import hero1 from "@/assets/hero/hero-1.jpg";
+import hero2 from "@/assets/hero/hero-2.jpg";
+import hero3 from "@/assets/hero/hero-3.jpg";
+import hero4 from "@/assets/hero/hero-4.jpg";
+import hero5 from "@/assets/hero/hero-5.jpg";
 
 export const fallbackImage = hero1;
 
@@ -50,9 +54,11 @@ export const images = {
     "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800",
   ],
   stories: [
-    "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800",
-    "https://images.unsplash.com/photo-1524508762026-dd0a4421b585?q=80&w=800",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800",
+    hero1,
+    hero2,
+    hero3,
+    hero4,
+    hero5,
   ],
   placeholders: {
     avatar: (name: string) => `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=150`,

@@ -32,7 +32,7 @@ function Gallery() {
         title="Moments from our journey"
         description="A glimpse into the workshops, drives, events and smiles that make up the Disha For India story."
       />
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="columns-2 gap-4 md:columns-3 lg:columns-4 [&>*]:mb-4">
             {GALLERY.map((src, i) => (

@@ -44,7 +44,7 @@ function Contact() {
         title="Let's create an impact together"
         description="Whether you'd like to volunteer, partner, or learn more — we'd love to hear from you."
       />
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1fr_1.2fr]">
           <Reveal>
             <div className="space-y-4">

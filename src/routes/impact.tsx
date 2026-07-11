@@ -44,7 +44,7 @@ function Impact() {
         description="We believe in transparency. Here's the real, growing footprint of Disha For India across students, communities and the country."
       />
 
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
             {KPIS.map((k, i) => (

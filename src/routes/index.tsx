@@ -4,6 +4,7 @@ import { ArrowRight, Calendar, Compass, GraduationCap, Heart, Sparkles, Star } f
 import { useState, useEffect } from "react";
 import { images } from "@/lib/images";
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
+import { cn } from "@/lib/utils";
 
 const heroImages = [
   { src: images.hero.home[0], alt: "Indian children smiling in a rural classroom" },
@@ -40,11 +41,11 @@ function HeroCarousel() {
   }, []);
 
   useEffect(() => {
-    if (isHovered || isReducedMotion) return;
+    if (isHovered || isReducedMotion || !heroImages?.length) return;
     
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 2500);
     
     return () => clearInterval(timer);
   }, [isHovered, isReducedMotion]);
@@ -70,7 +71,7 @@ function HeroCarousel() {
 
   return (
     <div 
-      className="group relative h-full min-h-[400px] w-full overflow-hidden rounded-[2rem] border border-border shadow-card bg-muted/20"
+      className="group relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[500px] overflow-hidden rounded-[2rem] border border-border shadow-card bg-muted/20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
@@ -81,13 +82,22 @@ function HeroCarousel() {
       aria-label="Image Carousel"
       aria-roledescription="carousel"
     >
-      <ImageWithFallback
-        key={currentSlide}
-        src={heroImages[currentSlide].src}
-        alt={heroImages[currentSlide].alt}
-        loading="eager"
-        className="h-full w-full object-cover"
-      />
+      {heroImages.map((image, index) => {
+        if (!image?.src) return null;
+        return (
+          <ImageWithFallback
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            loading={index === 0 ? "eager" : "lazy"}
+            wrapperClassName={cn(
+              "absolute inset-0 h-full w-full transition-opacity duration-1000",
+              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+            )}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        );
+      })}
       
       {/* Desktop Arrows */}
       <button 
@@ -171,7 +181,7 @@ function Home() {
       {/* SECTION 1 — Hero */}
       <section className="relative overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0 bg-grid" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-2 lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-8 pb-16 lg:pt-12 lg:pb-24 lg:grid-cols-2">
           <div>
             <Reveal>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-primary">
@@ -179,10 +189,14 @@ function Home() {
               </span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-                Empowering India's Youth Through{" "}
-                <span className="text-primary">Skills</span>,{" "}
-                <span className="text-green">Education</span> and Opportunities
+              <h1 className="mt-5 flex max-w-[600px] flex-col font-extrabold leading-[1.1] tracking-tight text-foreground">
+                <span>Empowering</span>
+                <span>India's Youth</span>
+                <span>Through</span>
+                <span>
+                  <span className="text-primary">Skills</span>, <span className="text-green">Education</span>
+                </span>
+                <span>and Opportunities</span>
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
@@ -193,11 +207,11 @@ function Home() {
               </p>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg">
+              <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+                <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link to="/programs">Explore Programs <ArrowRight className="ml-1 h-4 w-4" /></Link>
                 </Button>
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <Link to="/volunteer">Become a Volunteer</Link>
                 </Button>
               </div>
@@ -228,10 +242,10 @@ function Home() {
       </section>
 
       {/* SECTION 2 — Impact Statistics */}
-      <section className="border-y border-border bg-gradient-section py-16 text-foreground">
+      <section className="border-y border-border bg-gradient-section py-10 lg:py-16 text-foreground">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mb-10 text-center">
-            <h2 className="text-2xl font-bold text-ink sm:text-3xl">Our impact, in numbers</h2>
+            <h2 className="font-bold text-ink">Our impact, in numbers</h2>
             <p className="mt-2 text-muted-foreground">Fingerprints on the lives we touch never fade.</p>
           </Reveal>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
@@ -248,7 +262,7 @@ function Home() {
       </section>
 
       {/* SECTION 5 — Programs */}
-      <section className="py-20">
+      <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Our Programs"
@@ -266,7 +280,7 @@ function Home() {
       </section>
 
       {/* SECTION 6 — Success Stories */}
-      <section className="border-y border-border bg-gradient-section py-20">
+      <section className="border-y border-border bg-gradient-section py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Success Stories"
@@ -289,7 +303,7 @@ function Home() {
       </section>
 
       {/* SECTION 7 — Upcoming Events */}
-      <section className="py-20">
+      <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Upcoming Events"
@@ -318,7 +332,7 @@ function Home() {
       </section>
 
       {/* SECTION 8 — Latest Blogs */}
-      <section className="border-y border-border bg-gradient-section py-20">
+      <section className="border-y border-border bg-gradient-section py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="From the Blog"
@@ -341,7 +355,7 @@ function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20">
+      <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
             eyebrow="Testimonials"
@@ -378,22 +392,19 @@ function Home() {
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-hero px-6 py-16 text-center text-foreground sm:px-12">
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-hero px-6 py-10 lg:py-16 text-center text-foreground sm:px-12">
               <div className="relative mx-auto max-w-2xl">
                 <Compass className="mx-auto h-10 w-10 text-primary" />
-                <h2 className="mt-5 text-3xl font-bold text-ink sm:text-4xl">
+                <h2 className="mt-5 font-bold text-ink">
                   Invest your time. Uplift a life.
                 </h2>
                 <p className="mt-4 text-muted-foreground">
                   Join 1,200+ volunteers making a powerful contribution to India's
                   youth. Teach, mentor, design or build — there's a role for you.
                 </p>
-                <div className="mt-8 flex justify-center">
-                  <Button asChild size="lg">
-                    <Link to="/volunteer">Become a Volunteer</Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="border-primary/20 bg-card hover:bg-primary-soft">
-                    <Link to="/mentors">Become a Mentor</Link>
+                <div className="mt-8 flex justify-center gap-4">
+                  <Button asChild size="lg" className="rounded-full px-8">
+                    <a href="https://app-disha-for-indiaa.vercel.app/signup">Become a Volunteer</a>
                   </Button>
                 </div>
               </div>

@@ -276,7 +276,7 @@ function LeaderboardPage() {
       </section>
 
       {/* MAIN CONTENT SECTION */}
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
 
           {/* TOP CONTRIBUTORS CARDS */}
@@ -288,7 +288,7 @@ function LeaderboardPage() {
             </div>
           ) : listResult?.data && listResult.data.length > 0 ? (
             <div className="mb-12">
-              <h2 className="mb-6 font-display text-2xl font-bold text-foreground">Top Contributors</h2>
+              <h2 className="mb-6 font-display font-bold text-foreground">Top Contributors</h2>
               
               {/* Desktop and Tablet grid */}
               <div className="hidden sm:grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -622,7 +622,7 @@ function LeaderboardPage() {
                 </div>
               ) : !listResult?.data || listResult.data.length === 0 ? (
                 /* EMPTY STATE (Positive encouragement) */
-                <div className="py-16 text-center max-w-sm mx-auto">
+                <div className="py-10 lg:py-16 text-center max-w-sm mx-auto">
                   <Compass className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                   <h4 className="font-display font-bold text-lg text-foreground">No matches found</h4>
                   <p className="mt-2 text-sm text-muted-foreground">

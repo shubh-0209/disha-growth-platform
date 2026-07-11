@@ -256,7 +256,7 @@ export const STORIES: Story[] = [
     headline: "Guided 12 first-generation founders",
     summary:
       "A seasoned product leader, Rahul volunteers with our entrepreneurship programs, guiding 12 aspiring student founders from idea to launch.",
-    photo: images.placeholders.avatar("Rahul Verma"),
+    photo: images.stories[2],
   },
   {
     id: "village",
@@ -265,7 +265,7 @@ export const STORIES: Story[] = [
     headline: "A village goes plastic-free",
     summary:
       "Through the Clean & Green India drive, Rampur achieved waste segregation across 300 households and planted 1,200 trees.",
-    photo: images.gallery[0],
+    photo: images.stories[1],
   },
   {
     id: "sana",

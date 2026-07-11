@@ -33,7 +33,7 @@ function SuccessStories() {
         title="Every life we touch tells a story"
         description="Filter by the people at the heart of our work — students, volunteers and entire communities."
       />
-      <section className="py-16">
+      <section className="py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-8 flex flex-wrap gap-2">
             {FILTERS.map((f) => (
