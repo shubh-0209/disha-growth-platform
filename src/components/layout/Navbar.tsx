@@ -38,16 +38,10 @@ export function Logo({ isScrolled }: { isScrolled?: boolean }) {
     <Link to="/" className="flex items-center gap-2.5 group">
       <img src="/logo.png" alt="Disha For India Icon" className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" />
       <span className="flex flex-col leading-none">
-        <span className={cn(
-          "font-display text-base font-bold tracking-tight transition-colors",
-          isScrolled ? "text-foreground" : "text-foreground/90"
-        )}>
-          Disha <span className="text-primary">For India</span>
+        <span className="font-display text-base font-bold tracking-tight transition-colors text-white">
+          Disha <span className="text-[#FFB703]">For India</span>
         </span>
-        <span className={cn(
-          "text-[10px] font-medium uppercase tracking-wider transition-colors",
-          isScrolled ? "text-muted-foreground" : "text-muted-foreground/80"
-        )}>
+        <span className="text-[10px] font-medium uppercase tracking-wider transition-colors text-white/80">
           Growth & Opportunity
         </span>
       </span>
@@ -66,20 +60,17 @@ function NavDropdown({
 }) {
   return (
     <div className="group relative">
-      <button className={cn(
-        "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary",
-        isScrolled ? "text-foreground" : "text-foreground/80"
-      )}>
+      <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 text-white hover:bg-[#1E5BB8]">
         {label}
         <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
       </button>
-      <div className="invisible absolute left-0 top-full z-50 w-60 translate-y-1 rounded-2xl border border-border bg-popover p-2 opacity-0 shadow-card transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+      <div className="invisible absolute left-0 top-full z-50 w-60 translate-y-1 rounded-2xl border border-[#1E5BB8] bg-[#063B8C] p-2 opacity-0 shadow-xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
         {items.map((it) => (
           <Link
             key={it.to}
             to={it.to}
-            className="block rounded-lg px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-accent hover:text-primary"
-            activeProps={{ className: "bg-accent text-primary" }}
+            className="block rounded-lg px-3 py-2 text-sm text-white/90 transition-all duration-300 hover:bg-[#1E5BB8] hover:text-white"
+            activeProps={{ className: "bg-[#1E5BB8] text-white" }}
           >
             {it.label}
           </Link>
@@ -95,20 +86,17 @@ function VolunteerAuthLink({ isScrolled }: { isScrolled: boolean }) {
   if (user) {
     return (
       <div className="group relative">
-        <button className={cn(
-          "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary",
-          isScrolled ? "text-foreground" : "text-foreground/80"
-        )}>
+        <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 text-white hover:bg-[#1E5BB8]">
           {user.name}
           <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
         </button>
-        <div className="invisible absolute right-0 top-full z-50 w-48 translate-y-1 rounded-2xl border border-border bg-popover p-2 opacity-0 shadow-card transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="px-3 py-2 text-sm font-semibold text-foreground border-b border-border mb-1">
+        <div className="invisible absolute right-0 top-full z-50 w-48 translate-y-1 rounded-2xl border border-[#1E5BB8] bg-[#063B8C] p-2 opacity-0 shadow-xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="px-3 py-2 text-sm font-semibold text-white border-b border-[#1E5BB8] mb-1">
             {user.name}
           </div>
           <button
             onClick={logout}
-            className="w-full text-left block rounded-lg px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-accent hover:text-primary"
+            className="w-full text-left block rounded-lg px-3 py-2 text-sm text-white/90 transition-all duration-300 hover:bg-[#1E5BB8] hover:text-white"
           >
             Logout
           </button>
@@ -120,10 +108,7 @@ function VolunteerAuthLink({ isScrolled }: { isScrolled: boolean }) {
   return (
     <a
       href="https://app-disha-for-indiaa.vercel.app/login?redirect_to=https://disha-for-indiaa.vercel.app"
-      className={cn(
-        "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary",
-        isScrolled ? "text-foreground" : "text-foreground/80"
-      )}
+      className="rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 text-white hover:bg-[#1E5BB8]"
     >
       Become a Volunteer
     </a>
@@ -137,14 +122,14 @@ function MobileVolunteerAuthLink() {
   
   if (user) {
     return (
-      <div className="mt-4 border-t border-border pt-4">
-        <div className="px-3 mb-2 text-sm font-semibold text-foreground">
+      <div className="mt-4 border-t border-[#1E5BB8] pt-4">
+        <div className="px-3 mb-2 text-sm font-semibold text-white">
           {user.name}
         </div>
         <SheetClose asChild>
           <button
             onClick={logout}
-            className="w-full text-left block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-primary"
+            className="w-full text-left block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 transition-all duration-300 hover:bg-[#1E5BB8] hover:text-white"
           >
             Logout
           </button>
@@ -157,7 +142,7 @@ function MobileVolunteerAuthLink() {
     <SheetClose asChild>
       <a
         href="https://app-disha-for-indiaa.vercel.app/login?redirect_to=https://disha-for-indiaa.vercel.app"
-        className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-primary mt-2"
+        className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 transition-all duration-300 hover:bg-[#1E5BB8] hover:text-white mt-2"
       >
         Become a Volunteer
       </a>
@@ -181,8 +166,8 @@ export function Navbar() {
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
       isScrolled 
-        ? "bg-white/90 backdrop-blur-md border-b border-border shadow-[0_2px_10px_-3px_rgba(6,59,140,0.1)]"
-        : "bg-transparent border-transparent"
+        ? "bg-[#063B8C] shadow-lg"
+        : "bg-[#063B8C]"
     )}>
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <Logo isScrolled={isScrolled} />
@@ -194,11 +179,8 @@ export function Navbar() {
             <Link
               key={it.to}
               to={it.to}
-              className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary",
-                isScrolled ? "text-foreground" : "text-foreground/80"
-              )}
-              activeProps={{ className: "text-primary" }}
+              className="rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 text-white hover:bg-[#1E5BB8]"
+              activeProps={{ className: "bg-[#1E5BB8]" }}
             >
               {it.label}
             </Link>
@@ -207,34 +189,31 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <VolunteerAuthLink isScrolled={isScrolled} />
-          <a href="https://app-disha-for-indiaa.vercel.app" className="btn-dashboard-cta">Dashboard</a>
+          <a href="https://app-disha-for-indiaa.vercel.app" className="rounded-full bg-[#FFB703] text-[#063B8C] px-6 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center">Dashboard</a>
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className={cn(
-              "lg:hidden transition-colors",
-              !isScrolled && "bg-background/50 backdrop-blur-sm border-transparent"
-            )}>
-              <Menu className={cn("h-5 w-5", isScrolled ? "text-foreground" : "text-foreground/80")} />
+            <Button variant="outline" size="icon" className="lg:hidden border-transparent bg-transparent hover:bg-[#1E5BB8] text-white">
+              <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" hideClose className="w-[88vw] max-w-sm overflow-y-auto p-0">
-            <div className="flex items-center justify-between border-b border-border px-5 py-4 bg-background">
+          <SheetContent side="right" hideClose className="w-[88vw] max-w-sm overflow-y-auto p-0 bg-[#063B8C] border-l border-[#1E5BB8]">
+            <div className="flex items-center justify-between border-b border-[#1E5BB8] px-5 py-4 bg-[#063B8C]">
               <Logo isScrolled={true} />
               <SheetClose asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-[#1E5BB8]">
                   <X className="h-5 w-5" />
                 </Button>
               </SheetClose>
             </div>
-            <div className="px-5 py-4 bg-background min-h-full">
+            <div className="px-5 py-4 bg-[#063B8C] min-h-full">
               {[...ABOUT, ...TOOLS, ...MAIN].map((it) => (
                 <SheetClose asChild key={it.to}>
                   <Link
                     to={it.to}
-                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-primary"
-                    activeProps={{ className: "bg-accent text-primary" }}
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 transition-all duration-300 hover:bg-[#1E5BB8] hover:text-white"
+                    activeProps={{ className: "bg-[#1E5BB8] text-white" }}
                   >
                     {it.label}
                   </Link>
@@ -244,7 +223,7 @@ export function Navbar() {
               <MobileVolunteerAuthLink />
 
               <SheetClose asChild>
-                <a href="https://app-disha-for-indiaa.vercel.app" className="btn-dashboard-cta mt-4">
+                <a href="https://app-disha-for-indiaa.vercel.app" className="rounded-full bg-[#FFB703] text-[#063B8C] px-6 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center w-full mt-4">
                   Dashboard
                 </a>
               </SheetClose>
