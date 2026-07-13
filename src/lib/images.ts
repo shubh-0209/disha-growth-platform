@@ -4,11 +4,11 @@ export const images = {
   fallback: fallbackImage,
   hero: {
     home: [
-      "/optimized/external/photo-1544207964.webp",
-      "/optimized/external/photo-1577896851231.webp",
-      "/optimized/external/photo-1582213782179.webp",
-      "/optimized/external/photo-1509062522246.webp",
-      "/optimized/external/photo-1488521787991.webp",
+      "/optimized/gallery/volunteer-group.webp",
+      "/optimized/gallery/public-speaking.webp",
+      "/optimized/gallery/team-certificates.webp",
+      "/optimized/gallery/gallery-2-1.webp",
+      "/optimized/gallery/activity-2-1.webp",
     ],
     about: "/optimized/gallery/volunteer-group.webp",
   },

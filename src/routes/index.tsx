@@ -7,11 +7,11 @@ import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 import { cn } from "@/lib/utils";
 
 const heroImages = [
-  { src: images.hero.home[0], alt: "Indian children smiling in a rural classroom" },
-  { src: images.hero.home[1], alt: "Students learning and writing in notebooks" },
-  { src: images.hero.home[2], alt: "Group of diverse students working on laptops" },
-  { src: images.hero.home[3], alt: "Young students actively participating in education" },
-  { src: images.hero.home[4], alt: "Skill development and focused classroom learning" },
+  { src: images.hero.home[0], alt: "Disha For India volunteers working together as a group" },
+  { src: images.hero.home[1], alt: "Disha For India public speaking and community outreach event" },
+  { src: images.hero.home[2], alt: "Disha For India team receiving certificates at award ceremony" },
+  { src: images.hero.home[3], alt: "Disha For India community activity and social impact program" },
+  { src: images.hero.home[4], alt: "Disha For India education initiative and student engagement" },
 ];
 
 function HeroCarousel() {

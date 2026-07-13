@@ -73,7 +73,8 @@ export function CareerChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-5 z-50 flex h-[460px] w-[88vw] max-w-sm flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-card"
+            className="fixed bottom-24 right-5 z-50 flex h-[460px] w-[88vw] max-w-sm flex-col overflow-hidden rounded-3xl border border-blue-200/60 bg-card"
+            style={{ boxShadow: "0 8px 25px rgba(11,76,163,0.15), 0 2px 8px rgba(11,76,163,0.08)" }}
           >
             <div className="flex items-center gap-3 bg-ink px-4 py-3 text-background">
               <span className="grid h-9 w-9 place-items-center rounded-full bg-primary">
@@ -85,7 +86,12 @@ export function CareerChatbot() {
               </div>
             </div>
 
-            <div className="flex-1 space-y-3 overflow-y-auto bg-secondary/40 p-4">
+            <div
+              className="flex-1 space-y-3 overflow-y-auto p-4"
+              style={{
+                background: "linear-gradient(160deg, rgba(11,76,163,0.10) 0%, rgba(11,76,163,0.04) 35%, rgba(255,255,255,1) 100%)",
+              }}
+            >
               {messages.map((m, i) => (
                 <div
                   key={i}
