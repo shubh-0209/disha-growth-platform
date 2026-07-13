@@ -82,7 +82,7 @@ function NavDropdown({
 
 function VolunteerAuthLink({ isScrolled }: { isScrolled: boolean }) {
   const { user, logout } = useAuth();
-  
+
   if (user) {
     return (
       <div className="group relative">
@@ -119,7 +119,7 @@ function VolunteerAuthLink({ isScrolled }: { isScrolled: boolean }) {
 
 function MobileVolunteerAuthLink() {
   const { user, logout } = useAuth();
-  
+
   if (user) {
     return (
       <div className="mt-4 border-t border-[#1E5BB8] pt-4">
@@ -165,7 +165,7 @@ export function Navbar() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
-      isScrolled 
+      isScrolled
         ? "bg-[#063B8C] shadow-lg"
         : "bg-[#063B8C]"
     )}>
@@ -219,7 +219,7 @@ export function Navbar() {
                   </Link>
                 </SheetClose>
               ))}
-              
+
               <MobileVolunteerAuthLink />
 
               <SheetClose asChild>
