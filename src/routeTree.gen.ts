@@ -16,7 +16,6 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as OpportunityHubRouteImport } from './routes/opportunity-hub'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
-import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as BlogsRouteImport } from './routes/blogs'
@@ -64,11 +63,6 @@ const LeaderboardRoute = LeaderboardRouteImport.update({
   path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/leaderboard.lazy').then((d) => d.Route))
-const ImpactRoute = ImpactRouteImport.update({
-  id: '/impact',
-  path: '/impact',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/impact.lazy').then((d) => d.Route))
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
@@ -121,7 +115,6 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRouteWithChildren
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
-  '/impact': typeof ImpactRoute
   '/leaderboard': typeof LeaderboardRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
@@ -139,7 +132,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
-  '/impact': typeof ImpactRoute
   '/leaderboard': typeof LeaderboardRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -158,7 +150,6 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRouteWithChildren
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
-  '/impact': typeof ImpactRoute
   '/leaderboard': typeof LeaderboardRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
@@ -179,7 +170,6 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/events'
     | '/gallery'
-    | '/impact'
     | '/leaderboard'
     | '/opportunity-hub'
     | '/programs'
@@ -197,7 +187,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/events'
     | '/gallery'
-    | '/impact'
     | '/leaderboard'
     | '/opportunity-hub'
     | '/sitemap.xml'
@@ -215,7 +204,6 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/events'
     | '/gallery'
-    | '/impact'
     | '/leaderboard'
     | '/opportunity-hub'
     | '/programs'
@@ -235,7 +223,6 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRouteWithChildren
   EventsRoute: typeof EventsRoute
   GalleryRoute: typeof GalleryRoute
-  ImpactRoute: typeof ImpactRoute
   LeaderboardRoute: typeof LeaderboardRoute
   OpportunityHubRoute: typeof OpportunityHubRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
@@ -294,13 +281,6 @@ declare module '@tanstack/react-router' {
       path: '/leaderboard'
       fullPath: '/leaderboard'
       preLoaderRoute: typeof LeaderboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/impact': {
-      id: '/impact'
-      path: '/impact'
-      fullPath: '/impact'
-      preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -401,7 +381,6 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRouteWithChildren,
   EventsRoute: EventsRoute,
   GalleryRoute: GalleryRoute,
-  ImpactRoute: ImpactRoute,
   LeaderboardRoute: LeaderboardRoute,
   OpportunityHubRoute: OpportunityHubRoute,
   ProgramsRoute: ProgramsRouteWithChildren,

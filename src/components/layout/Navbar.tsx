@@ -14,7 +14,7 @@ import { useAuth } from "@/hooks/use-auth";
 const TOOLS = [
   { to: "/opportunity-hub", label: "Opportunity Hub" },
   { to: "/volunteer", label: "Volunteer Hub" },
-  { to: "/impact", label: "Impact Dashboard" },
+
   { to: "/leaderboard", label: "Contribution Leaderboard" },
 ] as const;
 
@@ -34,13 +34,13 @@ const MAIN = [
 
 export function Logo({ isScrolled }: { isScrolled?: boolean }) {
   return (
-    <Link to="/" className="flex items-center gap-3.5 group py-2">
-      <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105" />
-      <span className="flex flex-col leading-none gap-0.5">
-        <span className="font-display text-lg font-extrabold tracking-tight transition-colors text-white">
+    <Link to="/" className="flex items-center gap-6 group py-2">
+      <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} className="h-11 md:h-[52px] w-auto object-contain transition-transform group-hover:scale-105" />
+      <span className="flex flex-col leading-none gap-0 justify-center">
+        <span className="font-display text-xl font-bold tracking-tight transition-colors text-white pb-0.5">
           Disha <span className="text-[#FFB703]">For India</span>
         </span>
-        <span className="text-[11px] font-semibold uppercase tracking-wider transition-colors text-white/80">
+        <span className="text-[10.5px] font-bold uppercase tracking-widest transition-colors text-white/90">
           WE EMPOWER | WE MAKE THE DIFFERENCE
         </span>
       </span>

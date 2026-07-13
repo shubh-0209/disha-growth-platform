@@ -79,9 +79,6 @@ export const publicApi = {
   getTopLeaderboard: async (params?: { limit?: number }) => {
     return api.get('/public/leaderboard/top', { params });
   },
-  getImpactAnalytics: async () => {
-    return api.get('/public/analytics/impact');
-  },
   getAnnouncements: async (params?: { limit?: number }) => {
     return api.get('/public/announcements', { params });
   },

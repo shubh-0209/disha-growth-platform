@@ -1,64 +1,63 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, BookOpen, Briefcase, Calendar, Compass, Gift, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 import { images } from "@/lib/images";
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 import { cn } from "@/lib/utils";
 
-const heroImages = [
-  { src: images.hero.home[0], alt: "Disha For India volunteers working together as a group" },
-  { src: images.hero.home[1], alt: "Disha For India public speaking and community outreach event" },
-  { src: images.hero.home[2], alt: "Disha For India team receiving certificates at award ceremony" },
-  { src: images.hero.home[3], alt: "Disha For India community activity and social impact program" },
-  { src: images.hero.home[4], alt: "Disha For India education initiative and student engagement" },
+const HERO_SLIDES = [
+  {
+    headline: "Become a Volunteer. Become Someone's Hope.",
+    description: "Your time, knowledge, and compassion can transform lives. Join Disha For India and help students discover opportunities, confidence, and a brighter future.",
+    primaryCta: { label: "Become a Volunteer", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    image: images.hero.home[0],
+    alt: "Young volunteers mentoring students, teaching, or participating in community activities",
+  },
+  {
+    headline: "Your Impact Can Unlock New Opportunities.",
+    description: "Discover the Disha Marketplace where participation and meaningful contributions lead to exciting rewards, learning resources, scholarships, career support, and much more.",
+    primaryCta: { label: "Know More About Marketplace", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    image: "/gallery/marketplace.png",
+    alt: "A modern reward ecosystem showing certificates and achievements",
+  },
+  {
+    headline: "Explore Programs That Build Better Futures.",
+    description: "Discover career guidance, internships, skill development, financial literacy, and educational initiatives designed to empower students from underserved communities.",
+    primaryCta: { label: "Explore Programs", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    image: images.gallery[2], // team-certificates.webp
+    alt: "A modern reward ecosystem showing certificates and achievements",
+  },
+  {
+    headline: "Together, We Can Create Lasting Change.",
+    description: "Whether you're a student, educator, volunteer, institution, or CSR partner, your contribution can help create meaningful opportunities for thousands of young people.",
+    primaryCta: { label: "Join the Mission", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    image: images.gallery[1], // public-speaking.webp
+    alt: "A diverse group of students, teachers, volunteers celebrating success",
+  }
 ];
 
-function HeroCarousel() {
+function FullWidthHeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setIsReducedMotion(mediaQuery.matches);
-    const motionHandler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', motionHandler);
-    } else {
-      mediaQuery.addListener(motionHandler);
-    }
-
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener('change', motionHandler);
-      } else {
-        mediaQuery.removeListener(motionHandler);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isHovered || isReducedMotion || !heroImages?.length) return;
-
+    if (isHovered || !HERO_SLIDES?.length) return;
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 2500);
-
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 2000); // 2 seconds autoplay
     return () => clearInterval(timer);
-  }, [isHovered, isReducedMotion]);
+  }, [isHovered, currentSlide]);
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1));
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1));
 
   const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX);
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStart === null) return;
     const touchEnd = e.changedTouches[0].clientX;
     const diff = touchStart - touchEnd;
-
     if (diff > 50) nextSlide();
     else if (diff < -50) prevSlide();
     setTouchStart(null);
@@ -70,8 +69,8 @@ function HeroCarousel() {
   };
 
   return (
-    <div
-      className="group relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[500px] overflow-hidden rounded-[2rem] border border-border shadow-card bg-muted/20"
+    <section
+      className="group relative w-full overflow-hidden bg-gradient-hero"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
@@ -79,68 +78,109 @@ function HeroCarousel() {
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="region"
-      aria-label="Image Carousel"
-      aria-roledescription="carousel"
+      aria-label="Hero Carousel"
     >
-      {heroImages.map((image, index) => {
-        if (!image?.src) return null;
-        return (
-          <ImageWithFallback
-            key={index}
-            src={image.src}
-            alt={image.alt}
-            width={1200}
-            height={800}
-            loading={index === 0 ? "eager" : "lazy"}
-            fetchPriority={index === 0 ? "high" : "auto"}
-            wrapperClassName={cn(
-              "absolute inset-0 h-full w-full transition-opacity duration-1000",
-              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-            )}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        );
-      })}
+      <div className="absolute inset-0 bg-grid pointer-events-none opacity-50" />
 
-      {/* Desktop Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
-        aria-label="Previous image"
-      >
-        <span className="sr-only">Previous</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
-        aria-label="Next image"
-      >
-        <span className="sr-only">Next</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </button>
+      {/* Invisible structure placeholder to give the carousel consistent height */}
+      <div className="relative mx-auto max-w-7xl px-5 pt-8 pb-16 lg:pt-12 lg:pb-24 invisible">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.15] tracking-tight text-foreground mb-6 line-clamp-3">
+              Become a Volunteer. Become Someone's Hope.
+            </h1>
+            <p className="text-lg lg:text-xl leading-[1.6] text-muted-foreground mb-8 max-w-xl">
+              Your time, knowledge, and compassion can transform lives. Join Disha For India and help students discover opportunities, confidence, and a brighter future.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg" className="h-12 px-8 text-base">Placeholder</Button>
+            </div>
+            <div className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
+              <Calendar className="h-4 w-4 text-primary" />
+              <span><strong className="font-semibold text-foreground">Established in 2017</strong> — Building opportunities for students across India.</span>
+            </div>
+          </div>
+          <div className="w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[450px]" />
+        </div>
+      </div>
+
+      {/* Absolute Slides */}
+      <AnimatePresence>
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <div className="relative h-full mx-auto max-w-7xl px-5 pt-8 pb-16 lg:pt-12 lg:pb-24">
+            <div className="grid h-full items-center gap-12 lg:grid-cols-2">
+              <div className="flex flex-col justify-center">
+
+
+                <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.15] tracking-tight text-foreground mb-6 line-clamp-3">
+                  {HERO_SLIDES[currentSlide].headline}
+                </h1>
+
+                <p className="text-lg lg:text-xl leading-[1.6] text-muted-foreground mb-8 max-w-xl">
+                  {HERO_SLIDES[currentSlide].description}
+                </p>
+
+                <div className="flex flex-wrap gap-4">
+                  <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 text-base shadow-sm">
+                    <a href={HERO_SLIDES[currentSlide].primaryCta.href}>
+                      {HERO_SLIDES[currentSlide].primaryCta.label} <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
+
+                <div className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
+                  <Calendar className="h-4 w-4 text-primary" />
+                  <span>
+                    <strong className="font-semibold text-foreground">Established in 2017</strong> — Building opportunities for students across India.
+                  </span>
+                </div>
+              </div>
+
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[450px] overflow-hidden rounded-[2rem] border border-border shadow-card bg-muted/20">
+                <ImageWithFallback
+                  src={HERO_SLIDES[currentSlide].image}
+                  alt={HERO_SLIDES[currentSlide].alt}
+                  width={1200}
+                  height={800}
+                  loading={currentSlide === 0 ? "eager" : "lazy"}
+                  fetchPriority={currentSlide === 0 ? "high" : "auto"}
+                  wrapperClassName="absolute inset-0 h-full w-full"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[10s] hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+
 
       {/* Pagination Dots */}
-      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/20 px-3 py-2 backdrop-blur-sm">
-        {heroImages.map((_, index) => (
+      <div className="absolute bottom-6 left-1/2 z-30 flex -translate-x-1/2 gap-3 rounded-full bg-background/80 px-4 py-2.5 backdrop-blur-md border border-border shadow-sm">
+        {HERO_SLIDES.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 w-2 rounded-full transition-all ${index === currentSlide ? "w-6 bg-white" : "bg-white/50 hover:bg-white/80"
+            className={`h-2 rounded-full transition-all ${index === currentSlide ? "w-8 bg-primary" : "w-2 bg-primary/20 hover:bg-primary/40"
               }`}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={index === currentSlide}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 import { Button } from "@/components/ui/button";
+import { MarketplaceShowcase } from "@/components/home/MarketplaceShowcase";
+import { HowDishaHelps } from "@/components/home/HowDishaHelps";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ProgramCard, EventCard, BlogCard, StoryCard } from "@/components/cards";
@@ -150,7 +190,6 @@ import {
   BLOGS,
   STORIES,
   TESTIMONIALS,
-  SITE_CONFIG,
 } from "@/lib/site-data";
 
 
@@ -158,12 +197,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE" },
-      { name: "description", content: SITE_CONFIG.description },
+      { name: "description", content: "Empowering India's youth through skills, education and opportunities." },
       {
         property: "og:title",
         content: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE",
       },
-      { property: "og:description", content: SITE_CONFIG.description },
+      { property: "og:description", content: "Empowering India's youth through skills, education and opportunities." },
       { property: "og:url", content: "https://dishaforindia.org" },
       { property: "og:title", content: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE" },
       {
@@ -183,52 +222,20 @@ function Home() {
   return (
     <>
       {/* SECTION 1 — Hero */}
-      <section className="relative overflow-hidden bg-gradient-hero">
-        <div className="absolute inset-0 bg-grid" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-8 pb-16 lg:pt-12 lg:pb-24 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-primary">
-              <Sparkles className="h-3.5 w-3.5" /> WE EMPOWER | WE MAKE THE DIFFERENCE
-            </span>
-            <h1 className="mt-4 max-w-[700px] text-[1.95rem] lg:text-[2.34rem] font-extrabold leading-[1.2] tracking-tight text-foreground">
-              Empowering India's Youth Through <span className="text-primary">Skills</span>, <span className="text-green">Education</span> and Opportunities
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              From skills and growth programs to mentorship and real impact —
-              Disha For India gives every student the tools, guidance and
-              community to build a brighter future.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link to="/programs">Explore Programs <ArrowRight className="ml-1 h-4 w-4" /></Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                <a href="https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard">Become a Volunteer</a>
-              </Button>
-            </div>
-            <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
-              <Calendar className="h-4 w-4 text-primary" />
-              <span>
-                <strong className="font-semibold text-foreground">Established in 2017</strong> — Building opportunities for students across India.
-              </span>
-            </div>
-          </div>
+      <FullWidthHeroCarousel />
 
-          <div className="relative">
-            <HeroCarousel />
+      {/* SECTION 2 — Marketplace */}
+      <MarketplaceShowcase />
 
-          </div>
-        </div>
-      </section>
-
+      {/* SECTION 3 — How Disha Helps */}
+      <HowDishaHelps />
 
       {/* SECTION 5 — Programs */}
       <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            eyebrow="Our Programs"
-            title="Skilling youth across every dimension"
-            description="From financial literacy to entrepreneurship, wellness and the environment — our programs build employable, confident, conscious citizens."
+            title="Our Programs"
+            description="Skilling youth across every dimension. From financial literacy to entrepreneurship, wellness and the environment — our programs build employable, confident, conscious citizens."
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PROGRAMS.slice(0, 4).map((p, i) => (
@@ -244,9 +251,8 @@ function Home() {
       <section className="border-y border-border bg-gradient-section py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            eyebrow="Success Stories"
-            title="Real journeys, real transformation"
-            description="Students, volunteers and communities whose lives changed direction with Disha For India."
+            title="Success Stories"
+            description="Real journeys, real transformation. Students, volunteers and communities whose lives changed direction with Disha For India."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {STORIES.slice(0, 3).map((s, i) => (
@@ -267,9 +273,8 @@ function Home() {
       <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            eyebrow="Upcoming Events"
-            title="Join our next gathering"
-            description="Career fairs, bootcamps and community drives — opportunities to learn, connect and contribute."
+            title="Upcoming Events"
+            description="Join our next gathering. Career fairs, bootcamps and community drives — opportunities to learn, connect and contribute."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {upcoming.map((e, i) => (
@@ -296,9 +301,8 @@ function Home() {
       <section className="border-y border-border bg-gradient-section py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            eyebrow="From the Blog"
-            title="Insights to grow by"
-            description="Practical guides on money, careers, entrepreneurship, wellness and the environment."
+            title="From the Blog"
+            description="Insights to grow by. Practical guides on money, careers, entrepreneurship, wellness and the environment."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {featuredBlogs.map((b, i) => (
@@ -319,8 +323,8 @@ function Home() {
       <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            eyebrow="Testimonials"
-            title="What people say about Disha For India"
+            title="Testimonials"
+            description="What people say about Disha For India"
             align="center"
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">

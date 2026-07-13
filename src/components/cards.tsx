@@ -22,7 +22,7 @@ export function ProgramCard({ program }: { program: Program }) {
       >
         <Icon className="h-6 w-6" />
       </span>
-      <h3 className="mt-4 text-lg font-semibold text-foreground">{program.title}</h3>
+      <h3 className="mt-4 text-lg font-semibold capitalize text-foreground">{program.title}</h3>
       <p className="mt-0.5 text-sm font-medium text-muted-foreground">{program.tagline}</p>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{program.description}</p>
       <span className={cn("mt-4 inline-flex items-center gap-1 text-sm font-semibold", isGreen ? "text-green" : "text-primary")}>
@@ -46,7 +46,7 @@ export function EventCard({ event }: { event: DishaEvent }) {
       </div>
       <div className="p-5">
         <span className="rounded-full bg-green-soft px-2.5 py-0.5 text-xs font-semibold text-green">{event.category}</span>
-        <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground">{event.title}</h3>
+        <h3 className="mt-3 text-lg font-semibold leading-snug capitalize text-foreground">{event.title}</h3>
         <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{event.description}</p>
         <div className="mt-4 flex flex-wrap gap-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {event.date === "Coming Soon" ? "Coming Soon" : new Date(event.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
@@ -69,7 +69,7 @@ export function BlogCard({ blog }: { blog: Blog }) {
       </div>
       <div className="flex flex-1 flex-col p-5">
         <span className="w-fit rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{blog.category}</span>
-        <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">{blog.title}</h3>
+        <h3 className="mt-3 text-lg font-semibold leading-snug capitalize text-foreground transition-colors group-hover:text-primary">{blog.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted-foreground">{blog.excerpt}</p>
         <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {blog.readingTime} min read</span>
@@ -89,7 +89,7 @@ export function StoryCard({ story }: { story: Story }) {
         <span className="absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold text-primary">{story.type}</span>
       </div>
       <div className="p-5">
-        <h3 className="text-lg font-semibold leading-snug text-foreground">{story.headline}</h3>
+        <h3 className="text-lg font-semibold leading-snug capitalize text-foreground">{story.headline}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{story.summary}</p>
         <p className="mt-3 text-sm font-semibold text-green">— {story.name}</p>
       </div>

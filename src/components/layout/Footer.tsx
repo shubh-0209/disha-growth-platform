@@ -11,7 +11,7 @@ const COLS: { title: string; links: { to: string; label: string }[] }[] = [
       { to: "/vision-mission", label: "Vision & Mission" },
       { to: "/programs", label: "Programs" },
       { to: "/success-stories", label: "Success Stories" },
-      { to: "/impact", label: "Impact Dashboard" },
+
     ],
   },
   {

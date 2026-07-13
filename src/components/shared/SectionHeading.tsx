@@ -2,13 +2,11 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
 
 export function SectionHeading({
-  eyebrow,
   title,
   description,
   align = "left",
   className,
 }: {
-  eyebrow?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
@@ -22,12 +20,8 @@ export function SectionHeading({
         className,
       )}
     >
-      {eyebrow && (
-        <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-          {eyebrow}
-        </span>
-      )}
-      <h2 className="mt-4 text-2xl font-bold leading-tight text-foreground md:text-3xl">
+
+      <h2 className="text-2xl font-bold leading-tight text-foreground md:text-3xl">
         {title}
       </h2>
       {description && (

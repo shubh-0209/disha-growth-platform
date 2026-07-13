@@ -35,11 +35,11 @@ export const PROGRAMS: Program[] = [
   {
     slug: "financial-literacy",
     title: "Financial Literacy",
-    tagline: "Money skills for life",
+    tagline: "Smart Money Skills",
     accent: "green",
     icon: "PiggyBank",
     description:
-      "Practical financial education that helps students and families budget, save, invest and avoid debt traps — turning everyday money decisions into lifelong confidence.",
+      "Learn budgeting, saving, investing, and responsible financial habits for a secure future.",
     highlights: [
       "Budgeting, saving and smart spending workshops",
       "Banking, UPI and digital payment safety",
@@ -55,11 +55,11 @@ export const PROGRAMS: Program[] = [
   {
     slug: "entrepreneurship",
     title: "Entrepreneurship",
-    tagline: "From idea to enterprise",
+    tagline: "Ideas Into Action",
     accent: "blue",
     icon: "Rocket",
     description:
-      "We coach young Indians to think like founders — validating ideas, building MVPs, understanding customers and turning ambition into sustainable ventures.",
+      "Develop innovation, leadership, and entrepreneurial thinking to solve real-world challenges.",
     highlights: [
       "Idea validation and business model canvas",
       "Pitching, storytelling and fundraising basics",
@@ -75,11 +75,11 @@ export const PROGRAMS: Program[] = [
   {
     slug: "wellness",
     title: "Emotional Wellness",
-    tagline: "Healthy mind, happy life",
+    tagline: "Healthy Mind Matters",
     accent: "green",
     icon: "HeartPulse",
     description:
-      "Preventive healthcare and emotional-wellness programs that build resilience, manage stress and help students show up as their best selves.",
+      "Build confidence, resilience, and emotional well-being to thrive in academics and everyday life.",
     highlights: [
       "Stress and exam-anxiety management",
       "Mindfulness and emotional regulation",
@@ -95,11 +95,11 @@ export const PROGRAMS: Program[] = [
   {
     slug: "clean-green-india",
     title: "Clean & Green India",
-    tagline: "A greener tomorrow",
+    tagline: "Protect Our Planet",
     accent: "green",
     icon: "Leaf",
     description:
-      "Youth-led environmental action — tree plantation drives, waste-segregation awareness and sustainability campaigns that make communities cleaner and greener.",
+      "Take part in sustainability initiatives and create cleaner, greener communities through meaningful action.",
     highlights: [
       "Tree plantation and green-campus drives",
       "Waste segregation and recycling awareness",
