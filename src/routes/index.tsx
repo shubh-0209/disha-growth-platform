@@ -18,7 +18,7 @@ const HERO_SLIDES = [
     headline: "Recognizing Every Contribution You Make.",
     description: "Your efforts, skills, and participation deserve recognition. Disha provides opportunities to learn, contribute, and celebrate meaningful achievements.",
     primaryCta: { label: "Explore Our Impact", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
-    image: "/gallery/marketplace.png",
+    image: images.gallery[0], // award-ceremony.webp
     alt: "A community celebrating meaningful achievements",
   },
   {
@@ -139,8 +139,8 @@ function FullWidthHeroCarousel() {
 
                 <div className="flex flex-wrap gap-4">
                   {HERO_SLIDES[currentSlide].primaryCta.href.startsWith("#") ? (
-                    <Button 
-                      size="lg" 
+                    <Button
+                      size="lg"
                       className="w-full sm:w-auto h-12 px-8 text-base shadow-sm"
                       onClick={() => scrollToSection(HERO_SLIDES[currentSlide].primaryCta.href.substring(1))}
                     >
@@ -405,7 +405,7 @@ function Home() {
                   Become Part of The Movement
                 </h2>
                 <p className="mt-5 text-muted-foreground">
-                  Join a growing community making a powerful contribution to society. 
+                  Join a growing community making a powerful contribution to society.
                   Whether you want to mentor, learn, or collaborate—there's a place for you.
                 </p>
                 <div className="mt-8 flex justify-center gap-4">
