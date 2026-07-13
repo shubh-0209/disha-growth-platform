@@ -1,0 +1,24 @@
+/* src/responsive.css */
+
+/* Mobile Typography Optimization */
+@media (max-width: 768px) {
+  /* Reduce base typography clamps in styles.css by ~25% */
+  h1 { font-size: clamp(1.6875rem, 5vw + 1rem, 4rem) !important; }
+  h2 { font-size: clamp(1.3125rem, 4vw + 0.8rem, 3rem) !important; }
+  h3 { font-size: clamp(1.125rem, 3vw + 0.5rem, 2.25rem) !important; }
+  h4 { font-size: clamp(0.9375rem, 2vw + 0.5rem, 1.875rem) !important; }
+  h5 { font-size: clamp(0.84375rem, 1.5vw + 0.5rem, 1.5rem) !important; }
+  p { font-size: clamp(0.7rem, 1vw + 0.4rem, 1.125rem) !important; }
+
+  /* Scale down Tailwind's text sizing utilities by ~25% */
+  .text-xs { font-size: 0.5625rem !important; line-height: 0.75rem !important; }
+  .text-sm { font-size: 0.65625rem !important; line-height: 1rem !important; }
+  .text-base { font-size: 0.75rem !important; line-height: 1.125rem !important; }
+  .text-lg { font-size: 0.84375rem !important; line-height: 1.3125rem !important; }
+  .text-xl { font-size: 0.9375rem !important; line-height: 1.3125rem !important; }
+  .text-2xl { font-size: 1.125rem !important; line-height: 1.5rem !important; }
+  .text-3xl { font-size: 1.40625rem !important; line-height: 1.6875rem !important; }
+  .text-4xl { font-size: 1.6875rem !important; line-height: 1.875rem !important; }
+  .text-5xl { font-size: 2.25rem !important; line-height: 2.25rem !important; }
+  .text-6xl { font-size: 2.8125rem !important; line-height: 2.8125rem !important; }
+}
