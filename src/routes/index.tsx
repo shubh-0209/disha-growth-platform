@@ -89,7 +89,10 @@ function HeroCarousel() {
             key={index}
             src={image.src}
             alt={image.alt}
+            width={1200}
+            height={800}
             loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "auto"}
             wrapperClassName={cn(
               "absolute inset-0 h-full w-full transition-opacity duration-1000",
               index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
@@ -102,7 +105,7 @@ function HeroCarousel() {
       {/* Desktop Arrows */}
       <button 
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
+        className="absolute left-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
         aria-label="Previous image"
       >
         <span className="sr-only">Previous</span>
@@ -112,7 +115,7 @@ function HeroCarousel() {
       </button>
       <button 
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
+        className="absolute right-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
         aria-label="Next image"
       >
         <span className="sr-only">Next</span>
@@ -183,61 +186,49 @@ function Home() {
         <div className="absolute inset-0 bg-grid" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-8 pb-16 lg:pt-12 lg:pb-24 lg:grid-cols-2">
           <div>
-            <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-primary">
-                <Sparkles className="h-3.5 w-3.5" /> India's Student Growth & Opportunity Platform
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-primary">
+              <Sparkles className="h-3.5 w-3.5" /> India's Student Growth & Opportunity Platform
+            </span>
+            <h1 className="mt-5 flex max-w-[600px] flex-col font-extrabold leading-[1.1] tracking-tight text-foreground">
+              <span>Empowering</span>
+              <span>India's Youth</span>
+              <span>Through</span>
+              <span>
+                <span className="text-primary">Skills</span>, <span className="text-green">Education</span>
               </span>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="mt-5 flex max-w-[600px] flex-col font-extrabold leading-[1.1] tracking-tight text-foreground">
-                <span>Empowering</span>
-                <span>India's Youth</span>
-                <span>Through</span>
-                <span>
-                  <span className="text-primary">Skills</span>, <span className="text-green">Education</span>
-                </span>
-                <span>and Opportunities</span>
-              </h1>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                From skills and growth programs to mentorship and real impact —
-                Disha For India gives every student the tools, guidance and
-                community to build a brighter future.
-              </p>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link to="/programs">Explore Programs <ArrowRight className="ml-1 h-4 w-4" /></Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                  <Link to="/volunteer">Become a Volunteer</Link>
-                </Button>
-              </div>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1.5"><GraduationCap className="h-4 w-4 text-primary" /> 25,000+ students</span>
-                <span className="flex items-center gap-1.5"><Heart className="h-4 w-4 text-green" /> 1,200+ volunteers</span>
-              </div>
-            </Reveal>
+              <span>and Opportunities</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              From skills and growth programs to mentorship and real impact —
+              Disha For India gives every student the tools, guidance and
+              community to build a brighter future.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+              <Button asChild size="lg" className="w-full sm:w-auto">
+                <Link to="/programs">Explore Programs <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                <Link to="/volunteer">Become a Volunteer</Link>
+              </Button>
+            </div>
+            <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1.5"><GraduationCap className="h-4 w-4 text-primary" /> 25,000+ students</span>
+              <span className="flex items-center gap-1.5"><Heart className="h-4 w-4 text-green" /> 1,200+ volunteers</span>
+            </div>
           </div>
 
-          <Reveal delay={0.1}>
-            <div className="relative">
-              <HeroCarousel />
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="absolute bottom-4 left-4 z-30 rounded-2xl border border-border bg-card p-4 shadow-card sm:-bottom-4 sm:-left-4 lg:-bottom-5 lg:-left-5"
-              >
-                <p className="text-2xl font-bold text-primary">5 Lakh+</p>
-                <p className="text-xs text-muted-foreground">Youth to be skilled</p>
-              </motion.div>
-            </div>
-          </Reveal>
+          <div className="relative">
+            <HeroCarousel />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="absolute bottom-4 left-4 z-30 rounded-2xl border border-border bg-card p-4 shadow-card sm:-bottom-4 sm:-left-4 lg:-bottom-5 lg:-left-5"
+            >
+              <p className="text-2xl font-bold text-primary">5 Lakh+</p>
+              <p className="text-xs text-muted-foreground">Youth to be skilled</p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -375,7 +366,14 @@ function Home() {
                     "{t.quote}"
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-4 border-t border-border pt-4">
-                    <ImageWithFallback src={t.photo} alt={t.name} loading="lazy" className="h-11 w-11 rounded-full object-cover" />
+                    <ImageWithFallback 
+                      src={t.photo} 
+                      alt={t.name} 
+                      loading="lazy" 
+                      width={44}
+                      height={44}
+                      className="h-11 w-11 rounded-full object-cover" 
+                    />
                     <div>
                       <p className="text-sm font-semibold text-foreground">{t.name}</p>
                       <p className="text-xs text-muted-foreground">{t.role}</p>

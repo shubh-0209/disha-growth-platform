@@ -14,7 +14,6 @@ import { useAuth } from "@/hooks/use-auth";
 const TOOLS = [
   { to: "/opportunity-hub", label: "Opportunity Hub" },
   { to: "/volunteer", label: "Volunteer Hub" },
-  { to: "/resources", label: "Resource Library" },
   { to: "/impact", label: "Impact Dashboard" },
   { to: "/leaderboard", label: "Contribution Leaderboard" },
 ] as const;
@@ -36,7 +35,7 @@ const MAIN = [
 export function Logo({ isScrolled }: { isScrolled?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-2.5 group">
-      <img src="/logo.png" alt="Disha For India Icon" className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" />
+      <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" />
       <span className="flex flex-col leading-none">
         <span className="font-display text-base font-bold tracking-tight transition-colors text-white">
           Disha <span className="text-[#FFB703]">For India</span>
@@ -194,7 +193,7 @@ export function Navbar() {
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="lg:hidden border-transparent bg-transparent hover:bg-[#1E5BB8] text-white">
+            <Button variant="outline" size="icon" aria-label="Open menu" className="lg:hidden h-11 w-11 border-transparent bg-transparent hover:bg-[#1E5BB8] text-white">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
@@ -202,8 +201,8 @@ export function Navbar() {
             <div className="flex items-center justify-between border-b border-[#1E5BB8] px-5 py-4 bg-[#063B8C]">
               <Logo isScrolled={true} />
               <SheetClose asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-[#1E5BB8]">
-                  <X className="h-5 w-5" />
+                <Button variant="ghost" size="icon" aria-label="Close menu" className="h-11 w-11 text-white hover:bg-[#1E5BB8]">
+                  <X className="h-6 w-6" />
                 </Button>
               </SheetClose>
             </div>

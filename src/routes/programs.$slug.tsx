@@ -1,10 +1,18 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import * as Icons from "lucide-react";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Sparkles, PiggyBank, Rocket, HeartPulse, Leaf, Flame, Users, type LucideIcon } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { PROGRAMS } from "@/lib/site-data";
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  PiggyBank,
+  Rocket,
+  HeartPulse,
+  Leaf,
+  Flame,
+  Users,
+};
 
 export const Route = createFileRoute("/programs/$slug")({
   loader: ({ params }) => {
@@ -43,7 +51,7 @@ export const Route = createFileRoute("/programs/$slug")({
 
 function ProgramDetail() {
   const { program } = Route.useLoaderData();
-  const Icon = (Icons[program.icon as keyof typeof Icons] || Icons.Sparkles) as React.ComponentType<{ className?: string }>;
+  const Icon = ICON_MAP[program.icon] || Sparkles;
   const isGreen = program.accent === "green";
 
   return (

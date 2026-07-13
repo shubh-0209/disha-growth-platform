@@ -64,7 +64,7 @@ function BlogPost() {
     <article>
       <div className="relative">
         <div className="aspect-[21/9] max-h-[420px] w-full overflow-hidden">
-          <ImageWithFallback src={blog.cover} alt={blog.title} loading="eager" isHero={true} className="h-full w-full object-cover" />
+          <ImageWithFallback src={blog.cover} alt={blog.title} width={1200} height={514} loading="eager" isHero={true} className="h-full w-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
       </div>

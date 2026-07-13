@@ -53,7 +53,7 @@ function BlogIndex() {
             <Reveal>
               <Link to="/blogs/$slug" params={{ slug: featured.slug }} className="group grid overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all hover:shadow-card lg:grid-cols-2">
                 <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto">
-                  <ImageWithFallback src={featured.cover} alt={featured.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <ImageWithFallback src={featured.cover} alt={featured.title} width={800} height={500} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">Featured</span>
                 </div>
                 <div className="flex flex-col justify-center p-8">

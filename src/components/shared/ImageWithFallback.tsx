@@ -49,9 +49,18 @@ export function ImageWithFallback({
   const imageSrc = error ? fallbackSrc : src;
   const activeSrcSet = error ? undefined : autoSrcSet;
 
+  const aspectRatioStyle = props.width && props.height 
+    ? { aspectRatio: `${props.width} / ${props.height}` } 
+    : undefined;
+
   // Defensive rendering: If no valid source exists, just show skeleton
   if (!imageSrc) {
-    return <div className={cn("relative overflow-hidden bg-muted animate-pulse", wrapperClassName)} />;
+    return (
+      <div 
+        className={cn("relative overflow-hidden bg-muted animate-pulse", wrapperClassName)}
+        style={aspectRatioStyle}
+      />
+    );
   }
 
   // Set default sizes based on context
@@ -73,8 +82,8 @@ export function ImageWithFallback({
         onError={handleError}
         onLoad={handleLoad}
         className={cn(
-          "transition-opacity duration-500",
-          loaded ? "opacity-100" : "opacity-0",
+          props.loading !== "eager" && "transition-opacity duration-500",
+          (props.loading === "eager" || loaded) ? "opacity-100" : "opacity-0",
           className
         )}
         loading={props.loading || "lazy"}

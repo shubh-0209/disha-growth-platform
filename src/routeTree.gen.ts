@@ -13,7 +13,6 @@ import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as OpportunityHubRouteImport } from './routes/opportunity-hub'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
@@ -49,11 +48,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResourcesRoute = ResourcesRouteImport.update({
-  id: '/resources',
-  path: '/resources',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
@@ -63,27 +57,29 @@ const OpportunityHubRoute = OpportunityHubRouteImport.update({
   id: '/opportunity-hub',
   path: '/opportunity-hub',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() =>
+  import('./routes/opportunity-hub.lazy').then((d) => d.Route),
+)
 const LeaderboardRoute = LeaderboardRouteImport.update({
   id: '/leaderboard',
   path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/leaderboard.lazy').then((d) => d.Route))
 const ImpactRoute = ImpactRouteImport.update({
   id: '/impact',
   path: '/impact',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/impact.lazy').then((d) => d.Route))
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/gallery.lazy').then((d) => d.Route))
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/events.lazy').then((d) => d.Route))
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -136,7 +132,6 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof LeaderboardRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
-  '/resources': typeof ResourcesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -155,7 +150,6 @@ export interface FileRoutesByTo {
   '/impact': typeof ImpactRoute
   '/leaderboard': typeof LeaderboardRoute
   '/opportunity-hub': typeof OpportunityHubRoute
-  '/resources': typeof ResourcesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -177,7 +171,6 @@ export interface FileRoutesById {
   '/leaderboard': typeof LeaderboardRoute
   '/opportunity-hub': typeof OpportunityHubRoute
   '/programs': typeof ProgramsRouteWithChildren
-  '/resources': typeof ResourcesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -200,7 +193,6 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/opportunity-hub'
     | '/programs'
-    | '/resources'
     | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
@@ -219,7 +211,6 @@ export interface FileRouteTypes {
     | '/impact'
     | '/leaderboard'
     | '/opportunity-hub'
-    | '/resources'
     | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
@@ -240,7 +231,6 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/opportunity-hub'
     | '/programs'
-    | '/resources'
     | '/sitemap.xml'
     | '/success-stories'
     | '/vision-mission'
@@ -262,7 +252,6 @@ export interface RootRouteChildren {
   LeaderboardRoute: typeof LeaderboardRoute
   OpportunityHubRoute: typeof OpportunityHubRoute
   ProgramsRoute: typeof ProgramsRouteWithChildren
-  ResourcesRoute: typeof ResourcesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SuccessStoriesRoute: typeof SuccessStoriesRoute
   VisionMissionRoute: typeof VisionMissionRoute
@@ -297,13 +286,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/resources': {
-      id: '/resources'
-      path: '/resources'
-      fullPath: '/resources'
-      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -444,7 +426,6 @@ const rootRouteChildren: RootRouteChildren = {
   LeaderboardRoute: LeaderboardRoute,
   OpportunityHubRoute: OpportunityHubRoute,
   ProgramsRoute: ProgramsRouteWithChildren,
-  ResourcesRoute: ResourcesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SuccessStoriesRoute: SuccessStoriesRoute,
   VisionMissionRoute: VisionMissionRoute,
