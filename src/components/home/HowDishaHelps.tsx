@@ -16,28 +16,22 @@ const FEATURES = [
     accent: "text-green bg-green-soft",
   },
   {
-    icon: Users,
-    title: "Connect with Mentors",
-    description: "Learn from educators, professionals, and experienced mentors who support your personal and career growth.",
-    accent: "text-primary bg-primary-soft",
-  },
-  {
     icon: Briefcase,
     title: "Gain Real Experience",
     description: "Access internships, projects, and career opportunities that prepare you for the workplace.",
-    accent: "text-green bg-green-soft",
+    accent: "text-primary bg-primary-soft",
   },
   {
     icon: HeartHandshake,
     title: "Create Social Impact",
     description: "Volunteer in meaningful initiatives, contribute to communities, and make a positive difference.",
-    accent: "text-primary bg-primary-soft",
+    accent: "text-green bg-green-soft",
   },
   {
     icon: Trophy,
     title: "Earn & Get Rewarded",
     description: "Collect Disha Coins through your participation and redeem exciting rewards in the Disha Marketplace.",
-    accent: "text-green bg-green-soft",
+    accent: "text-primary bg-primary-soft",
   },
 ];
 

@@ -11,7 +11,7 @@ export const ORG = {
   phone: "+91-9888877722",
   mapUrl: "https://goo.gl/maps/MbtzonMSbep3VnDH8",
   mission:
-    "Skill youth for employability and entrepreneurship — coaching over 5 lakh young Indians to become job-ready and to build ventures of their own.",
+    "Skill youth for employability and entrepreneurship — coaching young Indians to become job-ready and to build ventures of their own.",
   vision:
     "Improve the employability quotient and skill quotient of India's youth to build a healthy, happy and wealthy society.",
   passion:
@@ -28,7 +28,7 @@ export type Program = {
   accent: "blue" | "green";
   icon: string;
   highlights: string[];
-  outcomes: { label: string; value: string }[];
+  impact: string[];
 };
 
 export const PROGRAMS: Program[] = [
@@ -46,10 +46,10 @@ export const PROGRAMS: Program[] = [
       "Introduction to investing and compounding",
       "Avoiding scams, loans and debt traps",
     ],
-    outcomes: [
-      { label: "Sessions delivered", value: "120+" },
-      { label: "Students reached", value: "8,500+" },
-      { label: "Schools partnered", value: "45" },
+    impact: [
+      "Widespread community outreach",
+      "Consistent student engagement",
+      "Expanding educational partnerships",
     ],
   },
   {
@@ -66,10 +66,10 @@ export const PROGRAMS: Program[] = [
       "Bootcamps with practising founders",
       "Mentorship and incubation support",
     ],
-    outcomes: [
-      { label: "Bootcamps run", value: "30+" },
-      { label: "Ventures started", value: "210" },
-      { label: "Mentors engaged", value: "60" },
+    impact: [
+      "Frequent innovation bootcamps",
+      "New student ventures launched",
+      "Growing mentor network",
     ],
   },
   {
@@ -86,10 +86,10 @@ export const PROGRAMS: Program[] = [
       "Preventive health awareness camps",
       "Confidence and self-belief coaching",
     ],
-    outcomes: [
-      { label: "Wellness camps", value: "80+" },
-      { label: "Participants", value: "12,000+" },
-      { label: "Cities covered", value: "18" },
+    impact: [
+      "Regular wellness camps",
+      "Large-scale participation",
+      "Expanding city presence",
     ],
   },
   {
@@ -106,10 +106,10 @@ export const PROGRAMS: Program[] = [
       "Plastic-free and sustainability campaigns",
       "Community clean-up volunteer programs",
     ],
-    outcomes: [
-      { label: "Trees planted", value: "15,000+" },
-      { label: "Drives organised", value: "90" },
-      { label: "Volunteers", value: "1,200" },
+    impact: [
+      "Extensive tree plantation drives",
+      "Continuous environmental campaigns",
+      "Dedicated volunteer force",
     ],
   },
   {
@@ -126,10 +126,10 @@ export const PROGRAMS: Program[] = [
       "Life-skills and 21st-century learning",
       "Mentor-led student development",
     ],
-    outcomes: [
-      { label: "Educators trained", value: "900+" },
-      { label: "Schools reached", value: "80" },
-      { label: "Students impacted", value: "25,000+" },
+    impact: [
+      "Empowered educators",
+      "Transformed learning environments",
+      "Massive student outreach",
     ],
   },
   {
@@ -146,37 +146,19 @@ export const PROGRAMS: Program[] = [
       "Digital literacy for all ages",
       "Access to mentoring and resources",
     ],
-    outcomes: [
-      { label: "Communities", value: "40+" },
-      { label: "Families helped", value: "5,000+" },
-      { label: "Programs", value: "65" },
+    impact: [
+      "Supported local communities",
+      "Uplifted families",
+      "Diverse grassroots programs",
     ],
   },
 ];
 
-export const STATS = [
-  { label: "Students Impacted", value: 25000, suffix: "+" },
-  { label: "Schools Reached", value: 80, suffix: "+" },
-  { label: "Workshops Conducted", value: 450, suffix: "+" },
-  { label: "Volunteers", value: 1200, suffix: "+" },
-  { label: "Financial Literacy Sessions", value: 120, suffix: "+" },
-];
 
-export const IMPACT_TRENDS = [
-  { year: "2021", students: 3200, hours: 1800, events: 24 },
-  { year: "2022", students: 7400, hours: 4200, events: 58 },
-  { year: "2023", students: 13500, hours: 7600, events: 96 },
-  { year: "2024", students: 19800, hours: 11200, events: 142 },
-  { year: "2025", students: 25000, hours: 14800, events: 188 },
-];
 
-export const IMPACT_BY_PROGRAM = [
-  { name: "Financial Literacy", value: 8500 },
-  { name: "Entrepreneurship", value: 4200 },
-  { name: "Wellness", value: 12000 },
-  { name: "Clean & Green", value: 6800 },
-  { name: "Education", value: 25000 },
-];
+
+
+
 
 export type GalleryItem = {
   src: string;
@@ -214,14 +196,14 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Jaswinder Singh",
     role: "Community Volunteer",
     quote:
-      "I've been associated with Disha for the last 5 years. They are doing great work uplifting the lives of youth across the region.",
+      "I've been associated with Disha for years. They are doing great work uplifting the lives of youth across the region.",
     photo: images.placeholders.avatar("Jaswinder Singh"),
   },
   {
     name: "Neeru Garg",
     role: "Educator",
     quote:
-      "I have worked with the team at Disha For India for over 5 years. They are a passionate group whose energy genuinely transforms the youth they work with.",
+      "I have worked with the team at Disha For India for many years. They are a passionate group whose energy genuinely transforms the youth they work with.",
     photo: images.placeholders.avatar("Neha Sharma"),
   },
   {
@@ -250,7 +232,7 @@ export const STORIES: Story[] = [
     type: "Student",
     headline: "From classroom to first internship",
     summary:
-      "After a mentoring session, Priya discovered data science, completed a Disha bootcamp and landed her first paid internship in 9 months.",
+      "After a mentoring session, Priya discovered data science, completed a Disha bootcamp and landed her first paid internship.",
     photo: images.stories[0],
   },
   {
@@ -259,25 +241,25 @@ export const STORIES: Story[] = [
     type: "Student",
     headline: "Built a food-delivery micro-venture",
     summary:
-      "The entrepreneurship bootcamp helped Arjun validate his idea and launch a campus food-delivery service that now employs four peers.",
+      "The entrepreneurship bootcamp helped Arjun validate his idea and launch a campus food-delivery service that now employs peers.",
     photo: images.stories[1],
   },
   {
     id: "kavita",
     name: "Kavita Rao",
     type: "Volunteer",
-    headline: "Taught financial literacy to 500 students",
+    headline: "Taught financial literacy to students",
     summary:
-      "Kavita joined the Volunteer Hub as a finance professional and has since led money-skills workshops for over 500 rural students.",
+      "Kavita joined the Volunteer Hub as a finance professional and has since led money-skills workshops for rural students.",
     photo: images.stories[2],
   },
   {
     id: "rahul",
     name: "Rahul Verma",
     type: "Volunteer",
-    headline: "Guided 12 first-generation founders",
+    headline: "Guided first-generation founders",
     summary:
-      "A seasoned product leader, Rahul volunteers with our entrepreneurship programs, guiding 12 aspiring student founders from idea to launch.",
+      "A seasoned product leader, Rahul volunteers with our entrepreneurship programs, guiding aspiring student founders from idea to launch.",
     photo: images.stories[2],
   },
   {
@@ -286,7 +268,7 @@ export const STORIES: Story[] = [
     type: "Community",
     headline: "A village goes plastic-free",
     summary:
-      "Through the Clean & Green India drive, Rampur achieved waste segregation across 300 households and planted 1,200 trees.",
+      "Through the Clean & Green India drive, Rampur achieved waste segregation across households and planted trees.",
     photo: images.stories[1],
   },
   {
@@ -361,7 +343,7 @@ export const EVENTS: DishaEvent[] = [
     location: "Rampur",
     category: "Environment",
     description:
-      "A community plantation and waste-segregation drive that planted 1,200 trees on World Environment Day.",
+      "A community plantation and waste-segregation drive that planted trees on World Environment Day.",
     image: images.events.completed[1],
   },
   {
@@ -401,7 +383,7 @@ export type Blog = {
 export const BLOGS: Blog[] = [
   {
     slug: "money-skills-every-student-needs",
-    title: "5 Money Skills Every Indian Student Needs Before 20",
+    title: "Money Skills Every Indian Student Needs",
     category: "Financial Literacy",
     excerpt:
       "Budgeting, saving, and understanding compounding early can change your entire financial future. Here's where to start.",
@@ -412,9 +394,9 @@ export const BLOGS: Blog[] = [
     featured: true,
     content: [
       "Money is a skill, not a mystery. The earlier you learn to manage it, the more freedom you build for your future. Yet most students leave school without ever learning how to budget, save or invest.",
-      "Start with budgeting. Track where your money goes for a single month. You'll be surprised how small daily expenses add up. A simple 50-30-20 split — needs, wants and savings — is enough to begin.",
-      "Next, understand compounding. Even small amounts saved consistently grow dramatically over time. The student who starts at 18 always beats the one who starts at 28.",
-      "Learn digital-payment safety, avoid debt traps, and build an emergency cushion. These four habits, started young, compound into lifelong financial confidence.",
+      "Start with budgeting. Track where your money goes for a single month. You'll be surprised how small daily expenses add up. A simple split of needs, wants and savings — needs, wants and savings — is enough to begin.",
+      "Next, understand compounding. Even small amounts saved consistently grow dramatically over time. The student who starts young always beats the one who starts later.",
+      "Learn digital-payment safety, avoid debt traps, and build an emergency cushion. These habits, started young, compound into lifelong financial confidence.",
     ],
   },
   {
@@ -431,7 +413,7 @@ export const BLOGS: Blog[] = [
     content: [
       "Every great venture begins with a problem worth solving. Before writing a single line of code or spending a rupee, talk to the people who actually face the problem.",
       "Use the business model canvas to map who your customer is, what value you offer and how you'll reach them. Keep it on one page.",
-      "Build the smallest possible version of your idea — an MVP — and put it in front of ten real users. Their feedback is worth more than any plan.",
+      "Build the smallest possible version of your idea — an MVP — and put it in front of real users. Their feedback is worth more than any plan.",
       "Validation isn't about being right. It's about learning fast and cheap. The students in our bootcamps who embrace this mindset move from idea to launch in months.",
     ],
   },
@@ -447,7 +429,7 @@ export const BLOGS: Blog[] = [
     cover: images.blogs[2],
     featured: true,
     content: [
-      "The pressure after Class 12 is real, but choosing a career isn't a life sentence — it's a direction you can refine.",
+      "The pressure after Class school is real, but choosing a career isn't a life sentence — it's a direction you can refine.",
       "Start with your interests and natural strengths. Then get exposure: talk to people in fields you're curious about and try short projects.",
       "Building a visual roadmap for your goals makes the path forward feel concrete instead of overwhelming.",
       "Remember: clarity comes from action, not endless thinking. Take one small step toward a field that excites you.",
@@ -522,7 +504,7 @@ export const VOLUNTEER_ROLES: Volunteer[] = [
     id: "v1",
     title: "Financial Literacy Facilitator",
     category: "Teaching",
-    commitment: "4 hrs / week",
+    commitment: "Part-time",
     location: "Punjab · On-site",
     description: "Lead money-skills workshops in partner schools and community centres.",
   },
@@ -530,7 +512,7 @@ export const VOLUNTEER_ROLES: Volunteer[] = [
     id: "v2",
     title: "Career Mentor (Online)",
     category: "Teaching",
-    commitment: "2 hrs / week",
+    commitment: "Part-time",
     location: "Remote",
     description: "Guide students one-on-one through career decisions and applications.",
   },
@@ -554,7 +536,7 @@ export const VOLUNTEER_ROLES: Volunteer[] = [
     id: "v5",
     title: "Social Media Coordinator",
     category: "Marketing",
-    commitment: "3 hrs / week",
+    commitment: "Part-time",
     location: "Remote",
     description: "Plan content, grow reach and tell our impact stories online.",
   },
@@ -640,21 +622,21 @@ export const MENTORS: Mentor[] = [
     name: "Aman Gupta",
     photo: images.placeholders.avatar("Jaswinder Singh"),
     expertise: "Product Management & Startups",
-    experience: "10+ years",
+    experience: "Extensive experience",
     tags: ["Entrepreneurship", "Technology"],
   },
   {
     name: "Neha Sharma",
     photo: images.placeholders.avatar("Neha Sharma"),
     expertise: "Financial Planning & Wealth",
-    experience: "8 years",
+    experience: "Solid experience",
     tags: ["Financial Literacy"],
   },
   {
     name: "Vikram Singh",
     photo: images.placeholders.avatar("Mandeep Singh"),
     expertise: "UI/UX & Brand Identity",
-    experience: "12 years",
+    experience: "Deep expertise",
     tags: ["Design", "Career Growth"],
   },
 ];

@@ -181,6 +181,7 @@ function FullWidthHeroCarousel() {
 import { Button } from "@/components/ui/button";
 import { MarketplaceShowcase } from "@/components/home/MarketplaceShowcase";
 import { HowDishaHelps } from "@/components/home/HowDishaHelps";
+import { FaqSection } from "@/components/home/FaqSection";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ProgramCard, EventCard, BlogCard, StoryCard } from "@/components/cards";
@@ -360,7 +361,10 @@ function Home() {
         </div>
       </section>
 
-      {/* SECTION 9 — Volunteer CTA */}
+      {/* SECTION 9 — FAQ */}
+      <FaqSection />
+
+      {/* SECTION 10 — Volunteer CTA */}
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal>

@@ -1,13 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Target, Eye, Flame, Quote, ArrowRight } from "lucide-react";
+import { Target, Eye, Flame, Quote, ArrowRight, GraduationCap, Users, Rocket, Heart, MapPin } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 import { images } from "@/lib/images";
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
 import { Button } from "@/components/ui/button";
-import { ORG, STATS } from "@/lib/site-data";
-import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
+import { ORG } from "@/lib/site-data";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -86,10 +85,17 @@ function About() {
       <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
-            {STATS.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.06} className="rounded-2xl border border-border bg-card p-5 text-center shadow-soft">
-                <p className="text-3xl font-extrabold text-primary"><AnimatedCounter value={s.value} suffix={s.suffix} /></p>
-                <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+            {[
+              { label: "Empowering Youth", text: "Purposeful careers", icon: GraduationCap },
+              { label: "Community", text: "Social action", icon: Users },
+              { label: "Innovation", text: "Incubating ideas", icon: Rocket },
+              { label: "Trust", text: "Years of commitment", icon: Heart },
+              { label: "Growth", text: "Expanding horizons", icon: MapPin },
+            ].map((s, i) => (
+              <Reveal key={s.label} delay={i * 0.06} className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-5 text-center shadow-soft">
+                <s.icon className="mb-3 h-8 w-8 text-primary" />
+                <p className="text-sm font-bold text-foreground">{s.label}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{s.text}</p>
               </Reveal>
             ))}
           </div>

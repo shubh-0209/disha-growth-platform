@@ -14,8 +14,7 @@ import { useAuth } from "@/hooks/use-auth";
 const TOOLS = [
   { to: "/opportunity-hub", label: "Opportunity Hub" },
   { to: "/volunteer", label: "Volunteer Hub" },
-
-  { to: "/leaderboard", label: "Contribution Leaderboard" },
+  { to: "/leaderboard", label: "Leaderboard" },
 ] as const;
 
 const ABOUT = [
@@ -157,7 +156,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-1 lg:flex">
           <NavDropdown label="About" items={ABOUT} isScrolled={isScrolled} />
-          <NavDropdown label="Student Tools" items={TOOLS} isScrolled={isScrolled} />
+          <NavDropdown label="Community Hub" items={TOOLS} isScrolled={isScrolled} />
           {MAIN.map((it) => (
             <Link
               key={it.to}
@@ -172,7 +171,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <VolunteerAuthLink isScrolled={isScrolled} />
-          <a href="https://app-disha-for-indiaa.vercel.app" className="rounded-full bg-[#FFB703] text-[#063B8C] px-6 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center">Dashboard</a>
+          <a href="https://app-disha-for-indiaa.vercel.app" className="rounded-full bg-[#FFB703] text-[#063B8C] px-8 py-3 text-base font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center">Dashboard</a>
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -206,7 +205,7 @@ export function Navbar() {
               <MobileVolunteerAuthLink />
 
               <SheetClose asChild>
-                <a href="https://app-disha-for-indiaa.vercel.app" className="rounded-full bg-[#FFB703] text-[#063B8C] px-6 py-2.5 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center w-full mt-4">
+                <a href="https://app-disha-for-indiaa.vercel.app" className="rounded-full bg-[#FFB703] text-[#063B8C] px-8 py-3 text-base font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center w-full mt-4">
                   Dashboard
                 </a>
               </SheetClose>

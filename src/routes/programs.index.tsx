@@ -35,7 +35,6 @@ function Programs() {
             tagline: p.shortDescription || "Empowering India's youth.",
             category: p.category || "Skill Development",
             thumbnail: p.thumbnail || "/images/placeholders/volunteer-1.jpg",
-            stats: { volunteers: p.maxVolunteers || 0, hours: 0, lives: 0 },
             keyFocus: p.tags || []
           }));
         }

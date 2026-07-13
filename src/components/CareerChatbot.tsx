@@ -28,7 +28,7 @@ function reply(input: string): string {
     return "We don't have a formal Mentor Network on our platform, but you can participate in our student programs and bootcamps to get guidance from our team and volunteers.";
   if (q.includes("hello") || q.includes("hi") || q.includes("hey"))
     return "Hi there! 👋 I'm Disha Assistant. I can help you explore careers, resources and programs. What would you like to know?";
-  return "I'm here to guide your growth journey! Ask me about careers, entrepreneurship, wellness, or volunteering — or explore our Student Tools from the menu.";
+  return "I'm here to guide your growth journey! Ask me about careers, entrepreneurship, wellness, or volunteering — or explore our Community Hub from the menu.";
 }
 
 export function CareerChatbot() {

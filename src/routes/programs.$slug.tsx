@@ -80,10 +80,10 @@ function ProgramDetail() {
             <div className="rounded-3xl border border-border bg-secondary/40 p-6">
               <h3 className="font-semibold text-foreground">Impact so far</h3>
               <div className="mt-4 space-y-4">
-                {program.outcomes.map((o: { label: string; value: string }) => (
-                  <div key={o.label} className="rounded-2xl border border-border bg-card p-4">
-                    <p className="text-2xl font-bold text-primary">{o.value}</p>
-                    <p className="text-sm text-muted-foreground">{o.label}</p>
+                {program.impact.map((text: string) => (
+                  <div key={text} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
+                    <span className="mt-2 flex h-2 w-2 shrink-0 rounded-full bg-primary" />
+                    <p className="text-sm font-medium leading-relaxed text-foreground">{text}</p>
                   </div>
                 ))}
               </div>
