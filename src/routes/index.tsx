@@ -8,32 +8,32 @@ import { cn } from "@/lib/utils";
 
 const HERO_SLIDES = [
   {
-    headline: "Become a Volunteer. Become Someone's Hope.",
-    description: "Your time, knowledge, and compassion can transform lives. Join Disha For India and help students discover opportunities, confidence, and a brighter future.",
-    primaryCta: { label: "Become a Volunteer", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    headline: "Connecting People, Ideas, and Opportunities to Create Meaningful Change.",
+    description: "Join a movement where individuals and organizations come together to learn, collaborate, and make a lasting impact on our communities.",
+    primaryCta: { label: "Join The Movement", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
     image: images.hero.home[0],
-    alt: "Young volunteers mentoring students, teaching, or participating in community activities",
+    alt: "Volunteers and community members collaborating",
   },
   {
-    headline: "Your Impact Can Unlock New Opportunities.",
-    description: "Discover the Disha Marketplace where participation and meaningful contributions lead to exciting rewards, learning resources, scholarships, career support, and much more.",
-    primaryCta: { label: "Know More About Marketplace", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    headline: "Recognizing Every Contribution You Make.",
+    description: "Your efforts, skills, and participation deserve recognition. Disha provides opportunities to learn, contribute, and celebrate meaningful achievements.",
+    primaryCta: { label: "Explore Our Impact", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
     image: "/gallery/marketplace.png",
-    alt: "A modern reward ecosystem showing certificates and achievements",
+    alt: "A community celebrating meaningful achievements",
   },
   {
-    headline: "Explore Programs That Build Better Futures.",
-    description: "Discover career guidance, internships, skill development, financial literacy, and educational initiatives designed to empower students from underserved communities.",
-    primaryCta: { label: "Explore Programs", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    headline: "Initiatives Designed to Empower and Inspire.",
+    description: "Explore programs that support continuous learning, community development, and personal growth for everyone involved.",
+    primaryCta: { label: "Explore Initiatives", href: "/programs" },
     image: images.gallery[2], // team-certificates.webp
-    alt: "A modern reward ecosystem showing certificates and achievements",
+    alt: "Community members engaging in learning programs",
   },
   {
-    headline: "Together, We Can Create Lasting Change.",
-    description: "Whether you're a student, educator, volunteer, institution, or CSR partner, your contribution can help create meaningful opportunities for thousands of young people.",
-    primaryCta: { label: "Join the Mission", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
+    headline: "Together, We Can Build a Better Tomorrow.",
+    description: "Whether you are a learner, professional, mentor, or partner, your involvement helps build a stronger, more connected society.",
+    primaryCta: { label: "Contribute Today", href: "https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard" },
     image: images.gallery[1], // public-speaking.webp
-    alt: "A diverse group of students, teachers, volunteers celebrating success",
+    alt: "A diverse group of people celebrating success",
   }
 ];
 
@@ -41,6 +41,16 @@ function FullWidthHeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  };
 
   useEffect(() => {
     if (isHovered || !HERO_SLIDES?.length) return;
@@ -87,10 +97,10 @@ function FullWidthHeroCarousel() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.15] tracking-tight text-foreground mb-6 line-clamp-3">
-              Become a Volunteer. Become Someone's Hope.
+              {HERO_SLIDES[0].headline}
             </h1>
             <p className="text-lg lg:text-xl leading-[1.6] text-muted-foreground mb-8 max-w-xl">
-              Your time, knowledge, and compassion can transform lives. Join Disha For India and help students discover opportunities, confidence, and a brighter future.
+              {HERO_SLIDES[0].description}
             </p>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="h-12 px-8 text-base">Placeholder</Button>
@@ -128,17 +138,33 @@ function FullWidthHeroCarousel() {
                 </p>
 
                 <div className="flex flex-wrap gap-4">
-                  <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 text-base shadow-sm">
-                    <a href={HERO_SLIDES[currentSlide].primaryCta.href}>
+                  {HERO_SLIDES[currentSlide].primaryCta.href.startsWith("#") ? (
+                    <Button 
+                      size="lg" 
+                      className="w-full sm:w-auto h-12 px-8 text-base shadow-sm"
+                      onClick={() => scrollToSection(HERO_SLIDES[currentSlide].primaryCta.href.substring(1))}
+                    >
                       {HERO_SLIDES[currentSlide].primaryCta.label} <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
+                    </Button>
+                  ) : HERO_SLIDES[currentSlide].primaryCta.href.startsWith("/") ? (
+                    <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 text-base shadow-sm">
+                      <Link to={HERO_SLIDES[currentSlide].primaryCta.href}>
+                        {HERO_SLIDES[currentSlide].primaryCta.label} <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 text-base shadow-sm">
+                      <a href={HERO_SLIDES[currentSlide].primaryCta.href}>
+                        {HERO_SLIDES[currentSlide].primaryCta.label} <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
                 </div>
 
                 <div className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
                   <Calendar className="h-4 w-4 text-primary" />
                   <span>
-                    <strong className="font-semibold text-foreground">Established in 2017</strong> — Building opportunities for students across India.
+                    <strong className="font-semibold text-foreground">Established in 2017</strong> — Connecting people to create impact.
                   </span>
                 </div>
               </div>
@@ -181,6 +207,7 @@ function FullWidthHeroCarousel() {
 import { Button } from "@/components/ui/button";
 import { MarketplaceShowcase } from "@/components/home/MarketplaceShowcase";
 import { HowDishaHelps } from "@/components/home/HowDishaHelps";
+import { OurApproach } from "@/components/home/OurApproach";
 import { FaqSection } from "@/components/home/FaqSection";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -225,18 +252,21 @@ function Home() {
       {/* SECTION 1 — Hero */}
       <FullWidthHeroCarousel />
 
-      {/* SECTION 2 — Marketplace */}
+      {/* SECTION 2 — Recognition Ecosystem */}
       <MarketplaceShowcase />
 
-      {/* SECTION 3 — How Disha Helps */}
+      {/* SECTION 3 — Why Disha Exists */}
       <HowDishaHelps />
+
+      {/* SECTION 4 — How We Create Impact */}
+      <OurApproach />
 
       {/* SECTION 5 — Programs */}
       <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            title="Our Programs"
-            description="Skilling youth across every dimension. From financial literacy to entrepreneurship, wellness and the environment — our programs build employable, confident, conscious citizens."
+            title="Our Initiatives"
+            description="Explore initiatives designed to support learning, collaboration, community development, and personal growth for individuals of all backgrounds."
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PROGRAMS.slice(0, 4).map((p, i) => (
@@ -252,8 +282,8 @@ function Home() {
       <section className="border-y border-border bg-gradient-section py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            title="Success Stories"
-            description="Real journeys, real transformation. Students, volunteers and communities whose lives changed direction with Disha For India."
+            title="Stories of Transformation"
+            description="Real journeys of personal growth, community contribution, and social impact powered by collaboration."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {STORIES.slice(0, 3).map((s, i) => (
@@ -270,12 +300,12 @@ function Home() {
         </div>
       </section>
 
-      {/* SECTION 7 — Upcoming Events */}
-      <section className="py-12 lg:py-20">
+      {/* SECTION 8 — Opportunity Hub (Events) */}
+      <section className="py-12 lg:py-20 bg-muted/20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            title="Upcoming Events"
-            description="Join our next gathering. Career fairs, bootcamps and community drives — opportunities to learn, connect and contribute."
+            title="Community Engagement"
+            description="Join conversations, workshops, and initiatives that bring people together to learn, connect, and collaborate."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {upcoming.map((e, i) => (
@@ -286,7 +316,7 @@ function Home() {
             {upcoming.length === 0 && (
               <div className="col-span-full rounded-2xl border border-dashed border-border bg-card p-12 text-center text-muted-foreground">
                 <Calendar className="mx-auto mb-3 h-8 w-8 text-primary/40" />
-                New events and initiatives are coming soon. Stay connected with Disha For India.
+                New community initiatives are coming soon. Stay connected with Disha For India.
               </div>
             )}
           </div>
@@ -298,12 +328,12 @@ function Home() {
         </div>
       </section>
 
-      {/* SECTION 8 — Latest Blogs */}
+      {/* SECTION 9 — Latest Blogs */}
       <section className="border-y border-border bg-gradient-section py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            title="From the Blog"
-            description="Insights to grow by. Practical guides on money, careers, entrepreneurship, wellness and the environment."
+            title="Impact Updates"
+            description="Stories, insights, and updates from our growing community of changemakers and learners."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {featuredBlogs.map((b, i) => (
@@ -314,18 +344,18 @@ function Home() {
           </div>
           <div className="mt-6">
             <Button asChild variant="outline">
-              <Link to="/blogs">Read the blog <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              <Link to="/blogs">Read our updates <ArrowRight className="ml-1 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* SECTION 11 — Testimonials */}
       <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading
-            title="Testimonials"
-            description="What people say about Disha For India"
+            title="Community Voices"
+            description="Hear from the volunteers, learners, mentors, and partners who make our movement possible."
             align="center"
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -361,26 +391,26 @@ function Home() {
         </div>
       </section>
 
-      {/* SECTION 9 — FAQ */}
+      {/* SECTION 12 — FAQ */}
       <FaqSection />
 
-      {/* SECTION 10 — Volunteer CTA */}
-      <section className="pb-20">
+      {/* SECTION 13 — Volunteer CTA */}
+      <section className="py-12 lg:py-20">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-hero px-6 py-10 lg:py-16 text-center text-foreground sm:px-12">
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-hero px-6 py-10 lg:py-16 text-center text-foreground sm:px-12 border border-border">
               <div className="relative mx-auto max-w-2xl">
                 <Compass className="mx-auto h-10 w-10 text-primary" />
                 <h2 className="mt-5 text-2xl md:text-3xl font-bold text-ink">
-                  Invest your time. Uplift a life.
+                  Become Part of The Movement
                 </h2>
                 <p className="mt-5 text-muted-foreground">
-                  Join 1,200+ volunteers making a powerful contribution to India's
-                  youth. Teach, mentor, design or build — there's a role for you.
+                  Join a growing community making a powerful contribution to society. 
+                  Whether you want to mentor, learn, or collaborate—there's a place for you.
                 </p>
                 <div className="mt-8 flex justify-center gap-4">
                   <Button asChild size="lg" className="rounded-full px-8">
-                    <a href="https://app-disha-for-indiaa.vercel.app/signup">Become a Volunteer</a>
+                    <a href="https://app-disha-for-indiaa.vercel.app/signup">Join The Movement</a>
                   </Button>
                 </div>
               </div>
@@ -388,6 +418,9 @@ function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* Final Spacer for Footer spacing if needed */}
+      <div className="h-12 bg-background"></div>
     </>
   );
 }

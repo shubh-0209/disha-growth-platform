@@ -5,32 +5,32 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 const FEATURES = [
   {
     icon: Compass,
-    title: "Discover Your Potential",
-    description: "Explore your strengths and receive expert career guidance to make informed decisions about your future.",
+    title: "Bridging the Skills Gap",
+    description: "Millions of individuals lack access to practical, future-ready skills. We provide the training and guidance needed to thrive.",
     accent: "text-primary bg-primary-soft",
   },
   {
     icon: Sparkles,
-    title: "Learn Future-Ready Skills",
-    description: "Develop practical skills through workshops, training programs, and hands-on learning experiences.",
+    title: "Empowering Next-Gen Leaders",
+    description: "We cultivate confidence, innovation, and leadership so people of all backgrounds can drive positive change.",
     accent: "text-green bg-green-soft",
   },
   {
     icon: Briefcase,
-    title: "Gain Real Experience",
-    description: "Access internships, projects, and career opportunities that prepare you for the workplace.",
+    title: "Creating Equal Opportunities",
+    description: "We connect individuals from underserved backgrounds with meaningful opportunities, internships, and career support.",
     accent: "text-primary bg-primary-soft",
   },
   {
     icon: HeartHandshake,
-    title: "Create Social Impact",
-    description: "Volunteer in meaningful initiatives, contribute to communities, and make a positive difference.",
+    title: "Fostering Social Responsibility",
+    description: "We believe in giving back. Our platforms encourage volunteerism and active participation in community development.",
     accent: "text-green bg-green-soft",
   },
   {
     icon: Trophy,
-    title: "Earn & Get Rewarded",
-    description: "Collect Disha Coins through your participation and redeem exciting rewards in the Disha Marketplace.",
+    title: "Recognizing Impact",
+    description: "We acknowledge and celebrate every contribution, reinforcing a culture where doing good is valued and recognized.",
     accent: "text-primary bg-primary-soft",
   },
 ];
@@ -40,8 +40,8 @@ export function HowDishaHelps() {
     <section className="py-12 lg:py-20 bg-background">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeading
-          title="How Disha Helps"
-          description="Supporting students at every stage of their journey—from learning new skills to building successful careers and creating meaningful impact."
+          title="Why Disha Exists"
+          description="Helping people discover opportunities, build skills, collaborate, and create meaningful impact in their communities."
           align="center"
         />
         

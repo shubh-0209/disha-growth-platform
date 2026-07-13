@@ -612,3 +612,7 @@
     outline-offset: 2px;
   }
 }
+
+#marketplace {
+  scroll-margin-top: 100px;
+}

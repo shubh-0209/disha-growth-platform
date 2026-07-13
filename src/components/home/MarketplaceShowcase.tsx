@@ -16,7 +16,7 @@ const CATEGORIES = [
 
 export function MarketplaceShowcase() {
   return (
-    <section className="relative overflow-hidden bg-background pt-16 pb-4 lg:pt-28 lg:pb-8">
+    <section id="marketplace" className="relative overflow-hidden bg-background pt-16 pb-4 lg:pt-28 lg:pb-8">
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 bg-grid pointer-events-none opacity-40" />
       <motion.div
@@ -39,13 +39,13 @@ export function MarketplaceShowcase() {
 
             <Reveal delay={0.1}>
               <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground mb-4">
-                Unlock Rewards Through <span className="text-primary">Your Impact</span>
+                Recognizing <span className="text-primary">Every Contribution</span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="text-lg leading-relaxed text-muted-foreground mb-10 max-w-xl">
-                Every workshop you attend, every volunteer hour you contribute, and every skill you learn earns <strong className="text-foreground">Disha Coins</strong>. Redeem them for scholarships, exclusive merchandise, learning resources, certificates, career support, and many more exciting rewards.
+                Your efforts, skills, and participation deserve recognition. Disha provides opportunities to learn, contribute, and celebrate meaningful achievements through <strong className="text-foreground">Community Impact Credits (Disha Coins)</strong>.
               </p>
             </Reveal>
 
@@ -75,12 +75,12 @@ export function MarketplaceShowcase() {
               <div className="flex flex-wrap items-center gap-6">
                 <Button asChild size="lg" className="h-14 px-8 text-base shadow-lg hover:shadow-xl transition-all">
                   <a href="https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard">
-                    Explore Marketplace <ArrowRight className="ml-2 h-5 w-5" />
+                    Discover Opportunities <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
                 <div className="flex flex-col text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">Official Disha Marketplace</span>
-                  <span>Reward students for learning, volunteering, and making an impact.</span>
+                  <span className="font-semibold text-foreground">Official Changemaker Hub</span>
+                  <span>Recognizing individuals for learning, volunteering, and making an impact.</span>
                 </div>
               </div>
             </Reveal>
@@ -110,7 +110,7 @@ export function MarketplaceShowcase() {
                 <div className="relative bg-background overflow-hidden p-1">
                   <img
                     src="/gallery/marketplace.png"
-                    alt="Disha Marketplace Dashboard"
+                    alt="Disha Changemaker Hub Dashboard"
                     className="w-full h-auto object-cover rounded-xl shadow-inner border border-border/50"
                   />
                   
