@@ -178,7 +178,29 @@ export const IMPACT_BY_PROGRAM = [
   { name: "Education", value: 25000 },
 ];
 
-export const GALLERY = images.gallery;
+export type GalleryItem = {
+  src: string;
+  caption: string;
+};
+
+export const GALLERY: GalleryItem[] = [
+  { src: "/gallery/award-ceremony.jpg", caption: "Recognising excellence and impact in our community" },
+  { src: "/gallery/public-speaking.jpg", caption: "Empowering youth through inspirational talks and events" },
+  { src: "/gallery/team-certificates.jpg", caption: "Celebrating the hard work of our educators and volunteers" },
+  { src: "/gallery/youth-address.jpg", caption: "Engaging thousands of students in national programs" },
+  { src: "/gallery/volunteer-group.jpg", caption: "Our passionate volunteer team that drives change on the ground" },
+  { src: "/gallery/gallery-2-1.jpg", caption: "Community outreach and volunteer activities" },
+  { src: "/gallery/gallery-2-2.jpg", caption: "Disha For India foundation events" },
+  { src: "/gallery/gallery-2-3.jpg", caption: "Empowering students through education and mentorship" },
+  { src: "/gallery/gallery-2-4.jpg", caption: "Building strong communities across the region" },
+  { src: "/gallery/gallery-2-5.jpg", caption: "Creating a positive impact on the ground" },
+  { src: "/gallery/disha-1.jpg", caption: "Engaging with students and future leaders" },
+  { src: "/gallery/disha-2.jpg", caption: "Hands-on workshops and skill development" },
+  { src: "/gallery/disha-3.jpg", caption: "Guiding the youth towards a brighter future" },
+  { src: "/gallery/activity-1-2.jpg", caption: "Transformational activities and group sessions" },
+  { src: "/gallery/activity-2-1.jpg", caption: "Fostering teamwork and collaboration" },
+  { src: "/gallery/activity-3-1.jpg", caption: "Disha For India program highlights" },
+];
 
 export type Testimonial = {
   name: string;
