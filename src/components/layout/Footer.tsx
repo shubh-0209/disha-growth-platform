@@ -28,7 +28,7 @@ const COLS: { title: string; links: { to: string; label: string }[] }[] = [
       { to: "/events", label: "Events" },
       { to: "/blogs", label: "Blogs" },
       { to: "/gallery", label: "Media Gallery" },
-      { to: "/contact", label: "Contact Us" },
+
     ],
   },
 ];

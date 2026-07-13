@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Compass, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, Calendar, Compass, Gift, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 import { images } from "@/lib/images";
 import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
@@ -24,13 +24,13 @@ function HeroCarousel() {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setIsReducedMotion(mediaQuery.matches);
     const motionHandler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
-    
+
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', motionHandler);
     } else {
       mediaQuery.addListener(motionHandler);
     }
-    
+
     return () => {
       if (mediaQuery.removeEventListener) {
         mediaQuery.removeEventListener('change', motionHandler);
@@ -42,11 +42,11 @@ function HeroCarousel() {
 
   useEffect(() => {
     if (isHovered || isReducedMotion || !heroImages?.length) return;
-    
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
     }, 2500);
-    
+
     return () => clearInterval(timer);
   }, [isHovered, isReducedMotion]);
 
@@ -58,7 +58,7 @@ function HeroCarousel() {
     if (touchStart === null) return;
     const touchEnd = e.changedTouches[0].clientX;
     const diff = touchStart - touchEnd;
-    
+
     if (diff > 50) nextSlide();
     else if (diff < -50) prevSlide();
     setTouchStart(null);
@@ -70,7 +70,7 @@ function HeroCarousel() {
   };
 
   return (
-    <div 
+    <div
       className="group relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[500px] overflow-hidden rounded-[2rem] border border-border shadow-card bg-muted/20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -101,38 +101,37 @@ function HeroCarousel() {
           />
         );
       })}
-      
+
       {/* Desktop Arrows */}
-      <button 
+      <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
         aria-label="Previous image"
       >
         <span className="sr-only">Previous</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-          <path d="M15 18l-6-6 6-6"/>
+          <path d="M15 18l-6-6 6-6" />
         </svg>
       </button>
-      <button 
+      <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground opacity-0 backdrop-blur transition-all hover:bg-background hover:text-primary focus-visible:opacity-100 group-hover:opacity-100 lg:flex"
         aria-label="Next image"
       >
         <span className="sr-only">Next</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-          <path d="M9 18l6-6-6-6"/>
+          <path d="M9 18l6-6-6-6" />
         </svg>
       </button>
-      
+
       {/* Pagination Dots */}
       <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full bg-black/20 px-3 py-2 backdrop-blur-sm">
         {heroImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 w-2 rounded-full transition-all ${
-              index === currentSlide ? "w-6 bg-white" : "bg-white/50 hover:bg-white/80"
-            }`}
+            className={`h-2 w-2 rounded-full transition-all ${index === currentSlide ? "w-6 bg-white" : "bg-white/50 hover:bg-white/80"
+              }`}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={index === currentSlide}
           />
@@ -144,27 +143,29 @@ function HeroCarousel() {
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
 import { ProgramCard, EventCard, BlogCard, StoryCard } from "@/components/cards";
 import {
-  STATS,
   PROGRAMS,
   EVENTS,
   BLOGS,
   STORIES,
   TESTIMONIALS,
+  SITE_CONFIG,
 } from "@/lib/site-data";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Disha For India — Student Growth & Opportunity Platform" },
+      { title: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE" },
+      { name: "description", content: SITE_CONFIG.description },
       {
-        name: "description",
-        content:
-          "Empowering India's youth through skills, education and opportunities. Explore programs, mentorship, volunteering and curated resources.",
+        property: "og:title",
+        content: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE",
       },
-      { property: "og:title", content: "Disha For India — Student Growth & Opportunity Platform" },
+      { property: "og:description", content: SITE_CONFIG.description },
+      { property: "og:url", content: "https://dishaforindia.org" },
+      { property: "og:title", content: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE" },
       {
         property: "og:description",
         content:
@@ -187,16 +188,10 @@ function Home() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-8 pb-16 lg:pt-12 lg:pb-24 lg:grid-cols-2">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-primary">
-              <Sparkles className="h-3.5 w-3.5" /> India's Student Growth & Opportunity Platform
+              <Sparkles className="h-3.5 w-3.5" /> WE EMPOWER | WE MAKE THE DIFFERENCE
             </span>
-            <h1 className="mt-5 flex max-w-[600px] flex-col font-extrabold leading-[1.1] tracking-tight text-foreground">
-              <span>Empowering</span>
-              <span>India's Youth</span>
-              <span>Through</span>
-              <span>
-                <span className="text-primary">Skills</span>, <span className="text-green">Education</span>
-              </span>
-              <span>and Opportunities</span>
+            <h1 className="mt-4 max-w-[700px] text-[1.95rem] lg:text-[2.34rem] font-extrabold leading-[1.2] tracking-tight text-foreground">
+              Empowering India's Youth Through <span className="text-primary">Skills</span>, <span className="text-green">Education</span> and Opportunities
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               From skills and growth programs to mentorship and real impact —
@@ -208,49 +203,24 @@ function Home() {
                 <Link to="/programs">Explore Programs <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                <Link to="/volunteer">Become a Volunteer</Link>
+                <a href="https://app-disha-for-indiaa.vercel.app/login?redirect=%2Fdashboard">Become a Volunteer</a>
               </Button>
             </div>
-            <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5"><GraduationCap className="h-4 w-4 text-primary" /> 25,000+ students</span>
-              <span className="flex items-center gap-1.5"><Heart className="h-4 w-4 text-green" /> 1,200+ volunteers</span>
+            <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
+              <Calendar className="h-4 w-4 text-primary" />
+              <span>
+                <strong className="font-semibold text-foreground">Established in 2017</strong> — Building opportunities for students across India.
+              </span>
             </div>
           </div>
 
           <div className="relative">
             <HeroCarousel />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="absolute bottom-4 left-4 z-30 rounded-2xl border border-border bg-card p-4 shadow-card sm:-bottom-4 sm:-left-4 lg:-bottom-5 lg:-left-5"
-            >
-              <p className="text-2xl font-bold text-primary">5 Lakh+</p>
-              <p className="text-xs text-muted-foreground">Youth to be skilled</p>
-            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 — Impact Statistics */}
-      <section className="border-y border-border bg-gradient-section py-10 lg:py-16 text-foreground">
-        <div className="mx-auto max-w-7xl px-5">
-          <Reveal className="mb-10 text-center">
-            <h2 className="font-bold text-ink">Our impact, in numbers</h2>
-            <p className="mt-2 text-muted-foreground">Fingerprints on the lives we touch never fade.</p>
-          </Reveal>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
-            {STATS.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.08} className="text-center">
-                <p className="text-3xl font-extrabold text-primary sm:text-4xl">
-                  <AnimatedCounter value={s.value} suffix={s.suffix} />
-                </p>
-                <p className="mt-1.5 text-sm text-muted-foreground">{s.label}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 5 — Programs */}
       <section className="py-12 lg:py-20">
@@ -366,13 +336,13 @@ function Home() {
                     "{t.quote}"
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-4 border-t border-border pt-4">
-                    <ImageWithFallback 
-                      src={t.photo} 
-                      alt={t.name} 
-                      loading="lazy" 
+                    <ImageWithFallback
+                      src={t.photo}
+                      alt={t.name}
+                      loading="lazy"
                       width={44}
                       height={44}
-                      className="h-11 w-11 rounded-full object-cover" 
+                      className="h-11 w-11 rounded-full object-cover"
                     />
                     <div>
                       <p className="text-sm font-semibold text-foreground">{t.name}</p>
@@ -393,10 +363,10 @@ function Home() {
             <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-hero px-6 py-10 lg:py-16 text-center text-foreground sm:px-12">
               <div className="relative mx-auto max-w-2xl">
                 <Compass className="mx-auto h-10 w-10 text-primary" />
-                <h2 className="mt-5 font-bold text-ink">
+                <h2 className="mt-5 text-2xl md:text-3xl font-bold text-ink">
                   Invest your time. Uplift a life.
                 </h2>
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-5 text-muted-foreground">
                   Join 1,200+ volunteers making a powerful contribution to India's
                   youth. Teach, mentor, design or build — there's a role for you.
                 </p>

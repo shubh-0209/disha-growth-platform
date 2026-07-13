@@ -6,7 +6,7 @@ import { images } from "@/lib/images";
 export const ORG = {
   name: "Disha For India",
   legalName: "Disha For India Foundation & Educational Trust",
-  tagline: "India's Student Growth & Opportunity Platform",
+  tagline: "WE EMPOWER | WE MAKE THE DIFFERENCE",
   email: "inaggarwal76@gmail.com",
   phone: "+91-9888877722",
   mapUrl: "https://goo.gl/maps/MbtzonMSbep3VnDH8",

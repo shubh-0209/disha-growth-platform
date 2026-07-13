@@ -19,7 +19,6 @@ import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as EventsRouteImport } from './routes/events'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -80,11 +79,6 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/events.lazy').then((d) => d.Route))
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BlogsRoute = BlogsRouteImport.update({
   id: '/blogs',
   path: '/blogs',
@@ -125,7 +119,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blogs': typeof BlogsRouteWithChildren
-  '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
@@ -144,7 +137,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
@@ -164,7 +156,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blogs': typeof BlogsRouteWithChildren
-  '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
@@ -186,7 +177,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blogs'
-    | '/contact'
     | '/events'
     | '/gallery'
     | '/impact'
@@ -205,7 +195,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/contact'
     | '/events'
     | '/gallery'
     | '/impact'
@@ -224,7 +213,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blogs'
-    | '/contact'
     | '/events'
     | '/gallery'
     | '/impact'
@@ -245,7 +233,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BlogsRoute: typeof BlogsRouteWithChildren
-  ContactRoute: typeof ContactRoute
   EventsRoute: typeof EventsRoute
   GalleryRoute: typeof GalleryRoute
   ImpactRoute: typeof ImpactRoute
@@ -330,13 +317,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/blogs': {
       id: '/blogs'
       path: '/blogs'
@@ -419,7 +399,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BlogsRoute: BlogsRouteWithChildren,
-  ContactRoute: ContactRoute,
   EventsRoute: EventsRoute,
   GalleryRoute: GalleryRoute,
   ImpactRoute: ImpactRoute,

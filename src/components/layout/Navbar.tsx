@@ -29,19 +29,19 @@ const MAIN = [
   { to: "/events", label: "Events" },
   { to: "/blogs", label: "Blogs" },
   { to: "/gallery", label: "Gallery" },
-  { to: "/contact", label: "Contact" },
+
 ] as const;
 
 export function Logo({ isScrolled }: { isScrolled?: boolean }) {
   return (
-    <Link to="/" className="flex items-center gap-2.5 group">
-      <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} className="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" />
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-base font-bold tracking-tight transition-colors text-white">
+    <Link to="/" className="flex items-center gap-3.5 group py-2">
+      <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105" />
+      <span className="flex flex-col leading-none gap-0.5">
+        <span className="font-display text-lg font-extrabold tracking-tight transition-colors text-white">
           Disha <span className="text-[#FFB703]">For India</span>
         </span>
-        <span className="text-[10px] font-medium uppercase tracking-wider transition-colors text-white/80">
-          Growth & Opportunity
+        <span className="text-[11px] font-semibold uppercase tracking-wider transition-colors text-white/80">
+          WE EMPOWER | WE MAKE THE DIFFERENCE
         </span>
       </span>
     </Link>
@@ -104,14 +104,7 @@ function VolunteerAuthLink({ isScrolled }: { isScrolled: boolean }) {
     );
   }
 
-  return (
-    <a
-      href="https://app-disha-for-indiaa.vercel.app/login?redirect_to=https://disha-for-indiaa.vercel.app"
-      className="rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 text-white hover:bg-[#1E5BB8]"
-    >
-      Become a Volunteer
-    </a>
-  );
+  return null;
 }
 
 
@@ -137,16 +130,7 @@ function MobileVolunteerAuthLink() {
     );
   }
 
-  return (
-    <SheetClose asChild>
-      <a
-        href="https://app-disha-for-indiaa.vercel.app/login?redirect_to=https://disha-for-indiaa.vercel.app"
-        className="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/90 transition-all duration-300 hover:bg-[#1E5BB8] hover:text-white mt-2"
-      >
-        Become a Volunteer
-      </a>
-    </SheetClose>
-  );
+  return null;
 }
 
 export function Navbar() {
@@ -168,7 +152,7 @@ export function Navbar() {
         ? "bg-[#063B8C] shadow-lg"
         : "bg-[#063B8C]"
     )}>
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
         <Logo isScrolled={isScrolled} />
 
         <div className="hidden items-center gap-1 lg:flex">
