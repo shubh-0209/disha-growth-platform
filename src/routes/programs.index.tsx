@@ -34,7 +34,7 @@ function Programs() {
             slug: p.slug || p.title.toLowerCase().replace(/\s+/g, '-'),
             tagline: p.shortDescription || "Empowering India's youth.",
             category: p.category || "Skill Development",
-            thumbnail: p.thumbnail || "/images/placeholders/volunteer-1.jpg",
+            thumbnail: p.thumbnail || "/optimized/gallery/volunteer-group.webp",
             keyFocus: p.tags || []
           }));
         }

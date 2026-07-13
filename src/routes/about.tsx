@@ -4,7 +4,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 import { images } from "@/lib/images";
-import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { Button } from "@/components/ui/button";
 import { ORG } from "@/lib/site-data";
 
@@ -34,7 +34,7 @@ function About() {
       <section className="py-12 lg:py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
           <Reveal delay={0.1}>
-            <ImageWithFallback src={images.hero.about} alt="Indian youth learning together" width={1200} height={800} loading="eager" isHero={true} className="w-full rounded-3xl border border-border object-cover shadow-card" />
+            <OptimizedImage src={images.hero.about} alt="Indian youth learning together" width={1200} height={800} loading="eager" isHero={true} className="w-full rounded-3xl border border-border object-cover shadow-card" />
           </Reveal>
           <div>
             <SectionHeading

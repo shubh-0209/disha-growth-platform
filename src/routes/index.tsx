@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, BookOpen, Briefcase, Calendar, Compass, Gift, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 import { images } from "@/lib/images";
-import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { cn } from "@/lib/utils";
 
 const HERO_SLIDES = [
@@ -170,7 +170,7 @@ function FullWidthHeroCarousel() {
               </div>
 
               <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[450px] overflow-hidden rounded-[2rem] border border-border shadow-card bg-muted/20">
-                <ImageWithFallback
+                <OptimizedImage
                   src={HERO_SLIDES[currentSlide].image}
                   alt={HERO_SLIDES[currentSlide].alt}
                   width={1200}
@@ -371,7 +371,7 @@ function Home() {
                     "{t.quote}"
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-4 border-t border-border pt-4">
-                    <ImageWithFallback
+                    <OptimizedImage
                       src={t.photo}
                       alt={t.name}
                       loading="lazy"

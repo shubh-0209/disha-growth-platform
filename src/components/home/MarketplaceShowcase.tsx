@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { GraduationCap, BookOpen, Gift, Award, Briefcase, Ticket, Library, Target, ArrowRight, Calendar, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/Reveal";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 const CATEGORIES = [
   { icon: GraduationCap, label: "Scholarships", color: "text-blue-500", bg: "bg-blue-50" },
@@ -108,8 +109,8 @@ export function MarketplaceShowcase() {
                 
                 {/* Browser Content */}
                 <div className="relative bg-background overflow-hidden p-1">
-                  <img
-                    src="/gallery/marketplace.png"
+                  <OptimizedImage
+                    src="/optimized/gallery/marketplace.webp"
                     alt="Disha Changemaker Hub Dashboard"
                     className="w-full h-auto object-cover rounded-xl shadow-inner border border-border/50"
                   />

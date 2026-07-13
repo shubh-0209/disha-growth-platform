@@ -4,7 +4,7 @@ import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { BlogCard } from "@/components/cards";
 import { BLOGS, type Blog } from "@/lib/site-data";
-import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 export const Route = createFileRoute("/blogs/$slug")({
   loader: ({ params }) => {
@@ -64,7 +64,7 @@ function BlogPost() {
     <article>
       <div className="relative">
         <div className="aspect-[21/9] max-h-[420px] w-full overflow-hidden">
-          <ImageWithFallback src={blog.cover} alt={blog.title} width={1200} height={514} loading="eager" isHero={true} className="h-full w-full object-cover" />
+          <OptimizedImage src={blog.cover} alt={blog.title} width={1200} height={514} loading="eager" isHero={true} className="h-full w-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
       </div>

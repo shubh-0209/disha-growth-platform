@@ -3,7 +3,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
-import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { GALLERY, type GalleryItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -41,7 +41,7 @@ function Gallery() {
                   className="block w-full h-full text-left"
                   aria-label={`View ${item.caption}`}
                 >
-                  <ImageWithFallback 
+                  <OptimizedImage 
                     src={item.src} 
                     alt={item.caption} 
                     width={1200}
@@ -73,7 +73,7 @@ function Gallery() {
         <DialogContent className="max-w-4xl border-none bg-transparent p-0 shadow-none">
           {active && (
             <div className="relative rounded-2xl overflow-hidden bg-black shadow-2xl">
-              <ImageWithFallback src={active.src} alt={active.caption} width={1200} height={800} className="max-h-[75vh] w-full object-contain" />
+              <OptimizedImage src={active.src} alt={active.caption} width={1200} height={800} className="max-h-[75vh] w-full object-contain" />
               <div className="bg-black/90 p-5 text-center border-t border-white/10">
                 <p className="text-white font-medium text-lg">{active.caption}</p>
               </div>

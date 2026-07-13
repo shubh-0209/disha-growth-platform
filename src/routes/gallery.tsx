@@ -3,7 +3,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
-import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { GALLERY, type GalleryItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";

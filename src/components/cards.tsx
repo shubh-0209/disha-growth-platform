@@ -3,7 +3,7 @@ import { ArrowUpRight, Calendar, Clock, MapPin } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Program, DishaEvent, Blog, Story } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import { ImageWithFallback } from "@/components/shared/ImageWithFallback";
+import { OptimizedImage } from "@/components/shared/OptimizedImage";
 
 export function ProgramCard({ program }: { program: Program }) {
   const Icon = (Icons[program.icon as keyof typeof Icons] || Icons.Sparkles) as React.ComponentType<{ className?: string }>;
@@ -36,7 +36,7 @@ export function EventCard({ event }: { event: DishaEvent }) {
   return (
     <article className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
       <div className="relative aspect-[16/10] overflow-hidden">
-        <ImageWithFallback src={event.image} alt={event.title} width={800} height={500} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <OptimizedImage src={event.image} alt={event.title} width={800} height={500} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <span className={cn(
           "absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold",
           event.status === "upcoming" ? "bg-primary text-primary-foreground" : "bg-ink/80 text-background",
@@ -65,7 +65,7 @@ export function BlogCard({ blog }: { blog: Blog }) {
       className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-card"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
-        <ImageWithFallback src={blog.cover} alt={blog.title} width={800} height={500} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <OptimizedImage src={blog.cover} alt={blog.title} width={800} height={500} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
       </div>
       <div className="flex flex-1 flex-col p-5">
         <span className="w-fit rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-semibold text-primary">{blog.category}</span>
@@ -85,7 +85,7 @@ export function StoryCard({ story }: { story: Story }) {
   return (
     <article className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-card">
       <div className="relative aspect-[4/3] overflow-hidden">
-        <ImageWithFallback src={story.photo} alt={story.name} width={800} height={600} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <OptimizedImage src={story.photo} alt={story.name} width={800} height={600} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <span className="absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold text-primary">{story.type}</span>
       </div>
       <div className="p-5">
