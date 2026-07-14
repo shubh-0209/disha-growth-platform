@@ -1,7 +1,6 @@
 @import "tailwindcss" source(none);
-@source "../src";
-
-
+@import "./fonts.css";
+@source "./";
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -296,99 +295,6 @@
 }
 
 
-
-/* ===========================
-   COMPONENTS
-=========================== */
-
-
-@layer components {
-
-
-  .btn-dashboard-cta {
-
-
-    position: relative;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-
-    min-height: 48px;
-
-    width: 100%;
-
-
-    padding: 12px 24px;
-
-
-    font-family: var(--font-sans);
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-
-    color: var(--color-primary);
-
-    background: #FFB703;
-
-
-    border-radius: 9999px;
-
-
-    transition: all .2s ease;
-
-
-    text-decoration: none;
-
-
-  }
-
-
-
-  @media(min-width:1024px) {
-
-
-    .btn-dashboard-cta {
-
-
-      width: auto;
-
-      height: 48px;
-
-      padding: 0 28px;
-
-
-    }
-
-
-  }
-
-
-
-  .btn-dashboard-cta:hover {
-
-
-    transform: translateY(-1px);
-
-    box-shadow:
-      0 4px 12px rgba(255, 183, 3, .3);
-
-
-    background: #e6a500;
-
-
-    color: var(--color-primary);
-
-
-  }
-
-}
-
 @layer base {
   :focus-visible {
     outline: 2px solid var(--primary);
@@ -396,9 +302,6 @@
   }
 }
 
-#marketplace {
-  scroll-margin-top: 100px;
-}
 
 /* src/responsive.css */
 

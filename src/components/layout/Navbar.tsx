@@ -37,7 +37,7 @@ export function Logo({ isScrolled }: { isScrolled?: boolean }) {
       <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} className="h-11 md:h-[52px] w-auto object-contain transition-transform group-hover:scale-105" />
       <span className="flex flex-col leading-none gap-0 justify-center">
         <span className="font-display text-xl font-bold tracking-tight transition-colors text-white pb-0.5">
-          Disha <span className="text-[#FFB703]">For India</span>
+          Disha <span className="text-white">For India</span>
         </span>
         <span className="text-[10.5px] font-bold uppercase tracking-widest transition-colors text-white/90">
           WE EMPOWER | WE MAKE THE DIFFERENCE

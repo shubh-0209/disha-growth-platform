@@ -230,9 +230,9 @@ export const STORIES: Story[] = [
     id: "priya",
     name: "Priya Sharma",
     type: "Student",
-    headline: "From classroom to first internship",
+    headline: "From Curiosity to Confidence",
     summary:
-      "After a mentoring session, Priya discovered data science, completed a Disha bootcamp and landed her first paid internship.",
+      "With guidance from a volunteer mentor, Priya discovered her strengths, built new skills, and gained the confidence to shape her own future.",
     photo: images.stories[0],
   },
   {

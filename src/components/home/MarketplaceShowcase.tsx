@@ -17,7 +17,7 @@ const CATEGORIES = [
 
 export function MarketplaceShowcase() {
   return (
-    <section id="marketplace" className="relative overflow-hidden bg-background pt-16 pb-4 lg:pt-28 lg:pb-8">
+    <section id="marketplace" className="scroll-mt-[100px] relative overflow-hidden bg-background pt-16 pb-4 lg:pt-28 lg:pb-8">
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 bg-grid pointer-events-none opacity-40" />
       <motion.div
