@@ -4,13 +4,13 @@ export const images = {
   fallback: fallbackImage,
   hero: {
     home: [
-      "/optimized/gallery/volunteer-group.webp",
+      "/optimized/gallery/youth-address.webp",
       "/optimized/gallery/public-speaking.webp",
       "/optimized/gallery/team-certificates.webp",
       "/optimized/gallery/gallery-2-1.webp",
       "/optimized/gallery/activity-2-1.webp",
     ],
-    about: "/optimized/gallery/volunteer-group.webp",
+    about: "/optimized/gallery/youth-address.webp",
   },
   programs: {
     education: "/optimized/gallery/activity-2-1.webp",
@@ -34,14 +34,12 @@ export const images = {
     "/optimized/gallery/disha-1.webp",
     "/optimized/gallery/activity-1-2.webp",
     "/optimized/gallery/youth-address.webp",
-    "/optimized/gallery/volunteer-group.webp",
   ],
   gallery: [
     "/optimized/gallery/award-ceremony.webp",
     "/optimized/gallery/public-speaking.webp",
     "/optimized/gallery/team-certificates.webp",
     "/optimized/gallery/youth-address.webp",
-    "/optimized/gallery/volunteer-group.webp",
     "/optimized/gallery/gallery-2-1.webp",
     "/optimized/gallery/gallery-2-2.webp",
     "/optimized/gallery/gallery-2-3.webp",
