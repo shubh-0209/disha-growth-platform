@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BookOpen, Briefcase, Calendar, Compass, Gift, GraduationCap, Heart, Sparkles, Star } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, Calendar, Compass, Gift, GraduationCap, Heart, Sparkles, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { images } from "@/lib/images";
 import { OptimizedImage } from "@/components/shared/OptimizedImage";
@@ -200,6 +200,24 @@ function FullWidthHeroCarousel() {
             aria-current={index === currentSlide}
           />
         ))}
+      </div>
+
+      {/* Manual Navigation Controls */}
+      <div className="absolute bottom-5 left-5 md:bottom-[30px] md:left-[30px] lg:bottom-[40px] lg:left-[40px] z-50 flex gap-4">
+        <button
+          onClick={prevSlide}
+          className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white border border-gray-200 shadow-sm text-foreground flex items-center justify-center hover:bg-gray-50 transition"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white border border-gray-200 shadow-sm text-foreground flex items-center justify-center hover:bg-gray-50 transition"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
+        </button>
       </div>
     </section>
   );
