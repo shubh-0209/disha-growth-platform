@@ -18,8 +18,9 @@ import { OPPORTUNITY_HUB, type HubOpportunity, type OpportunityHubType } from "@
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-export const Route = createLazyFileRoute("/opportunity-hub")({
+import { Helmet } from "react-helmet-async";
 
+export const Route = createLazyFileRoute("/opportunity-hub")({
   component: OpportunityHub,
 });
 
@@ -83,7 +84,15 @@ function OpportunityHub() {
   }, []);
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Opportunity Hub</title>
+        <meta name="description" content="Discover internships, workshops, competitions and hackathons curated for India's students. Search, filter and apply." />
+        <link rel="canonical" href="https://dishaforindia.org/opportunity-hub" />
+        <meta property="og:title" content="Opportunity Hub | Disha For India" />
+        <meta property="og:description" content="Discover internships, workshops, competitions and hackathons curated for India's students. Search, filter and apply." />
+        <meta property="og:url" content="https://dishaforindia.org/opportunity-hub" />
+      </Helmet>
       <PageHero
         eyebrow="Opportunity Hub"
         title="Your next big break starts here"
@@ -201,7 +210,7 @@ function OpportunityHub() {
           )}
         </div>
       </section>
-    </>
+    </main>
   );
 }
 

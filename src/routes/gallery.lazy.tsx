@@ -8,8 +8,9 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { GALLERY, type GalleryItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
+import { Helmet } from "react-helmet-async";
+
 export const Route = createLazyFileRoute("/gallery")({
-  
   component: Gallery,
 });
 
@@ -17,7 +18,15 @@ function Gallery() {
   const [active, setActive] = useState<GalleryItem | null>(null);
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Media Gallery</title>
+        <meta name="description" content="View moments from Disha For India's workshops, events, and community drives." />
+        <link rel="canonical" href="https://dishaforindia.org/gallery" />
+        <meta property="og:title" content="Gallery | Disha For India" />
+        <meta property="og:description" content="View moments from Disha For India's workshops, events, and community drives." />
+        <meta property="og:url" content="https://dishaforindia.org/gallery" />
+      </Helmet>
       <PageHero
         eyebrow="Media Gallery"
         title="Moments from our journey"
@@ -84,6 +93,6 @@ function Gallery() {
           )}
         </DialogContent>
       </Dialog>
-    </>
+    </main>
   );
 }

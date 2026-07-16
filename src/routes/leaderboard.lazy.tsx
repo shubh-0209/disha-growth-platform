@@ -68,8 +68,9 @@ import {
 } from "@/lib/api/leaderboard.functions";
 import { cn } from "@/lib/utils";
 
+import { Helmet } from "react-helmet-async";
+
 export const Route = createLazyFileRoute("/leaderboard")({
-  
   component: LeaderboardPage,
 });
 
@@ -181,7 +182,15 @@ function LeaderboardPage() {
   };
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Contributor Leaderboard</title>
+        <meta name="description" content="Recognizing the top volunteers and contributors making meaningful changes across communities with Disha For India." />
+        <link rel="canonical" href="https://dishaforindia.org/leaderboard" />
+        <meta property="og:title" content="Leaderboard | Disha For India" />
+        <meta property="og:description" content="Recognizing the top volunteers and contributors making meaningful changes across communities with Disha For India." />
+        <meta property="og:url" content="https://dishaforindia.org/leaderboard" />
+      </Helmet>
       <PageHero
         eyebrow="Contributor Board"
         title="Contribution Leaderboard"
@@ -771,6 +780,6 @@ function LeaderboardPage() {
 
         </div>
       </section>
-    </>
+    </main>
   );
 }

@@ -8,6 +8,8 @@ import { VOLUNTEER_ROLES } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
+import { Helmet } from "react-helmet-async";
+
 export const Route = createLazyFileRoute("/volunteer")({
   component: Volunteer,
 });
@@ -19,7 +21,15 @@ function Volunteer() {
   const filtered = VOLUNTEER_ROLES.filter((v) => cat === "All" || v.category === cat);
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Volunteer Hub</title>
+        <meta name="description" content="Join Disha For India as a volunteer. Contribute your time and skills to make a meaningful difference for India's youth." />
+        <link rel="canonical" href="https://dishaforindia.org/volunteer" />
+        <meta property="og:title" content="Volunteer Hub | Disha For India" />
+        <meta property="og:description" content="Join Disha For India as a volunteer. Contribute your time and skills to make a meaningful difference for India's youth." />
+        <meta property="og:url" content="https://dishaforindia.org/volunteer" />
+      </Helmet>
       <PageHero
         eyebrow="Volunteer Hub"
         title="Invest your time. Uplift a life."
@@ -76,6 +86,6 @@ function Volunteer() {
           </Reveal>
         </div>
       </section>
-    </>
+    </main>
   );
 }

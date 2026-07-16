@@ -20,20 +20,6 @@ export const Route = createFileRoute("/programs/$slug")({
     if (!program) throw notFound();
     return { program };
   },
-  head: ({ loaderData }) => {
-    const p = loaderData?.program;
-    return {
-      meta: [
-        { title: `${p?.title ?? "Program"} — Disha For India` },
-        { name: "description", content: p?.description ?? "" },
-        { property: "og:title", content: `${p?.title} — Disha For India` },
-        { property: "og:description", content: p?.description ?? "" },
-        { property: "og:type", content: "article" },
-        { property: "og:url", content: `/programs/${p?.slug}` },
-      ],
-      links: [{ rel: "canonical", href: `/programs/${p?.slug}` }],
-    };
-  },
   notFoundComponent: () => (
     <div className="mx-auto max-w-md px-5 py-32 text-center">
       <h1 className="text-2xl font-bold">Program not found</h1>
@@ -49,13 +35,39 @@ export const Route = createFileRoute("/programs/$slug")({
   component: ProgramDetail,
 });
 
+import { Helmet } from "react-helmet-async";
+
 function ProgramDetail() {
   const { program } = Route.useLoaderData();
   const Icon = ICON_MAP[program.icon] || Sparkles;
   const isGreen = program.accent === "green";
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>{program.title}</title>
+        <meta name="description" content={program.description} />
+        <link rel="canonical" href={`https://dishaforindia.org/programs/${program.slug}`} />
+        <meta property="og:title" content={`${program.title} | Disha For India`} />
+        <meta property="og:description" content={program.description} />
+        <meta property="og:url" content={`https://dishaforindia.org/programs/${program.slug}`} />
+        <meta property="og:type" content="article" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Course",
+              "name": "${program.title}",
+              "description": "${program.description}",
+              "provider": {
+                "@type": "Organization",
+                "name": "Disha For India",
+                "sameAs": "https://dishaforindia.org/"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
       <PageHero eyebrow={program.tagline} title={program.title} description={program.description} />
       <section className="py-10 lg:py-16">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1.4fr_1fr]">
@@ -102,6 +114,6 @@ function ProgramDetail() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

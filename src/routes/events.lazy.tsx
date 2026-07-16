@@ -7,8 +7,9 @@ import { EventCard } from "@/components/cards";
 import { EVENTS } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
+import { Helmet } from "react-helmet-async";
+
 export const Route = createLazyFileRoute("/events")({
-  
   component: Events,
 });
 
@@ -24,7 +25,15 @@ function Events() {
   });
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Events</title>
+        <meta name="description" content="Discover upcoming events and initiatives from Disha For India. Join our community in making a difference." />
+        <link rel="canonical" href="https://dishaforindia.org/events" />
+        <meta property="og:title" content="Events | Disha For India" />
+        <meta property="og:description" content="Discover upcoming events and initiatives from Disha For India. Join our community in making a difference." />
+        <meta property="og:url" content="https://dishaforindia.org/events" />
+      </Helmet>
       <PageHero
         eyebrow="Events"
         title="Where learning meets community"
@@ -79,6 +88,6 @@ function Events() {
           )}
         </div>
       </section>
-    </>
+    </main>
   );
 }

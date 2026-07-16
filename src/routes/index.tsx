@@ -113,9 +113,9 @@ function FullWidthHeroCarousel() {
         {/* Invisible Placeholder to maintain Grid Height properly */}
         <div className="grid items-center gap-12 lg:grid-cols-2 invisible pointer-events-none">
           <div className="flex flex-col justify-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.15] tracking-tight mb-6 line-clamp-3">
+            <div className="text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.15] tracking-tight mb-6 line-clamp-3">
               {HERO_SLIDES[0].headline}
-            </h1>
+            </div>
             <p className="text-lg lg:text-xl leading-[1.6] mb-8 max-w-xl">
               {HERO_SLIDES[0].description}
             </p>
@@ -238,32 +238,40 @@ function FullWidthHeroCarousel() {
 }
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE" },
-      { name: "description", content: "Empowering India's youth through skills, education and opportunities." },
-      {
-        property: "og:title",
-        content: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE",
-      },
-      { property: "og:description", content: "Empowering India's youth through skills, education and opportunities." },
-      { property: "og:url", content: "https://dishaforindia.org" },
-      { property: "og:title", content: "Disha For India — WE EMPOWER | WE MAKE THE DIFFERENCE" },
-      {
-        property: "og:description",
-        content:
-          "Empowering India's youth through skills, education and opportunities.",
-      },
-    ],
-  }),
   component: Home,
 });
+
+import { Helmet } from "react-helmet-async";
 
 function Home() {
   const featuredBlogs = BLOGS.filter((b) => b.featured).slice(0, 3);
 
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+        <meta name="description" content="Disha For India empowers communities by connecting people with opportunities, volunteering initiatives, and meaningful ways to create social impact." />
+        <link rel="canonical" href="https://dishaforindia.org/" />
+        <meta property="og:title" content="Disha For India — Empowering Communities Through Opportunities" />
+        <meta property="og:description" content="Disha For India empowers communities by connecting people with opportunities, volunteering initiatives, and meaningful ways to create social impact." />
+        <meta property="og:url" content="https://dishaforindia.org/" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Disha For India",
+              "url": "https://dishaforindia.org/",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://dishaforindia.org/programs?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
+
       {/* SECTION 1 — Hero */}
       <FullWidthHeroCarousel />
 

@@ -8,13 +8,23 @@ import { OptimizedImage } from "@/components/shared/OptimizedImage";
 import { Button } from "@/components/ui/button";
 import { ORG } from "@/lib/site-data";
 
+import { Helmet } from "react-helmet-async";
+
 export const Route = createLazyFileRoute("/about")({
   component: About,
 });
 
 function About() {
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>About Us</title>
+        <meta name="description" content="Disha For India Foundation & Educational Trust is a youth-first movement skilling India's next generation for employability, entrepreneurship and a life of purpose." />
+        <link rel="canonical" href="https://dishaforindia.org/about" />
+        <meta property="og:title" content="About Us | Disha For India" />
+        <meta property="og:description" content="Learn about our mission to empower youth through skills and education." />
+        <meta property="og:url" content="https://dishaforindia.org/about" />
+      </Helmet>
       <PageHero
         eyebrow="About Us"
         title="We empower. We make the difference."
@@ -96,6 +106,6 @@ function About() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

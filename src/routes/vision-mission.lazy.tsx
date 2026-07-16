@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { ORG } from "@/lib/site-data";
 
+import { Helmet } from "react-helmet-async";
+
 export const Route = createLazyFileRoute("/vision-mission")({
   component: VisionMission,
 });
@@ -19,7 +21,15 @@ const VALUES = [
 
 function VisionMission() {
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Vision & Mission</title>
+        <meta name="description" content="Discover the vision, mission, and core values that guide Disha For India Foundation & Educational Trust in empowering youth." />
+        <link rel="canonical" href="https://dishaforindia.org/vision-mission" />
+        <meta property="og:title" content="Vision & Mission | Disha For India" />
+        <meta property="og:description" content="Discover the vision, mission, and core values that guide Disha For India Foundation & Educational Trust in empowering youth." />
+        <meta property="og:url" content="https://dishaforindia.org/vision-mission" />
+      </Helmet>
       <PageHero
         eyebrow="Vision · Mission · Passion"
         title="Our vision, mission & passion"
@@ -69,6 +79,6 @@ function VisionMission() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

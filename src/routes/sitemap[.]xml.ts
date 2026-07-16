@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { PROGRAMS, BLOGS } from "@/lib/site-data";
 
-const BASE_URL = "";
+const BASE_URL = "https://dishaforindia.org";
 
 interface SitemapEntry {
   path: string;
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/sitemap.xml")({
 
           { path: "/blogs", changefreq: "weekly", priority: "0.8" },
           { path: "/gallery", changefreq: "monthly", priority: "0.6" },
-
+          { path: "/leaderboard", changefreq: "daily", priority: "0.7" },
         ];
 
         const programPaths: SitemapEntry[] = PROGRAMS.map((p) => ({

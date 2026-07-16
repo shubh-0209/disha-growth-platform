@@ -34,7 +34,7 @@ const MAIN = [
 export function Logo({ isScrolled }: { isScrolled?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-6 group py-2">
-      <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} className="h-11 md:h-[52px] w-auto object-contain transition-transform group-hover:scale-105" />
+      <img src="/logo.png" alt="Disha For India Icon" width={128} height={128} loading="eager" fetchPriority="high" className="h-11 md:h-[52px] w-auto object-contain transition-transform group-hover:scale-105" />
       <span className="flex flex-col leading-none gap-0 justify-center">
         <span className="font-display text-xl font-bold tracking-tight transition-colors text-white pb-0.5">
           Disha <span className="text-white">For India</span>

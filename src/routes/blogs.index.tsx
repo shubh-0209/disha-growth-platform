@@ -9,20 +9,12 @@ import { BLOGS } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/blogs/")({
-  head: () => ({
-    meta: [
-      { title: "Blog — Disha For India" },
-      { name: "description", content: "Practical articles on financial literacy, entrepreneurship, education, wellness, career growth and the environment from Disha For India." },
-      { property: "og:title", content: "Blog — Disha For India" },
-      { property: "og:description", content: "Insights to help India's students grow." },
-      { property: "og:url", content: "/blogs" },
-    ],
-    links: [{ rel: "canonical", href: "/blogs" }],
-  }),
   component: BlogIndex,
 });
 
 const CATS = ["All", "Financial Literacy", "Entrepreneurship", "Education", "Wellness", "Career Growth", "Environment"];
+
+import { Helmet } from "react-helmet-async";
 
 function BlogIndex() {
   const [query, setQuery] = useState("");
@@ -40,7 +32,15 @@ function BlogIndex() {
   );
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Blog</title>
+        <meta name="description" content="Practical articles on financial literacy, entrepreneurship, education, wellness, career growth and the environment from Disha For India." />
+        <link rel="canonical" href="https://dishaforindia.org/blogs" />
+        <meta property="og:title" content="Blog | Disha For India" />
+        <meta property="og:description" content="Practical articles on financial literacy, entrepreneurship, education, wellness, career growth and the environment from Disha For India." />
+        <meta property="og:url" content="https://dishaforindia.org/blogs" />
+      </Helmet>
       <PageHero
         eyebrow="The Disha Blog"
         title="Ideas to help you grow"
@@ -114,6 +114,6 @@ function BlogIndex() {
           )}
         </div>
       </section>
-    </>
+    </main>
   );
 }

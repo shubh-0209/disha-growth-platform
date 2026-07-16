@@ -13,35 +13,6 @@ export const Route = createFileRoute("/blogs/$slug")({
     const related = BLOGS.filter((b) => b.slug !== blog.slug && b.category === blog.category).slice(0, 3);
     return { blog, related: related.length ? related : BLOGS.filter((b) => b.slug !== blog.slug).slice(0, 3) };
   },
-  head: ({ loaderData }) => {
-    const b = loaderData?.blog;
-    return {
-      meta: [
-        { title: `${b?.title ?? "Article"} — Disha For India` },
-        { name: "description", content: b?.excerpt ?? "" },
-        { property: "og:title", content: b?.title ?? "" },
-        { property: "og:description", content: b?.excerpt ?? "" },
-        { property: "og:type", content: "article" },
-        { property: "og:image", content: b?.cover ?? "" },
-        { property: "og:url", content: `/blogs/${b?.slug}` },
-        { name: "twitter:image", content: b?.cover ?? "" },
-      ],
-      links: [{ rel: "canonical", href: `/blogs/${b?.slug}` }],
-      scripts: b
-        ? [{
-            type: "application/ld+json",
-            children: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: b.title,
-              image: b.cover,
-              datePublished: b.date,
-              author: { "@type": "Person", name: b.author },
-            }),
-          }]
-        : [],
-    };
-  },
   notFoundComponent: () => (
     <div className="mx-auto max-w-md px-5 py-32 text-center">
       <h1 className="text-2xl font-bold">Article not found</h1>
@@ -57,11 +28,47 @@ export const Route = createFileRoute("/blogs/$slug")({
   component: BlogPost,
 });
 
+import { Helmet } from "react-helmet-async";
+
 function BlogPost() {
   const { blog, related } = Route.useLoaderData();
 
   return (
     <article>
+      <Helmet>
+        <title>{blog.title}</title>
+        <meta name="description" content={blog.excerpt} />
+        <link rel="canonical" href={`https://dishaforindia.org/blogs/${blog.slug}`} />
+        <meta property="og:title" content={`${blog.title} | Disha For India`} />
+        <meta property="og:description" content={blog.excerpt} />
+        <meta property="og:image" content={blog.cover} />
+        <meta property="og:url" content={`https://dishaforindia.org/blogs/${blog.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:image" content={blog.cover} />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "${blog.title}",
+              "image": "${blog.cover}",
+              "datePublished": "${blog.date}",
+              "author": {
+                "@type": "Person",
+                "name": "${blog.author}"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Disha For India",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://dishaforindia.org/logo.png"
+                }
+              }
+            }
+          `}
+        </script>
+      </Helmet>
       <div className="relative">
         <div className="aspect-[21/9] max-h-[420px] w-full overflow-hidden">
           <OptimizedImage src={blog.cover} alt={blog.title} width={1200} height={514} loading="eager" isHero={true} className="h-full w-full object-cover" />

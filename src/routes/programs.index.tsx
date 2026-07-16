@@ -7,18 +7,10 @@ import { PROGRAMS } from "@/lib/site-data";
 import { publicApi } from "@/lib/api";
 
 export const Route = createFileRoute("/programs/")({
-  head: () => ({
-    meta: [
-      { title: "Programs — Disha For India" },
-      { name: "description", content: "Explore Disha For India programs: Financial Literacy, Entrepreneurship, Wellness, Clean & Green India, Education and Community Development." },
-      { property: "og:title", content: "Programs — Disha For India" },
-      { property: "og:description", content: "Skilling youth across financial literacy, entrepreneurship, wellness, environment and education." },
-      { property: "og:url", content: "/programs" },
-    ],
-    links: [{ rel: "canonical", href: "/programs" }],
-  }),
   component: Programs,
 });
+
+import { Helmet } from "react-helmet-async";
 
 function Programs() {
   const { data: programsData, isLoading, isError } = useQuery({
@@ -49,7 +41,15 @@ function Programs() {
   const displayPrograms = programsData || PROGRAMS;
 
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Programs</title>
+        <meta name="description" content="Explore Disha For India programs: Financial Literacy, Entrepreneurship, Wellness, Clean & Green India, Education and Community Development." />
+        <link rel="canonical" href="https://dishaforindia.org/programs" />
+        <meta property="og:title" content="Programs | Disha For India" />
+        <meta property="og:description" content="Skilling youth across financial literacy, entrepreneurship, wellness, environment and education." />
+        <meta property="og:url" content="https://dishaforindia.org/programs" />
+      </Helmet>
       <PageHero
         eyebrow="Our Programs"
         title="Programs that build employable, conscious citizens"
@@ -78,6 +78,6 @@ function Programs() {
           )}
         </div>
       </section>
-    </>
+    </main>
   );
 }
